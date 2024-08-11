@@ -7,10 +7,10 @@ let displayproducts = async () => {
   showproductdiv.innerHTML = ''; // Clear the container before adding new products
 
   finalproducts.forEach(element => {
-    showproductdiv.innerHTML+= `
-    
+    showproductdiv.innerHTML += `
+  
                 <div class="product-items">
-                    <img src="${element.image}" alt="productimage">
+                    <img src="${element.image}">
                     <h2>${element.title}</h2>
                     <p>Category: ${element.category}</p>
                     <p>Price: Rs ${element.price}</p>

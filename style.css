@@ -4,6 +4,10 @@
     scroll-behavior: smooth;
 }
 
+/* body {
+    background-color: green;
+} */
+
 #main {
     overflow: hidden;
     display: flex;
