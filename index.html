@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mad Commerce</title>
-    <link rel="stylesheet" href="./style.css" />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Whisper&display=swap");
-    </style>
-  </head>
 
-  <body >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mad Commerce</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Whisper&display=swap");
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <!-- Navbar  -->
     <main id="main">
       <div id="navbar">
         <div class="logo">
@@ -22,15 +28,94 @@
             <li><a href="./women.html">Women</a></li>
             <li><a href="./jewellery.html">Jewelery</a></li>
             <li><a href="./electronic.html">Electronics</a></li>
-
             <li><a href="#">Contact Us</a></li>
             <li><a href="#">About</a></li>
           </ul>
         </div>
       </div>
 
-      <div id="all-products"></div>
-    </main>
-    <script src="script.js"></script>
-  </body>
+
+      <!-- Carousel -->
+      <div class="slideshow-container">
+
+        <div class="mySlides fade">
+          <img src="./img/template 2.png" alt="template 1">
+        </div>
+
+        <div class="mySlides fade">
+          <img src="./img/template 3.png" alt="template 2">
+        </div>
+
+        <div class="mySlides fade">
+          <img src="./img/templete 1.png" alt="template 3">
+        </div>
+      </div>
+      <br>
+
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+  </div>
+
+  <!-- Services -->
+
+  <div id="services">
+    <div class="icons">
+
+      <i class="fa-solid fa-truck-fast fa-lg">
+        <p>Free Delivery</p>
+      </i>
+
+      <i class="fa-solid fa-arrow-rotate-left fa-lg">
+        <p>Easy Returns</p>
+      </i>
+
+      <i class="fa-solid fa-award fa-lg">
+        <p>High Quality</p>
+      </i>
+      <i class="fa-solid fa-shield-halved fa-lg">
+        <p>Security Guarantee</p>
+      </i>
+    </div>
+  </div>
+  <!-- exlusive Products -->
+
+  <div id="exclusive">
+    <h4> Exclusive Products <h4>
+    <div class="exp">
+      <img src="./img/jump suit1.webp">
+      <img src="./img/jeans1.webp">
+      <img src="./img/play suits.avif">
+      <img src="./img/coats.jpg">
+    </div>
+
+    <div class="exp">
+      <h4>Jump Suits</h4>
+      <h4>Jeans</h4>
+      <h4>Play Suits</h4>
+      <h4>Coats and Jackets</h4>
+    </div>
+  </div>
+
+
+  <!-- all Products -->
+  <div id="products">
+    <h4> Branded Products</h4>
+    <div id="all-products">
+
+    </div>
+  </div>
+  </main>
+
+  <footer id="footer">
+    <div class="foot">
+      <p>Mad Commerce</p>
+    </div>
+  </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+
 </html>
