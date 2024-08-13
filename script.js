@@ -1,43 +1,60 @@
 let showproductdiv = document.querySelector("#all-products");
-let cart = document.querySelector('.addtocartbtn');
+let cartCount = 0;
+
 let displayproducts = async () => {
-
     let product = await fetch("https://fakestoreapi.com/products");
-
     let finalproducts = await product.json();
     showproductdiv.innerHTML = ''; // Clear the container before adding new products
     finalproducts.forEach(element => {
         showproductdiv.innerHTML += `
- 
-                <div class="product-items">
-                    <img src="${element.image}">
-                    <h2>${element.title}</h2>
-                    <p>${element.category}</p>
-                    <p>Price: Rs ${element.price}</p>
-                    <p>Rating: ${element.rating.rate}</p>
-                    <button class="addtocartbtn">Add to Cart</button> 
-                </div>`;
+                    <div class="product-items">
+                        <img src="${element.image}" alt="${element.title}" style="width: 150px; height: 150px;">
+                        <h2>${element.title}</h2>
+                        <p>${element.category}</p>
+                        <p>Price: Rs ${element.price}</p>
+                        <p>Rating: ${element.rating.rate}</p>
+                        <button class="addtocartbtn">Add to Cart</button> 
+                    </div>`;
     });
 
-      document.querySelectorAll('.addtocartbtn').forEach((button,index) => {
+    document.querySelectorAll('.addtocartbtn').forEach((button, index) => {
         button.addEventListener("click", () => {
             let selectedProduct = finalproducts[index];
-            addtocart(selectedProduct.image, selectedProduct.price);
+            addtocart(selectedProduct.image, selectedProduct.title, selectedProduct.price);
         });
     });
-   
-
 }
 
 displayproducts();
 
-//add to cart
-let addtocart = (img, price) => {
-    console.log("MY img: " + img);
-    console.log("My price: " + price);
+let addtocart = (image, title, price) => {
+    let cartItemsContainer = document.querySelector('.cart-items');
+    cartItemsContainer.innerHTML += `
+        <div class="cart-item" style="display: flex; align-items: center; margin-bottom: 10px;">
+            <img src="${image}" alt="product image" style="width: 50px; height: 50px; margin-right: 10px;">
+            <div class="cart-item-details">
+                <p>Name: ${title}</p>
+                <span style="display: block;">Price: Rs ${price}</span>
+            </div>
+        </div>
+    `;
+    // Increment the cart count
+    cartCount++;
 
+    // Update the cart count display
+    document.getElementById('cart-count').textContent = cartCount;
 }
- 
+
+// Open cart sidebar
+document.querySelector('.fa-cart-shopping').addEventListener('click', () => {
+    document.getElementById('cart-sidebar').classList.add('active');
+});
+
+// Close cart sidebar
+document.getElementById('close-cart').addEventListener('click', () => {
+    document.getElementById('cart-sidebar').classList.remove('active');
+});
+
 
 // Carousel
 
