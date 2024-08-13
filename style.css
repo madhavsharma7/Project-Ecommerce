@@ -134,6 +134,20 @@
 
 }
 
+.dltitem {
+    font-size: 1vw;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* .dltitem:hover {
+    background-color: #ff1a1a;
+} */
+
 #services {
     display: flex;
     align-items: center;
@@ -152,7 +166,6 @@
 
 
 #exclusive {
-    padding-top: 10vh;
     text-align: center;
     /* Centers the text horizontally */
 }

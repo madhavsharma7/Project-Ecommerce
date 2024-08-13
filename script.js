@@ -1,5 +1,6 @@
 let showproductdiv = document.querySelector("#all-products");
 let cartCount = 0;
+let cartItemIdCounter = 0; 
 
 let displayproducts = async () => {
     let product = await fetch("https://fakestoreapi.com/products");
@@ -27,14 +28,20 @@ let displayproducts = async () => {
 
 displayproducts();
 
+
+// ADD TO CART SIDEBAR 
 let addtocart = (image, title, price) => {
     let cartItemsContainer = document.querySelector('.cart-items');
+    let cartItemId = `cart-item-${cartItemIdCounter}`;
     cartItemsContainer.innerHTML += `
         <div class="cart-item" style="display: flex; align-items: center; margin-bottom: 10px;">
             <img src="${image}" alt="product image" style="width: 50px; height: 50px; margin-right: 10px;">
             <div class="cart-item-details">
                 <p>Name: ${title}</p>
                 <span style="display: block;">Price: Rs ${price}</span>
+                 </div>
+            <button class="dltitem" style="margin-left: 10px; onclick="removeFromCart()'${cartItemId}'">Delete</button>
+        </div>
             </div>
         </div>
     `;
@@ -43,6 +50,25 @@ let addtocart = (image, title, price) => {
 
     // Update the cart count display
     document.getElementById('cart-count').textContent = cartCount;
+}
+
+// Delete items
+let removeFromCart = (cartItemId) => {
+    console.log(`Attempting to remove item with ID: ${cartItemId}`); // Debugging
+
+    // Find the cart item by its ID and remove it
+    let cartItem = document.getElementById(cartItemId);
+    console.log(cartItem); // Check if cartItem is found
+    if (cartItem) {
+        cartItem.remove();
+        console.log(`Removed item with ID: ${cartItemId}`); // Debugging
+
+        // Decrement the cart count and update the display
+        cartCount--;
+        document.getElementById('cart-count').textContent = cartCount;
+    } else {
+        console.log(`Item with ID: ${cartItemId} not found`); // Debugging
+    }
 }
 
 // Open cart sidebar
