@@ -233,9 +233,9 @@
 
 
 #footer {
-    background-color: black;
+    background-color: #222222;
     width: 100%;
-    height: 20vh;
+    height: 55vh;
     text-align: center;
     color: white;
     margin-top: auto;
@@ -247,7 +247,127 @@
     padding: 5vh;
 }
 
+.icons2 {
+    display: flex;
+    justify-content: center;
+    gap: 20%;
+    padding-top: 2vw;
+}
 
+.icons2 i {
+    font-size: 2vw;
+    border: 7px solid orange;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: orange;
+}
+
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.icons2 p {
+    padding: 1vw;
+    color: white;
+    font-size: 1vw;
+}
+
+.footer-content {
+    display: flex;
+    gap: 20%;
+    justify-content: left;
+    padding-left: 10%;
+
+}
+
+.ul {
+    font-size: 1.2vw;
+    list-style: none;
+    color: #ccc;
+    padding-bottom: 10%;
+
+}
+
+.footer-content li {
+    list-style: none;
+    font-size: 1vw;
+    cursor: pointer;
+    color: grey;
+
+}
+
+.sub p {
+    font-size: 1.2vw;
+    padding-bottom: 10%;
+}
+
+.input-container {
+    position: relative;
+    width: 18vw;
+    /* Adjust the width as needed */
+}
+
+.input-container input {
+    width: 100%;
+    padding-right: 3vw;
+    /* Adjust padding to ensure space for the button */
+    padding-left: 1vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+    font-size: 1vw;
+    box-sizing: border-box;
+    /* Ensures padding is included in the width */
+}
+
+.input-container button {
+    position: absolute;
+    right: 0;
+    top: 20%;
+    transform: translateY(-50%);
+    /* Centers the button vertically */
+    background: none;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.input-container button i {
+    font-size: 1.5vw;
+    /* Adjust size as needed */
+    color: black;
+}
+
+.input-container p {
+    padding: 1vw;
+    font-size: 0.8vw;
+}
+
+
+.for-social {
+    width: 100%;
+    height: 10vh;
+    background-color: #262726;
+}
+
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    padding-top: 2%;
+    gap: 2%;
+}
+
+.social-icons i {
+    font-size: 1.2vw;
+    color: white;
+    border-radius: 50%;
+    border: 2px solid white;
+    padding: 1vw;
+    align-items: center;
+}
 
 /* Carousel */
 .mySlides {
@@ -260,6 +380,7 @@ img {
     vertical-align: middle;
 
 }
+
 
 .slideshow-container {
     /* max-width: 100%; */
