@@ -28,48 +28,48 @@ let displayproducts = async () => {
 
 displayproducts();
 
-
-// ADD TO CART SIDEBAR 
-let addtocart = (image, title, price) => {
-    let cartItemsContainer = document.querySelector('.cart-items');
-    let cartItemId = `cart-item-${cartItemIdCounter}`;
-    cartItemsContainer.innerHTML += `
-        <div class="cart-item" style="display: flex; align-items: center; margin-bottom: 10px;">
-            <img src="${image}" alt="product image" style="width: 50px; height: 50px; margin-right: 10px;">
-            <div class="cart-item-details">
-                <p>Name: ${title}</p>
-                <span style="display: block;">Price: Rs ${price}</span>
-                 </div>
-            <button class="dltitem" style="margin-left: 10px; onclick="removeFromCart()'${cartItemId}'">Delete</button>
-        </div>
-            </div>
-        </div>
-    `;
-    // Increment the cart count
-    cartCount++;
-
-    // Update the cart count display
-    document.getElementById('cart-count').textContent = cartCount;
-}
-
-// Delete items
 let removeFromCart = (cartItemId) => {
-    console.log(`Attempting to remove item with ID: ${cartItemId}`); // Debugging
+    // console.log(`Attempting to remove item with ID: ${cartItemId}`); // Debugging
 
     // Find the cart item by its ID and remove it
     let cartItem = document.getElementById(cartItemId);
-    console.log(cartItem); // Check if cartItem is found
+    // console.log(cartItem); // Check if cartItem is found
     if (cartItem) {
         cartItem.remove();
-        console.log(`Removed item with ID: ${cartItemId}`); // Debugging
+        // console.log(`Removed item with ID: ${cartItemId}`); // Debugging
 
         // Decrement the cart count and update the display
         cartCount--;
         document.getElementById('cart-count').textContent = cartCount;
     } else {
-        console.log(`Item with ID: ${cartItemId} not found`); // Debugging
+        // console.log(`Item with ID: ${cartItemId} not found`); // Debugging
     }
-}
+};
+
+let addtocart = (image, title, price) => {
+    let cartItemsContainer = document.querySelector('.cart-items');
+    let cartItemId = `cart-item-${cartItemIdCounter}`;
+    
+    cartItemsContainer.innerHTML += `
+        <div id="${cartItemId}" class="cart-item" style="display: flex; align-items: center; margin-bottom: 10px;">
+            <img src="${image}" alt="product image" style="width: 50px; height: 50px; margin-right: 10px;">
+            <div class="cart-item-details">
+                <p> ${title}</p>
+                <span style="display: block;">Price: Rs ${price}</span>
+            </div>
+            <button class="dltitem" style="margin-left: 10px;" onclick="removeFromCart('${cartItemId}')">Delete</button>
+        </div>
+    `;
+    
+    // Increment the cart count
+    cartCount++;
+    
+    // Update the cart count display
+    document.getElementById('cart-count').textContent = cartCount;
+
+    // Increment the cart item ID counter for the next item
+    cartItemIdCounter++;
+};
 
 // Open cart sidebar
 document.querySelector('.fa-cart-shopping').addEventListener('click', () => {
@@ -80,6 +80,9 @@ document.querySelector('.fa-cart-shopping').addEventListener('click', () => {
 document.getElementById('close-cart').addEventListener('click', () => {
     document.getElementById('cart-sidebar').classList.remove('active');
 });
+
+
+
 
 
 // Carousel

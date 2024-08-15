@@ -335,7 +335,8 @@
 }
 
 .input-container button i {
-    font-size: 1.5vw;
+    font-size: 1.2vw;
+    padding-top: 2vh;
     /* Adjust size as needed */
     color: black;
 }
@@ -356,7 +357,6 @@
     padding: 0 2%;
     /* Optional: Add padding to the sides */
 }
-
 
 .social-icons {
     display: flex;
