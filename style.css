@@ -345,32 +345,52 @@
     font-size: 0.8vw;
 }
 
-
 .for-social {
     width: 100%;
     height: 10vh;
     background-color: #262726;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Ensures space between social icons and arrow */
+    padding: 0 2%;
+    /* Optional: Add padding to the sides */
 }
 
 
 .social-icons {
     display: flex;
     justify-content: center;
-    padding-top: 2%;
     gap: 2%;
+    flex-grow: 1;
+    /* Allows the social icons to take up space in the center */
 }
 
 .social-icons i {
-    font-size: 1.2vw;
-    color: white;
+    cursor: pointer;
     border-radius: 50%;
     border: 2px solid white;
     padding: 1vw;
-    align-items: center;
+    background-color: #262726;
 }
 
+.arrow-right {
+    cursor: pointer;
+    font-size: 1.2vw;
+    color: white;
+    border-radius: 50%;
+    border: 2px solid orange;
+    padding: 1vw;
+    background-color: orange;
+}
 
-
+.copyright {
+    background-color: #262726;
+    color: #808080;
+    font-size: 0.9vw;
+    padding-bottom: 1vw;
+    justify-content: center;
+}
 
 /* Carousel */
 .mySlides {
