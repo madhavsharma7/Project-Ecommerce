@@ -309,6 +309,16 @@
     padding-bottom: 5vh;
 }
 
+.addtocartbtn {
+    cursor: pointer;
+    background-color: #000000;
+    color: white;
+    padding: 0.5vw;
+    font-size: 1vw;
+    margin-bottom: 1vw;
+}
+
+
 .product-items {
     flex-basis: 31%;
     margin-bottom: 5%;
@@ -326,6 +336,7 @@
 .product-items p,
 .product-items h2 {
     padding: 0.2vw;
+    font-size: 1vw;
 }
 
 
