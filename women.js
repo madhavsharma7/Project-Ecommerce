@@ -1,24 +1,24 @@
+
 let showproductdiv = document.querySelector("#all-products");
 let cartCount = 0;
 let cartItemIdCounter = 0;
-finalproducts=[];
+
 
 let displayproducts = async () => {
-
     let response = await fetch("https://fakestoreapi.com/products/category/women's clothing");
-    let products = await response.json();
-    // showproductdiv.innerHTML = '';
-
-    products.forEach((element, index )=> {
+    finalproducts = await response.json(); 
+     showproductdiv.innerHTML = '';
+    finalproducts.forEach((element, index) => {
         showproductdiv.innerHTML += `
-                <div class="product-items">
-                    <img src="${element.image}" alt="productimage">
-                    <h2> ${element.title} </h2>
-                    <p> Price: Rs ${element.price} </p>
-                    <p> Rating: ${element.rating.rate} </p>
-                    <button class="addtocartbtn" data-index="${index}">Add to Cart</button>
-                </div>`;
+            <div class="product-items">
+                <img src="${element.image}" alt="${element.title}">
+                <h2>${element.title}</h2>
+                <p>Price: Rs ${element.price}</p>
+                <p>Rating: ${element.rating.rate}</p>
+                <button class="addtocartbtn" data-index="${index}">Add to Cart</button>
+            </div>`;
     });
+    
     document.querySelectorAll('.addtocartbtn').forEach(button => {
         button.addEventListener("click", () => {
             let index = button.getAttribute('data-index');
