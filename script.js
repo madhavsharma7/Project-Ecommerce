@@ -1,6 +1,6 @@
 let showproductdiv = document.querySelector("#all-products");
 let cartCount = 0;
-let cartItemIdCounter = 0; 
+let cartItemIdCounter = 0;
 
 let displayproducts = async () => {
     let product = await fetch("https://fakestoreapi.com/products");
@@ -8,14 +8,19 @@ let displayproducts = async () => {
     showproductdiv.innerHTML = ''; // Clear the container before adding new products
     finalproducts.forEach(element => {
         showproductdiv.innerHTML += `
-                    <div class="product-items">
-                        <img src="${element.image}" alt="${element.title}" style="width: 150px; height: 150px;">
-                        <h2>${element.title}</h2>
-                        <p>${element.category}</p>
-                        <p>Price: Rs ${element.price}</p>
-                        <p>Rating: ${element.rating.rate}</p>
-                        <button class="addtocartbtn">Add to Cart</button> 
-                    </div>`;
+            <div class="product-items">
+                <a href="single.html?id=${element.id}">
+                    <img src="${element.image}" alt="${element.title}" style="width: 150px; height: 150px;">
+                </a>
+                <div class="product-details-content">
+                <h2>${element.title}</h2>
+                <p>${element.category}</p>
+                <p>Price: Rs ${element.price}</p>
+                <p>Rating: ${element.rating.rate}</p>
+                <button class="addtocartbtn">Add to Cart</button> 
+                </div>
+            </div>`;
+            
     });
 
     document.querySelectorAll('.addtocartbtn').forEach((button, index) => {
@@ -27,6 +32,34 @@ let displayproducts = async () => {
 }
 
 displayproducts();
+
+//Single product
+let showProductDetails = async () => {
+    // Extract the product ID from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    // Fetch the product details using the product ID
+    let product = await fetch(`https://fakestoreapi.com/products/${productId}`);
+    let finalProduct = await product.json();
+
+    let productDetailsDiv = document.getElementById('product-details');
+    productDetailsDiv.innerHTML = `
+     <div class="product-details">
+        <img  src="${finalProduct.image}" alt="${finalProduct.title}">
+        <h2>${finalProduct.title}</h2>
+        <p><b>Category:</b> ${finalProduct.category}</p>
+        <p><b>Description:</b> ${finalProduct.description}</p>
+        <p><b>Price:</b> Rs ${finalProduct.price}</p>
+        <p><b>Rating:</b> ${finalProduct.rating.rate} (${finalProduct.rating.count} reviews)</p>
+        <button class="addtocartbtn">Add to Cart</button>
+     </div>
+    `;
+};
+
+// Call the function directly
+showProductDetails();
+
 
 let removeFromCart = (cartItemId) => {
     // console.log(`Attempting to remove item with ID: ${cartItemId}`); // Debugging
@@ -49,7 +82,7 @@ let removeFromCart = (cartItemId) => {
 let addtocart = (image, title, price) => {
     let cartItemsContainer = document.querySelector('.cart-items');
     let cartItemId = `cart-item-${cartItemIdCounter}`;
-    
+
     cartItemsContainer.innerHTML += `
         <div id="${cartItemId}" class="cart-item" style="display: flex; align-items: center; margin-bottom: 10px;">
             <img src="${image}" alt="product image" style="width: 50px; height: 50px; margin-right: 10px;">
@@ -60,10 +93,10 @@ let addtocart = (image, title, price) => {
             <button class="dltitem" style="margin-left: 10px;" onclick="removeFromCart('${cartItemId}')">Delete</button>
         </div>
     `;
-    
+
     // Increment the cart count
     cartCount++;
-    
+
     // Update the cart count display
     document.getElementById('cart-count').textContent = cartCount;
 

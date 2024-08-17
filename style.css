@@ -336,7 +336,7 @@
 .product-items p,
 .product-items h2 {
     padding: 0.2vw;
-    font-size: 1vw;
+    font-size: 1.2vw;
 }
 
 
@@ -346,7 +346,6 @@
     height: 70vh;
     text-align: center;
     color: white;
-    margin-top: auto;
 }
 
 .foot p {
@@ -501,6 +500,52 @@
 }
 
 
+/* Single Product */
+.product-details {
+    display: contents;
+    align-items: center;
+    /* Aligns items at the start of the container */
+    cursor: pointer;
+
+}
+
+.product-details img {
+    width: 30%;
+    height: 30%;
+    padding-left: 10vw;
+    padding-top: 5%;
+
+}
+
+.product-details-content {
+    display: block;
+}
+
+.product-details h2 {
+    /* 55 */
+    position: relative;
+    top: -20vh;
+    padding-left: 35vw;
+    font-size: 2vw;
+
+}
+
+.product-details p {
+    /* 50 */
+    position: relative;
+    top: -15vh;
+    padding-left: 35%;
+    font-size: 1.5vw;
+    padding-bottom: 1vw;
+}
+
+.product-details button {
+    /*45  */
+    position: relative;
+    top: -10vh;
+    left: 35%;
+    font-size: 1.5vw;
+}
 
 /* Carousel */
 .mySlides {
