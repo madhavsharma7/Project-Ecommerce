@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
-    box-sizing: border-box;
 }
 
 #container {
@@ -19,64 +18,6 @@
     width: 100%;
 }
 
-/* #navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #000000;
-    height: 10vh;
-    width: 100%;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2vw;
-    padding-right: 20%;
-}
-
-.logo {
-    font-family: "Whisper", cursive;
-    color: white;
-    font-size: 2vw;
-}
-
-.logo a {
-    text-decoration: none;
-    color: white;
-}
-
-
-
-.nav-items ul {
-
-    display: flex;
-    list-style: none;
-    font-size: 1.2vw;
-    gap: 5vw;
-    margin: 0;
-
-}
-
-.nav-items a {
-
-    font-family: "Lora", serif;
-    color: white;
-    text-decoration: none;
-}
-
-.nav-items a:hover {
-    border: 2px solid white;
-}
-
-.navbar-icons {
-    display: flex;
-    gap: 2vw;
-}
-
-.navbar-icons a {
-    color: white;
-    text-decoration: none;
-} */
 
 
 #navbar {
@@ -133,37 +74,18 @@
     border: 2px solid white;
 }
 
-/* .navbar-icons {
-    display: flex;
-    align-items: center;
-    gap: 3vw;
-    padding-right: 2%;
-}
-
-.navbar-icons a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2vw;
-}
-
-#cart.count {
-    color: white;
-    border-radius: 50%;
-    font-size: 0.8vw;
-
-} */
-
 .navbar-icons {
     display: flex;
     align-items: center;
     gap: 3vw;
-    padding-right: 2%;
+    padding-right: 5%;
 }
 
 .navbar-icons a {
     color: white;
     text-decoration: none;
     font-size: 1.2vw;
+
     position: relative;
     /* Make the cart icon a positioning context for the count */
 }
@@ -241,9 +163,7 @@
     border-radius: 5px;
 }
 
-/* .dltitem:hover {
-    background-color: #ff1a1a;
-} */
+
 
 #services {
     display: flex;
@@ -279,7 +199,7 @@
     justify-content: center;
     padding-top: 2vh;
     gap: 10vw;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
 .exp img {
@@ -291,6 +211,7 @@
     font-size: 1.2vw !important;
     text-align: center;
     width: 15vw;
+
 }
 
 #products h4 {
@@ -454,7 +375,7 @@
 }
 
 .for-social {
-    width: 100%;
+    width: 96%;
     height: 12vh;
     background-color: #262726;
     display: flex;
