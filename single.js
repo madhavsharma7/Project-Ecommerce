@@ -4,15 +4,20 @@ document.addEventListener("DOMContentLoaded", () => {
         let finalProduct = await product.json();
 
         let productDetailsDiv = document.getElementById('product-details');
+
         productDetailsDiv.innerHTML = `
+        <div class="product-image">
             <img src="${finalProduct.image}" alt="${finalProduct.title}">
-            <h2>${finalProduct.title}</h2>
+        </div>
+        <div class="product-text">
+           <h2>${finalProduct.title}</h2>
             <p>Category: ${finalProduct.category}</p>
             <p>Description: ${finalProduct.description}</p>
             <p>Price: Rs ${finalProduct.price}</p>
             <p>Rating: ${finalProduct.rating.rate} (${finalProduct.rating.count} reviews)</p>
             <button class="addtocartbtn">Add to Cart</button>
-        `;
+    </div>
+`;
 
         document.querySelector('.addtocartbtn').addEventListener("click", () => {
             addtocart(finalProduct.image, finalProduct.title, finalProduct.price);

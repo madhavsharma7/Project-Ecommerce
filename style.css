@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 12vh;
+    padding-top: 10vh;
     width: 100%;
 }
 
@@ -38,7 +38,7 @@
 .logo {
     font-family: "Whisper", cursive;
     color: white;
-    font-size: 2vw;
+    font-size: 2.5vw;
     align-items: center;
     text-wrap: nowrap;
 }
@@ -49,10 +49,8 @@
 }
 
 .nav-items {
-    padding-left: 15%;
     display: flex;
     align-items: center;
-    width: 100%;
     justify-content: space-between;
 }
 
@@ -61,17 +59,18 @@
     list-style: none;
     font-size: 1.2vw;
     gap: 5vw;
-    margin: 0;
 }
 
 .nav-items a {
-    font-family: "Lora", serif;
+    font-size: 1.5vw;
     color: white;
+    padding-bottom: 5px;
     text-decoration: none;
+    /* font-family: "Whisper", cursive; */
 }
 
 .nav-items a:hover {
-    border: 2px solid white;
+    border-bottom: 1px solid white;
 }
 
 .navbar-icons {
@@ -239,12 +238,20 @@
     margin-bottom: 1vw;
 }
 
+.product-image img {
+    height: 20%;
+}
 
 .product-items {
     flex-basis: 31%;
     margin-bottom: 5%;
-    box-shadow: 0px 0px 10px 2px #ccc;
+    border: 1px solid black;
     text-align: center;
+    transition: all 0.5s;
+}
+
+.product-items:hover {
+    background-color: #808080;
 }
 
 .product-items img {
@@ -423,48 +430,37 @@
 
 /* Single Product */
 .product-details {
-    display: contents;
+    display: flex;
+    justify-content: center;
     align-items: center;
     /* Aligns items at the start of the container */
     cursor: pointer;
-
+    flex-direction: column;
 }
 
 .product-details img {
-    width: 30%;
-    height: 30%;
-    padding-left: 10vw;
-    padding-top: 5%;
+    width: 40%;
+    transform: scale(0.5);
 
-}
-
-.product-details-content {
-    display: block;
 }
 
 .product-details h2 {
-    /* 55 */
-    position: relative;
-    top: -20vh;
-    padding-left: 35vw;
-    font-size: 2vw;
+    font-size: 1.5vw;
+    padding-bottom: 2%;
 
 }
 
 .product-details p {
-    /* 50 */
-    position: relative;
-    top: -15vh;
-    padding-left: 35%;
-    font-size: 1.5vw;
+    padding: 0 5vw;
+    font-size: 1.2vw;
     padding-bottom: 1vw;
 }
 
 .product-details button {
     /*45  */
     position: relative;
-    top: -10vh;
-    left: 35%;
+    top: 0;
+    left: 0;
     font-size: 1.5vw;
 }
 
@@ -473,7 +469,7 @@
     display: none;
 }
 
-img {
+.mySlides img {
     width: 100%;
     height: 90vh;
     vertical-align: middle;
