@@ -55,6 +55,14 @@ let showProductDetails = async () => {
         <button class="addtocartbtn">Add to Cart</button>
      </div>
     `;
+     let addToCartButton = document.querySelector('.addtocartbtn');
+    if (addToCartButton) {
+        addToCartButton.addEventListener('click', () => {
+            addtocart(finalProduct.image, finalProduct.title, finalProduct.price);
+        });
+    } else {
+        console.error('Add to Cart button not found!');
+    }
 };
 
 // Call the function directly

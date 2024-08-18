@@ -18,8 +18,6 @@
     width: 100%;
 }
 
-
-
 #navbar {
     position: fixed;
     top: 0;
@@ -180,39 +178,6 @@
     font-size: 1vw;
 }
 
-/* 
-#exclusive {
-    text-align: center;
-    justify-content: center;
-    
-}
-
-#exclusive h4 {
-    font-size: 2vw;
-    padding: 2vh;
-    text-align: center;
-   
-}
-
-.exp {
-    display: flex;
-    justify-content: center;
-    padding-top: 2vh;
-    gap: 10vw;
-
-}
-
-.exp img {
-    height: 18vw;
-    width: 15vw;
-}
-
-.exp h4 {
-    font-size: 1.2vw !important;
-    width: 15vw;
-
-} */
-
 #exclusive {
     text-align: center;
 }
@@ -243,8 +208,6 @@
     padding: 2vw;
     font-size: 1.2vw !important;
 }
-
-
 
 #products h4 {
     font-size: 2vw;
@@ -299,7 +262,6 @@
     padding: 0.2vw;
     font-size: 1.2vw;
 }
-
 
 #footer {
     background-color: #222222;

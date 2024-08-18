@@ -1,17 +1,17 @@
-
 let showproductdiv = document.querySelector("#all-products");
 let cartCount = 0;
 let cartItemIdCounter = 0;
 
-
 let displayproducts = async () => {
     let response = await fetch("https://fakestoreapi.com/products/category/men's clothing");
-    finalproducts = await response.json(); 
-    //  showproductdiv.innerHTML = '';
+    finalproducts = await response.json();
+
     finalproducts.forEach((element, index) => {
         showproductdiv.innerHTML += `
             <div class="product-items">
-                <img src="${element.image}" alt="${element.title}">
+                <a href="single.html?id=${element.id}">
+                    <img src="${element.image}" alt="${element.title}">
+                </a>
                 <h2>${element.title}</h2>
                 <p>Price: Rs ${element.price}</p>
                 <p>Rating: ${element.rating.rate}</p>
@@ -31,9 +31,46 @@ let displayproducts = async () => {
             }
         });
     });
-}
+};
 
 displayproducts();
+
+let showProductDetails = async () => {
+    // Extract the product ID from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+
+    // Fetch the product details using the product ID
+    let product = await fetch(`https://fakestoreapi.com/products/${productId}`);
+    let finalProduct = await product.json();
+
+    let productDetailsDiv = document.getElementById('product-details');
+    productDetailsDiv.innerHTML = `
+     <div class="product-details">
+        <img  src="${finalProduct.image}" alt="${finalProduct.title}">
+        <div class="product-details-content">
+            <h2>${finalProduct.title}</h2>
+            <p><b>Category:</b> ${finalProduct.category}</p>
+            <p><b>Description:</b> ${finalProduct.description}</p>
+            <p><b>Price:</b> Rs ${finalProduct.price}</p>
+            <p><b>Rating:</b> ${finalProduct.rating.rate} (${finalProduct.rating.count} reviews)</p>
+            <button class="addtocartbtn">Add to Cart</button>
+        </div>
+    </div>
+    `;
+
+    let addToCartButton = document.querySelector('.addtocartbtn');
+    if (addToCartButton) {
+        addToCartButton.addEventListener('click', () => {
+            addtocart(finalProduct.image, finalProduct.title, finalProduct.price);
+        });
+    } else {
+        console.error('Add to Cart button not found!');
+    }
+};
+
+// Call the function directly
+showProductDetails();
 
 let removeFromCart = (cartItemId) => {
     let cartItem = document.getElementById(cartItemId);
