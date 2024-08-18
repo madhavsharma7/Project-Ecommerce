@@ -180,17 +180,18 @@
     font-size: 1vw;
 }
 
-
+/* 
 #exclusive {
     text-align: center;
-    /* Centers the text horizontally */
+    justify-content: center;
+    
 }
 
 #exclusive h4 {
     font-size: 2vw;
     padding: 2vh;
     text-align: center;
-    /* Center aligns the header text */
+   
 }
 
 .exp {
@@ -198,7 +199,7 @@
     justify-content: center;
     padding-top: 2vh;
     gap: 10vw;
-    /* flex-wrap: wrap; */
+
 }
 
 .exp img {
@@ -208,10 +209,42 @@
 
 .exp h4 {
     font-size: 1.2vw !important;
-    text-align: center;
     width: 15vw;
 
+} */
+
+#exclusive {
+    text-align: center;
 }
+
+#exclusive h4 {
+    font-size: 2vw;
+    padding-bottom: 2%;
+}
+
+.exp {
+    display: flex;
+    justify-content: space-around;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+}
+
+.product img {
+    width: 15vw;
+    height: 18vw;
+}
+
+.product h4 {
+    padding: 2vw;
+    font-size: 1.2vw !important;
+}
+
+
 
 #products h4 {
     font-size: 2vw;
