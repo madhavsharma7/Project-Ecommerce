@@ -9,7 +9,7 @@ let displayproducts = async () => {
     finalproducts.forEach(element => {
         showproductdiv.innerHTML += `
             <div class="product-items">
-                <a href="single.html?id=${element.id}">
+                <a href="./Single/single.html?id=${element.id}">
                     <img src="${element.image}" alt="${element.title}" style="width: 150px; height: 150px;">
                 </a>
                 <div class="product-details-content">
@@ -20,7 +20,7 @@ let displayproducts = async () => {
                 <button class="addtocartbtn">Add to Cart</button> 
                 </div>
             </div>`;
-            
+
     });
 
     document.querySelectorAll('.addtocartbtn').forEach((button, index) => {
@@ -39,6 +39,7 @@ let showProductDetails = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
 
+
     // Fetch the product details using the product ID
     let product = await fetch(`https://fakestoreapi.com/products/${productId}`);
     let finalProduct = await product.json();
@@ -55,7 +56,7 @@ let showProductDetails = async () => {
         <button class="addtocartbtn">Add to Cart</button>
      </div>
     `;
-     let addToCartButton = document.querySelector('.addtocartbtn');
+    let addToCartButton = document.querySelector('.addtocartbtn');
     if (addToCartButton) {
         addToCartButton.addEventListener('click', () => {
             addtocart(finalProduct.image, finalProduct.title, finalProduct.price);
@@ -110,6 +111,26 @@ let addtocart = (image, title, price) => {
 
     // Increment the cart item ID counter for the next item
     cartItemIdCounter++;
+};
+
+
+let updateQuantity = (cartItemId, change) => {
+    let quantityElement = document.getElementById(`${cartItemId}-quantity`);
+    let priceElement = document.getElementById(`${cartItemId}-price`);
+    let currentQuantity = parseInt(quantityElement.textContent);
+
+    // Update the quantity based on the change (+1 or -1)
+    let newQuantity = currentQuantity + change;
+
+    if (newQuantity < 1) {
+        newQuantity = 1;
+    }
+
+    quantityElement.textContent = newQuantity;
+
+    // Calculate the new total price based on the quantity
+    let unitPrice = parseInt(priceElement.textContent) / currentQuantity;
+    priceElement.textContent = unitPrice * newQuantity;
 };
 
 // Open cart sidebar

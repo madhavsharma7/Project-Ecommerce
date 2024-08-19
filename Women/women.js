@@ -3,13 +3,13 @@ let cartCount = 0;
 let cartItemIdCounter = 0;
 
 let displayproducts = async () => {
-    let response = await fetch("https://fakestoreapi.com/products/category/jewelery");
+    let response = await fetch("https://fakestoreapi.com/products/category/women's clothing");
     finalproducts = await response.json();
-
+    
     finalproducts.forEach((element, index) => {
         showproductdiv.innerHTML += `
             <div class="product-items">
-                <a href="single.html?id=${element.id}">
+                <a href="../Single/single.html?id=${element.id}">
                     <img src="${element.image}" alt="${element.title}">
                 </a>
                 <h2>${element.title}</h2>
