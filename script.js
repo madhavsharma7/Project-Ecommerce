@@ -83,10 +83,15 @@ let removeFromCart = (cartItemId) => {
         // Decrement the cart count and update the display
         cartCount--;
         document.getElementById('cart-count').textContent = cartCount;
+
+        totalPrice -= parseFloat(price);
+        document.getElementById('total-price').textContent = totalPrice.toFixed(2);
     } else {
         // console.log(`Item with ID: ${cartItemId} not found`); // Debugging
     }
 };
+
+
 
 let addtocart = (image, title, price) => {
     let cartItemsContainer = document.querySelector('.cart-items');
@@ -102,7 +107,7 @@ let addtocart = (image, title, price) => {
             <button class="dltitem" style="margin-left: 10px;" onclick="removeFromCart('${cartItemId}')">Delete</button>
         </div>
     `;
-
+     
     // Increment the cart count
     cartCount++;
 
@@ -111,8 +116,12 @@ let addtocart = (image, title, price) => {
 
     // Increment the cart item ID counter for the next item
     cartItemIdCounter++;
-};
 
+    // Add the price of the newly added item to the total price
+    totalPrice += parseFloat(price);
+    document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+
+};
 
 let updateQuantity = (cartItemId, change) => {
     let quantityElement = document.getElementById(`${cartItemId}-quantity`);
@@ -131,6 +140,7 @@ let updateQuantity = (cartItemId, change) => {
     // Calculate the new total price based on the quantity
     let unitPrice = parseInt(priceElement.textContent) / currentQuantity;
     priceElement.textContent = unitPrice * newQuantity;
+
 };
 
 // Open cart sidebar
@@ -142,10 +152,6 @@ document.querySelector('.fa-cart-shopping').addEventListener('click', () => {
 document.getElementById('close-cart').addEventListener('click', () => {
     document.getElementById('cart-sidebar').classList.remove('active');
 });
-
-
-
-
 
 // Carousel
 
