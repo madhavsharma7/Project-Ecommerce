@@ -1,0 +1,168 @@
+ /* @media screen and (max-width: 600px) {
+
+#navbar {
+    height: 6vh;
+}
+
+.logo {
+    font-size: 8vw;
+}
+
+.nav-items {
+    display: none;
+}
+
+.slideshow-container {
+    height: 35vh;
+}
+
+.mySlides img {
+    height: 35vh;
+}
+
+#services {
+
+    padding: 0 0 3vh 0;
+}
+
+.icons i p {
+    font-size: 3vw;
+}
+
+
+
+#exclusive h4 {
+    display: none;
+}
+
+.exp {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+.product {
+    padding: 0;
+}
+
+.product img {
+    filter: grayscale(1);
+    width: 50vw;
+    height: 30vh;
+}
+
+.product img:hover {
+    filter: grayscale(0);
+}
+
+}
+
+ */
+
+ @media screen and (max-width: 600px) {
+
+     .nav-items a {
+         display: none;
+     }
+
+     .navbar-icons a {
+         font-size: 4vw;
+         padding: 4vw;
+     }
+
+     .logo a {
+         font-size: 6vw;
+         padding-left: 4vw;
+     }
+
+     .mySlides img {
+         height: 40vh;
+         width: 100%;
+     }
+
+     #services {
+         position: relative;
+         top: -55vh;
+     }
+
+     .icons i {
+         font-size: 4vw;
+         padding-left: 3vw;
+     }
+
+     .icons i p {
+         font-size: 2vw;
+
+     }
+
+     #exclusive {
+         position: relative;
+         top: -64vh;
+     }
+
+     #exclusive h4 {
+         font-size: 4vw;
+     }
+
+     .product img {
+         padding-top: 3vh;
+         height: 20vh;
+         width: 20vw;
+     }
+
+     .product h4 {
+         font-size: 2vw !important;
+     }
+
+     #products h4 {
+         position: relative;
+         top: -65vh;
+         font-size: 4vw;
+     }
+
+     #all-products {
+         position: relative;
+         top: -67vh;
+     }
+
+     .product-items {
+         justify-content: center;
+         align-items: center;
+         text-align: center;
+     }
+
+     .product-details-content h2 {
+         font-size: 3vw;
+     }
+
+     .product-details-content p {
+         font-size: 3vw;
+     }
+
+     .product-details-content p span {
+         color: gold;
+         font-size: 3vw;
+     }
+
+     .addtocartbtn {
+         font-size: 2.5vw;
+     }
+
+     /* Footer */
+
+     #footer {
+         position: relative;
+         top: -65vh;
+         height: auto;
+
+     }
+
+     .foot p {
+         font-size: 8vw;
+     }
+
+     .footer-content {
+         text-align: center;
+     }
+
+
+ }

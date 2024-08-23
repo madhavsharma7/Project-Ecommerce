@@ -389,15 +389,12 @@
 }
 
 .for-social {
-    width: 96%;
+    width: 100%;
     height: 12vh;
     background-color: #262726;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* Ensures space between social icons and arrow */
-    padding: 0 2%;
-    /* Optional: Add padding to the sides */
 }
 
 .social-icons {
@@ -405,10 +402,11 @@
     justify-content: center;
     gap: 2%;
     flex-grow: 1;
-    /* Allows the social icons to take up space in the center */
+    padding-left: 6%;
 }
 
 .social-icons i {
+
     cursor: pointer;
     border-radius: 50%;
     border: 2px solid white;
@@ -417,6 +415,8 @@
 }
 
 .arrow-right {
+    position: relative;
+    left: -50%;
     cursor: pointer;
     font-size: 1.2vw;
     color: white;
@@ -475,6 +475,9 @@
 #cart-total h3 {
     font-size: 2vw;
 }
+
+
+
 
 /* Carousel */
 .mySlides {
