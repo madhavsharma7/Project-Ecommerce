@@ -1,168 +1,169 @@
- /* @media screen and (max-width: 600px) {
-
-#navbar {
-    height: 6vh;
-}
-
-.logo {
-    font-size: 8vw;
-}
-
-.nav-items {
-    display: none;
-}
-
-.slideshow-container {
-    height: 35vh;
-}
-
-.mySlides img {
-    height: 35vh;
-}
-
-#services {
-
-    padding: 0 0 3vh 0;
-}
-
-.icons i p {
-    font-size: 3vw;
-}
-
-
-
-#exclusive h4 {
-    display: none;
-}
-
-.exp {
-    display: grid;
-    grid-template-columns: 2fr 2fr;
-}
-
-.product {
-    padding: 0;
-}
-
-.product img {
-    filter: grayscale(1);
-    width: 50vw;
-    height: 30vh;
-}
-
-.product img:hover {
-    filter: grayscale(0);
-}
-
-}
-
- */
-
  @media screen and (max-width: 600px) {
 
-     .nav-items a {
+
+     .logo a {
+         font-size: 6vw;
+     }
+
+     .nav-items li {
          display: none;
      }
 
      .navbar-icons a {
          font-size: 4vw;
-         padding: 4vw;
-     }
-
-     .logo a {
-         font-size: 6vw;
-         padding-left: 4vw;
-     }
-
-     .mySlides img {
-         height: 40vh;
-         width: 100%;
+         padding: 2vw;
      }
 
      #services {
-         position: relative;
-         top: -55vh;
+         margin-top: -15%;
      }
 
-     .icons i {
-         font-size: 4vw;
-         padding-left: 3vw;
+     .icons {
+         padding-left: 10%;
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         /* Creates two columns of equal width */
+         grid-template-rows: repeat(2, auto);
+         /* Creates two rows with automatic height based on content */
+         gap: 20px;
+         /* Optional: adds spacing between grid items */
      }
 
-     .icons i p {
-         font-size: 2vw;
-
+     .icons p {
+         font-size: 2vw !important;
      }
 
      #exclusive {
-         position: relative;
-         top: -64vh;
+         margin-top: -10%;
      }
 
      #exclusive h4 {
-         font-size: 4vw;
+         font-size: 5vw !important;
      }
 
      .product img {
-         padding-top: 3vh;
          height: 20vh;
          width: 20vw;
      }
 
-     .product h4 {
-         font-size: 2vw !important;
+     #exclusive h3 {
+         padding-top: 2vh;
+         font-size: 3vw !important;
      }
 
      #products h4 {
-         position: relative;
-         top: -65vh;
-         font-size: 4vw;
+         font-size: 5vw;
      }
 
      #all-products {
-         position: relative;
-         top: -67vh;
-     }
-
-     .product-items {
-         justify-content: center;
-         align-items: center;
-         text-align: center;
+         margin-top: -8%;
      }
 
      .product-details-content h2 {
-         font-size: 3vw;
+         font-size: 3.2vw;
      }
 
      .product-details-content p {
          font-size: 3vw;
      }
 
-     .product-details-content p span {
-         color: gold;
-         font-size: 3vw;
+     .product-details-content span {
+         color: orange;
      }
 
      .addtocartbtn {
-         font-size: 2.5vw;
+         font-size: 3vw;
      }
 
-     /* Footer */
-
      #footer {
+         margin-top: 0;
+         /* Remove the negative margin */
          position: relative;
-         top: -65vh;
-         height: auto;
-
+         /* Ensure the footer is relative to other content */
+         padding-bottom: 10vh;
+         /* Add padding to ensure content pushes the footer down */
      }
 
      .foot p {
-         font-size: 8vw;
+         font-size: 5vw;
      }
 
-     .footer-content {
-         text-align: center;
+     .icon-item i {
+         font-size: 4vw;
+     }
+
+     .icon-item p {
+         font-size: 2vw;
      }
 
 
+     .footer-content p {
+         padding-top: 4vh;
+         font-size: 3vw;
+     }
+
+     .footer-content a {
+         font-size: 2.5vw;
+     }
+
+
+     .sub p {
+         padding-left: 6vw;
+     }
+
+     .input-container input {
+         font-size: 3vw;
+         width: 25vw;
+     }
+
+     .input-container button i {
+         position: relative;
+         left: 7vw;
+         top: 0.8vh;
+         font-size: 3vw;
+     }
+
+     h6 {
+         display: none;
+     }
+
+     #footer2 {
+         height: auto;
+     }
+
+     .for-social {
+         padding-top: 5%;
+     }
+
+     .arrow-up {
+         font-size: 3vw;
+         padding: 2%;
+     }
+
+     .social-icons i {
+         width: 6vw;
+         height: 5vw;
+         padding: 1vw;
+         font-size: 4vw;
+         color: white;
+         border-radius: 50%;
+         justify-content: center;
+         display: flex;
+         align-items: center;
+
+     }
+
+     .copyright {
+         font-size: 2.5vw;
+     }
+ }
+
+ @media screen and (max-width: 600px) {
+     .slideshow-container {
+         height: 100%;
+     }
+
+     .mySlides img {
+         height: 35vh;
+     }
  }

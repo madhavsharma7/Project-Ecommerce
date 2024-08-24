@@ -7,6 +7,8 @@
 #container {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+
 }
 
 #main {
@@ -278,22 +280,36 @@
 #footer {
     background-color: #222222;
     width: 100%;
-    height: 70vh;
-    text-align: center;
-    color: white;
+    height: 40%;
+    /* Set the desired height */
+    display: flex;
+    /* Flexbox helps manage child elements */
+    flex-direction: column;
+    /* Align content vertically */
+    /* justify-content: space-between; */
+    /* Spread out the content if needed */
 }
 
 .foot p {
+    color: white;
+    text-align: center;
     font-family: "Whisper", cursive;
     font-size: 2vw;
-    padding: 5vh;
+    padding: 2vh;
 }
 
 .icons2 {
     display: flex;
     justify-content: center;
-    gap: 20%;
+    gap: 15%;
     padding-top: 2vw;
+}
+
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .icons2 i {
@@ -304,13 +320,6 @@
     background-color: orange;
 }
 
-.icon-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
 .icons2 p {
     padding: 1vw;
     color: white;
@@ -319,32 +328,38 @@
 
 .footer-content {
     display: flex;
-    gap: 20%;
-    justify-content: left;
-    padding-left: 10%;
-
+    justify-content: space-between;
+    padding: 0 10%;
+    gap: 5vw;
 }
 
 .ul {
-    font-size: 1.2vw;
-    list-style: none;
-    color: #ccc;
-    padding-bottom: 10%;
 
+    font-size: 1.2vw;
+    color: #ccc;
+    padding-bottom: 1vw;
 }
 
 .footer-content li {
+    text-decoration: none;
+    list-style: none;
+}
+
+.footer-content a {
+    color: #808080;
+    text-decoration: none;
     list-style: none;
     font-size: 1vw;
     cursor: pointer;
-    color: grey;
-
 }
 
 .sub p {
+    color: white;
     font-size: 1.2vw;
-    padding-bottom: 10%;
+    padding-bottom: 2vw;
+    text-align: center;
 }
+
 
 .input-container {
     position: relative;
@@ -355,13 +370,12 @@
 .input-container input {
     width: 100%;
     padding-right: 3vw;
-    /* Adjust padding to ensure space for the button */
+    /* Ensure enough padding on the right for the button */
     padding-left: 1vw;
     padding-top: 0.5vw;
     padding-bottom: 0.5vw;
     font-size: 1vw;
     box-sizing: border-box;
-    /* Ensures padding is included in the width */
 }
 
 .input-container button {
@@ -369,44 +383,46 @@
     right: 0;
     top: 20%;
     transform: translateY(-50%);
-    /* Centers the button vertically */
     background: none;
     border: none;
-    padding: 0 10px;
+    padding: 0 1vw;
     cursor: pointer;
 }
 
 .input-container button i {
     font-size: 1.2vw;
-    padding-top: 2vh;
-    /* Adjust size as needed */
     color: black;
+    padding-top: 1.2vh;
 }
 
-.input-container p {
-    padding: 1vw;
+h6 {
+    color: white;
+    text-align: center;
     font-size: 0.8vw;
+    padding-top: 1.2vh;
+    padding-bottom: 4vh;
+}
+
+#footer2 {
+    background-color: #262726;
+    height: 15vh;
 }
 
 .for-social {
-    width: 100%;
-    height: 12vh;
-    background-color: #262726;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    padding: 1vw 5%;
 }
 
 .social-icons {
     display: flex;
     justify-content: center;
-    gap: 2%;
-    flex-grow: 1;
-    padding-left: 6%;
+    gap: 2vw;
 }
 
 .social-icons i {
-
+    color: white;
     cursor: pointer;
     border-radius: 50%;
     border: 2px solid white;
@@ -414,24 +430,25 @@
     background-color: #262726;
 }
 
-.arrow-right {
-    position: relative;
-    left: -50%;
+.arrow-up {
+    position: absolute;
+    right: 5%;
     cursor: pointer;
-    font-size: 1.2vw;
+    font-size: 1vw;
+    padding: 0.8vw;
     color: white;
     border-radius: 50%;
     border: 2px solid orange;
-    padding: 1vw;
+    align-items: center;
+    justify-content: center;
     background-color: orange;
 }
 
 .copyright {
-    background-color: #262726;
     color: #808080;
     font-size: 0.9vw;
-    padding-bottom: 1vw;
-    justify-content: center;
+    padding: 1vw;
+    text-align: center;
 }
 
 
@@ -440,7 +457,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Aligns items at the start of the container */
     cursor: pointer;
     flex-direction: column;
 }
@@ -464,7 +480,7 @@
 }
 
 .product-details button {
-    /*45  */
+
     position: relative;
     top: 0;
     left: 0;
@@ -475,8 +491,6 @@
 #cart-total h3 {
     font-size: 2vw;
 }
-
-
 
 
 /* Carousel */
