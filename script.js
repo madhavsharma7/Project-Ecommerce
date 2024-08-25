@@ -2,6 +2,13 @@ let showproductdiv = document.querySelector("#all-products");
 let cartCount = 0;
 let cartItemIdCounter = 0;
 
+
+
+function toggleNavbar() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('active');
+}
+
 let displayproducts = async () => {
     let product = await fetch("https://fakestoreapi.com/products");
     let finalproducts = await product.json();

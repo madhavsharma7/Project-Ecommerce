@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     scroll-behavior: smooth;
 }
 
@@ -8,39 +9,23 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-
 }
 
 #main {
-    overflow: hidden;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    padding-top: 10vh;
-    width: 100%;
-}
-
-#navbar {
+    padding: 1% 2%;
+    background-color: #000;
     position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #000000;
-    height: 10vh;
     width: 100%;
     z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2vw;
-
 }
 
 .logo {
     font-family: "Whisper", cursive;
     color: white;
-    font-size: 2.5vw;
-    align-items: center;
-    text-wrap: nowrap;
+    font-size: 2.2vw;
 }
 
 .logo a {
@@ -48,7 +33,23 @@
     color: white;
 }
 
+#burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+}
+
+#burger-menu div {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+}
+
 .nav-items {
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -57,16 +58,14 @@
 .nav-items ul {
     display: flex;
     list-style: none;
-    font-size: 1.2vw;
     gap: 5vw;
 }
 
 .nav-items a {
-    font-size: 1.5vw;
+    font-size: 3vh;
     color: white;
-    padding-bottom: 5px;
     text-decoration: none;
-    /* font-family: "Whisper", cursive; */
+    padding: 0.5vw;
 }
 
 .nav-items a:hover {
@@ -76,30 +75,26 @@
 .navbar-icons {
     display: flex;
     align-items: center;
-    gap: 3vw;
-    padding-right: 5%;
+    gap: 2vw;
 }
 
 .navbar-icons a {
     color: white;
+    font-size: 1.5vw;
     text-decoration: none;
-    font-size: 1.2vw;
-
     position: relative;
-    /* Make the cart icon a positioning context for the count */
 }
 
 #cart-count {
     position: absolute;
-    top: -30%;
-    right: -1.2vw;
-    /* Adjust color as needed */
+    top: -10px;
+    right: -10px;
     color: white;
+    background-color: red;
     border-radius: 50%;
     padding: 2px 6px;
-    font-size: 1.2vw;
+    font-size: 0.8rem;
     font-weight: bold;
-    /* Adjust position to align correctly with the cart icon */
 }
 
 #cart-sidebar {
@@ -499,6 +494,7 @@ h6 {
 }
 
 .mySlides img {
+    padding-top: 4%;
     width: 100%;
     height: 90vh;
     vertical-align: middle;

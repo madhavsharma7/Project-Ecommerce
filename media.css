@@ -150,13 +150,43 @@
          justify-content: center;
          display: flex;
          align-items: center;
-
      }
 
      .copyright {
          font-size: 2.5vw;
      }
+
+     .nav-items {
+         position: fixed;
+         top: 62px;
+         right: -100%;
+         height: 100vh;
+         width: 80%;
+         background-color: rgba(0, 0, 0, 0.8);
+         backdrop-filter: blur(10px);
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         transition: right 0.3s ease-in-out;
+     }
+
+     .nav-items ul {
+         flex-direction: column;
+         gap: 2rem;
+     }
+
+     #burger-menu {
+         display: flex;
+     }
+
+     #navbar.active .nav-items {
+         right: 0;
+     }
+
+
  }
+
 
  @media screen and (max-width: 600px) {
      .slideshow-container {

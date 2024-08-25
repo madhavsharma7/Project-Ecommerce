@@ -17,31 +17,35 @@
 
 <body>
   <div id="container">
-    <!-- Navbar  -->
     <main id="main">
-      <div id="navbar">
         <div class="logo">
-          <a href="./index.html">Mad Commerce</a>
+            <a href="./index.html">Mad Commerce</a>
         </div>
-        <div class="nav-items">
-          <ul>
-            <li><a href="./Men/men.html">Men</a></li>
-            <li><a href="./Women/women.html">Women</a></li>
-            <li><a href="./Jewellery/jewellery.html">Jewelery</a></li>
-            <li><a href="./Electronics/electronic.html">Electronics</a></li>
-            <li><a href="./Contact us/contactus.html">Contact Us</a></li>
-            <li><a href="#">About</a></li>
-
-          </ul>
+        <div id="burger-menu" onclick="toggleNavbar()"></div>
+        <div id="navbar">
+            <div class="nav-items">
+                <ul>
+                    <li><a href="./Men/men.html">Men</a></li>
+                    <li><a href="./Women/women.html">Women</a></li>
+                    <li><a href="./Jewellery/jewellery.html">Jewellery</a></li>
+                    <li><a href="./Electronics/electronic.html">Electronics</a></li>
+                    <li><a href="./Contact us/contactus.html">Contact Us</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
         </div>
         <div class="navbar-icons">
-          <a><i class="fa-solid fa-cart-shopping"></i> <span id="cart-count"></span></a>
-          <!-- <span id="cart-count">3</span> </a> -->
-          <a id="user-link" href="./login.html"><i class="fa-regular fa-user"></i></a>
+            <a><i class="fa-solid fa-cart-shopping"></i> <span id="cart-count"></span></a>
+            <a id="user-link" href="./login.html"><i class="fa-regular fa-user"></i></a>
         </div>
-      </div>
+    </main>
+</div>
 
-  </div>
+  
+
+
+
+
 
   <!-- Cart Sidebar -->
   <div id="cart-sidebar">
