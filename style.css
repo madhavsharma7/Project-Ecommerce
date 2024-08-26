@@ -33,13 +33,14 @@
     color: white;
 }
 
+
 #burger-menu {
-    display: none;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
     height: 21px;
     cursor: pointer;
+
 }
 
 #burger-menu div {
@@ -48,8 +49,7 @@
     background-color: white;
 }
 
-.nav-items {
-
+#navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -76,6 +76,7 @@
     display: flex;
     align-items: center;
     gap: 2vw;
+
 }
 
 .navbar-icons a {
@@ -83,6 +84,7 @@
     font-size: 1.5vw;
     text-decoration: none;
     position: relative;
+
 }
 
 #cart-count {

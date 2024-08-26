@@ -6,7 +6,7 @@
      }
 
      .nav-items li {
-         display: none;
+         display: block;
      }
 
      .navbar-icons a {
@@ -15,7 +15,7 @@
      }
 
      #services {
-         margin-top: -15%;
+         margin-top: -20%;
      }
 
      .icons {
@@ -106,7 +106,6 @@
          font-size: 2.5vw;
      }
 
-
      .sub p {
          padding-left: 6vw;
      }
@@ -158,7 +157,7 @@
 
      .nav-items {
          position: fixed;
-         top: 62px;
+         top: 7%;
          right: -100%;
          height: 100vh;
          width: 80%;
@@ -183,14 +182,12 @@
      #navbar.active .nav-items {
          right: 0;
      }
-
-
  }
-
 
  @media screen and (max-width: 600px) {
      .slideshow-container {
          height: 100%;
+         padding-top: 5%;
      }
 
      .mySlides img {

@@ -59,7 +59,7 @@ let showProductDetails = async () => {
         <p><b>Category:</b> ${finalProduct.category}</p>
         <p><b>Description:</b> ${finalProduct.description}</p>
         <p><b>Price:</b> Rs ${finalProduct.price}</p>
-        <p><b>Rating:</b> ${finalProduct.rating.rate} (${finalProduct.rating.count} reviews)</p>
+        <p><b>Rating:</b> ${finalProduct.rating.rate} <span>*</span> (${finalProduct.rating.count} reviews)</p>
         <button class="addtocartbtn">Add to Cart</button>
      </div>
     `;
