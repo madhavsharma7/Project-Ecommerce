@@ -20,7 +20,7 @@ let displayproducts = async () => {
                 </a>
                 <h2>${element.title}</h2>
                 <p>Price: Rs ${element.price}</p>
-                <p>Rating: ${element.rating.rate}</p>
+                <p>Rating: ${element.rating.rate} <span class="star"> * </span></p>
                 <button class="addtocartbtn" data-index="${index}">Add to Cart</button>
             </div>`;
     });

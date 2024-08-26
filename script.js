@@ -23,11 +23,11 @@ let displayproducts = async () => {
                 <h2>${element.title}</h2>
                 <p>${element.category}</p>
                 <p>Price: Rs ${element.price}</p>
-                <p>Rating: ${element.rating.rate}<span>*</span></p>
+                <p>Rating: ${element.rating.rate}<span class="star">*</span></p>
                 <button class="addtocartbtn">Add to Cart</button> 
                 </div>
             </div>`;
-
+            
     });
 
     document.querySelectorAll('.addtocartbtn').forEach((button, index) => {

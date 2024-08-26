@@ -221,15 +221,21 @@
 
 #products h4 {
     font-size: 2vw;
-    padding-top: 5vh;
+    margin-top: 5vh;
     text-align: center;
 }
 
-/* for rating star */
+.category {
+    font-size: 2vw;
+    margin-top: 16vh !important;
+    text-align: center;
 
-/* span {
-    color: 
-} */
+}
+
+/* for rating star */
+.star {
+    color: orange;
+}
 
 #all-products {
     display: flex;
