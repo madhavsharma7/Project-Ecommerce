@@ -14,6 +14,10 @@
          padding: 2vw;
      }
 
+     #user-link {
+         padding-right: 15vw;
+     }
+
      #services {
          margin-top: -20%;
      }
@@ -96,7 +100,6 @@
          font-size: 2vw;
      }
 
-
      .footer-content p {
          padding-top: 4vh;
          font-size: 3vw;
@@ -176,7 +179,10 @@
      }
 
      #burger-menu {
+         position: relative;
+         left: 50vw;
          display: flex;
+
      }
 
      #navbar.active .nav-items {

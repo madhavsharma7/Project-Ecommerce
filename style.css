@@ -33,14 +33,13 @@
     color: white;
 }
 
-
 #burger-menu {
+    display: none;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
     height: 21px;
     cursor: pointer;
-
 }
 
 #burger-menu div {
@@ -83,9 +82,9 @@
     color: white;
     font-size: 1.5vw;
     text-decoration: none;
-    position: relative;
 
 }
+
 
 #cart-count {
     position: absolute;
