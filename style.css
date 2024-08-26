@@ -85,11 +85,10 @@
 
 }
 
-
 #cart-count {
     position: absolute;
-    top: -10px;
-    right: -10px;
+    top: 10px;
+    right: 4%;
     color: white;
     background-color: red;
     border-radius: 50%;
@@ -103,7 +102,7 @@
     top: 0;
     right: -50%;
     width: 40%;
-    height: 90%;
+    height: 100%;
     background-color: white;
     box-shadow: -3px 0 5px rgba(0, 0, 0, 0.2);
     z-index: 1000;
@@ -226,9 +225,11 @@
     text-align: center;
 }
 
-span {
-    color: orange
-}
+/* for rating star */
+
+/* span {
+    color: 
+} */
 
 #all-products {
     display: flex;
@@ -286,9 +287,7 @@ span {
     display: flex;
     /* Flexbox helps manage child elements */
     flex-direction: column;
-    /* Align content vertically */
-    /* justify-content: space-between; */
-    /* Spread out the content if needed */
+
 }
 
 .foot p {

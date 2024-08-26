@@ -14,6 +14,12 @@
          padding: 2vw;
      }
 
+     #cart-count {
+         position: relative;
+         top: -2vh;
+         left: 1vw;
+     }
+
      #user-link {
          padding-right: 15vw;
      }
@@ -160,7 +166,7 @@
 
      .nav-items {
          position: fixed;
-         top: 7%;
+         top: 6%;
          right: -100%;
          height: 100vh;
          width: 80%;

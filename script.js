@@ -160,6 +160,9 @@ document.getElementById('close-cart').addEventListener('click', () => {
     document.getElementById('cart-sidebar').classList.remove('active');
 });
 
+
+
+
 // Carousel
 
 let slideIndex = 1;

@@ -2,6 +2,12 @@ let showproductdiv = document.querySelector("#all-products");
 let cartCount = 0;
 let cartItemIdCounter = 0;
 
+function toggleNavbar() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('active');
+}
+
+
 let displayproducts = async () => {
     let response = await fetch("https://fakestoreapi.com/products/category/women's clothing");
     finalproducts = await response.json();
