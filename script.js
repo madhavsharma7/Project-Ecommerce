@@ -1,8 +1,7 @@
 let showproductdiv = document.querySelector("#all-products");
 let cartCount = 0;
 let cartItemIdCounter = 0;
-
-
+let totalPrice=0; 
 
 function toggleNavbar() {
     const navbar = document.getElementById('navbar');
@@ -45,7 +44,6 @@ let showProductDetails = async () => {
     // Extract the product ID from the URL
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
-
 
     // Fetch the product details using the product ID
     let product = await fetch(`https://fakestoreapi.com/products/${productId}`);
@@ -91,14 +89,14 @@ let removeFromCart = (cartItemId) => {
         cartCount--;
         document.getElementById('cart-count').textContent = cartCount;
 
+      // Subtract the item's price from the total price
         totalPrice -= parseFloat(price);
         document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+
     } else {
         // console.log(`Item with ID: ${cartItemId} not found`); // Debugging
     }
 };
-
-
 
 let addtocart = (image, title, price) => {
     let cartItemsContainer = document.querySelector('.cart-items');
@@ -127,26 +125,6 @@ let addtocart = (image, title, price) => {
     // Add the price of the newly added item to the total price
     totalPrice += parseFloat(price);
     document.getElementById('total-price').textContent = totalPrice.toFixed(2);
-
-};
-
-let updateQuantity = (cartItemId, change) => {
-    let quantityElement = document.getElementById(`${cartItemId}-quantity`);
-    let priceElement = document.getElementById(`${cartItemId}-price`);
-    let currentQuantity = parseInt(quantityElement.textContent);
-
-    // Update the quantity based on the change (+1 or -1)
-    let newQuantity = currentQuantity + change;
-
-    if (newQuantity < 1) {
-        newQuantity = 1;
-    }
-
-    quantityElement.textContent = newQuantity;
-
-    // Calculate the new total price based on the quantity
-    let unitPrice = parseInt(priceElement.textContent) / currentQuantity;
-    priceElement.textContent = unitPrice * newQuantity;
 
 };
 
