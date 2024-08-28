@@ -469,6 +469,7 @@ h6 {
 
 
 /* Contact Us */
+
 #phone {
     overflow: hidden;
 }
@@ -490,7 +491,6 @@ h6 {
     width: 50vw;
     height: 100vh;
     background: #03a9f4;
-
 }
 
 .container {
@@ -515,7 +515,6 @@ h6 {
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
-
 }
 
 .contactinfo h2 {
@@ -564,28 +563,103 @@ h6 {
     opacity: 1;
 }
 
-.social {
+.contactForm2 {
+    position: absolute;
+    padding: 68px 82px;
+    background: white;
+    margin-left: 335px;
+    top: 5vh;
+    padding-left: 250px;
+    width: 90%;
+    height: 100%;
+    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5);
+
+
+}
+
+.contactForm2 h2 {
+    color: #0f3959;
+    margin-left: 50px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.contactForm2 .formBox {
     position: relative;
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: 50px;
+    padding-top: 30px;
 }
 
-.social li {
-    list-style: none;
-    margin-right: 15px;
+.contactForm2 .formBox .inputBox {
+    position: 0 0 35px 0;
+    padding-top: 5px;
 }
 
-.social li a {
-    text-decoration: none;
+.contactForm2 .formBox .inputBox.w50 {
+    width: 47%;
 }
 
-.social li a img {
-    filter: invert(1);
-    opacity: 0.5;
+.contact .container .contactForm2 .formBox .inputBox.w100 {
+    width: 100%;
 }
 
-.social li:hover a img {
-    opacity: 1;
+.contact .container .contactForm2 .formBox .inputBox input,
+.contact .container .contactForm2 .formBox .inputBox textarea {
+    width: 100% !important;
+    padding: 5px 0;
+    resize: none;
+    font-size: 18px;
+    font-weight: 300;
+    color: #333;
+    border: none;
+    border-bottom: 1px solid #777;
+    outline: none;
 }
+
+.contact .container .contactForm2 .formBox .inputBox textarea {
+    min-height: 70px;
+}
+
+.contact .container .contactForm2 .formBox .inputBox span {
+    position: relative;
+    left: 0;
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Ubuntu', sans-serif;
+    color: #333;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.contact .container .contactForm2 .formBox .inputBox input:focus~span,
+.contact .container .contactForm2 .formBox .inputBox textarea:focus~span,
+.contact .container .contactForm2 .formBox .inputBox input:valid~span,
+.contact .container .contactForm2 .formBox .inputBox textarea:valid~span {
+    transform: translateY(-20px);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #ff568c;
+}
+
+.contact .container .contactForm2 .formBox .inputBox input[type="submit"] {
+    position: relative;
+    cursor: pointer;
+    background: #0f3959;
+    color: white;
+    border: none;
+    max-width: 100px;
+    padding: 10px;
+}
+
+.contact .container .contactForm2 .formBox .inputBox input[type="submit"]:hover {
+    background: #ff568c;
+}
+
 
 
 
