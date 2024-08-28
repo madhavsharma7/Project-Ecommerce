@@ -195,55 +195,11 @@
          right: 0;
      }
 
-     .contact {
-         width: 100vw;
-     }
+     /* Contact Us */
 
      .contactinfo {
          position: relative;
-         left: -13%;
-         top: 20vh !important;
-         width: 28% !important;
-         height: 2vh !important;
-
-     }
-
-     .contactinfo h2 {
-         font-size: 3vw !important;
-     }
-
-     .contactinfo .info {
-         font-size: 2vw;
-         align-items: center;
-         justify-content: center;
-     }
-
-     .contactForm {
-
-         position: relative;
-         left: -28vw;
-         top: 10vh !important;
-         width: 68vw !important;
-         height: 70vh !important;
-
-     }
-
-     .contactForm h2 {
-         position: relative;
-         left: -20vw;
-         width: 300%;
-         font-size: 3vw !important;
-     }
-
-
-     .contactinfo .info img {
-         width: 3vw;
-     }
-
-     .social img {
-         position: relative;
-         top: -3vw;
-         width: 4vw;
+         left: -12%
      }
 
  }

@@ -493,7 +493,7 @@ h6 {
 
 }
 
-.contact .container {
+.container {
     position: relative;
     min-width: 1100px;
     min-height: 550px;
@@ -501,11 +501,11 @@ h6 {
     z-index: 1000;
 }
 
-.contact .container .contactinfo {
+.contactinfo {
     position: absolute;
     top: 7vw;
     width: 25vw;
-    height: 50vh !important;
+    height: 50vh;
     margin-left: 165px;
     height: calc(70% - 80px);
     background: #0f3959;
@@ -516,6 +516,163 @@ h6 {
     justify-content: space-between;
     box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
 
+}
+
+.contactinfo h2 {
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.info {
+    position: relative;
+    list-style: none;
+}
+
+.info li {
+    position: relative;
+    list-style: none;
+    display: flex;
+    margin: 20px 0;
+    cursor: pointer;
+    align-items: flex-start;
+}
+
+.info li span {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.contact .container .contactinfo .info li span:nth-child(1) {
+    width: 30px;
+    min-width: 30px;
+}
+
+.contact .container .contactinfo .info li span:nth-child(1) img {
+    max-width: 100%;
+    filter: invert(1);
+    opacity: 0.5;
+}
+
+.contact .container .contactinfo .info li span:nth-child(2) {
+    color: white;
+    margin-left: 10px;
+    font-weight: 300;
+}
+
+.contact .container .contactinfo .info li:hover span:nth-child(1) img,
+.contact .container .contactinfo .info li:hover span:nth-child(2) {
+    opacity: 1;
+}
+
+.social {
+    position: relative;
+    display: flex;
+}
+
+.social li {
+    list-style: none;
+    margin-right: 15px;
+}
+
+.social li a {
+    text-decoration: none;
+}
+
+.social li a img {
+    filter: invert(1);
+    opacity: 0.5;
+}
+
+.social li:hover a img {
+    opacity: 1;
+}
+
+
+
+/* Single Product */
+.product-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.product-details img {
+    width: 40%;
+    transform: scale(0.5);
+
+}
+
+.product-details h2 {
+    font-size: 1.5vw;
+    padding-bottom: 2%;
+
+}
+
+.product-details p {
+    padding: 0 5vw;
+    font-size: 1.2vw;
+    padding-bottom: 1vw;
+}
+
+.product-details button {
+
+    position: relative;
+    top: 0;
+    left: 0;
+    font-size: 1.5vw;
+}
+
+
+#cart-total h3 {
+    font-size: 2vw;
+}
+
+
+/* Contact Us */
+
+.contact {
+    z-index: 1;
+    position: relative;
+    align-items: center;
+    display: flex;
+    min-height: 100vh;
+    background-color: #112d42;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: #03a9f4;
+
+}
+
+.contact .container {
+    position: relative;
+    min-width: 1100px;
+    min-height: 550px;
+    display: flex;
+    z-index: 1000;
+}
+
+.contact .container .contactinfo {
+    position: relative;
+    top: 18vh;
+    width: 350px;
+    margin-left: 165px;
+    height: 60%;
+    background: #0f3959;
+    z-index: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
 }
 
 .contact .container .contactinfo h2 {
@@ -587,26 +744,26 @@ h6 {
     opacity: 1;
 }
 
-.contact .container .contactForm {
+.contactForm {
     position: absolute;
     padding: 68px 82px;
     background: white;
     margin-left: 335px;
-    top: 35px;
-    padding-left: 250px;
-    width: 60vw;
+    top: 10%;
+    padding-left: 25%;
+    width: 90%;
     height: 90%;
     box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5);
 }
 
-.contact .container .contactForm h2 {
+.contactForm h2 {
     color: #0f3959;
     margin-left: 50px;
     font-size: 24px;
     font-weight: 500;
 }
 
-.contact .container .contactForm .formBox {
+.contactForm .formBox {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -641,11 +798,11 @@ h6 {
     outline: none;
 }
 
-.contact .container .contactForm .formBox .inputBox textarea {
+.inputBox textarea {
     min-height: 70px;
 }
 
-.contact .container .contactForm .formBox .inputBox span {
+.inputBox span {
     position: relative;
     left: 0;
     padding: 5px 0;
@@ -674,54 +831,9 @@ h6 {
     background: #0f3959;
     color: white;
     border: none;
-    max-width: 100px;
+    width: 50vw;
     padding: 10px;
 }
-
-.contact .container .contactForm .formBox .inputBox input[type="submit"]:hover {
-    background: #ff568c;
-}
-
-/* Single Product */
-.product-details {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    flex-direction: column;
-}
-
-.product-details img {
-    width: 40%;
-    transform: scale(0.5);
-
-}
-
-.product-details h2 {
-    font-size: 1.5vw;
-    padding-bottom: 2%;
-
-}
-
-.product-details p {
-    padding: 0 5vw;
-    font-size: 1.2vw;
-    padding-bottom: 1vw;
-}
-
-.product-details button {
-
-    position: relative;
-    top: 0;
-    left: 0;
-    font-size: 1.5vw;
-}
-
-
-#cart-total h3 {
-    font-size: 2vw;
-}
-
 
 /* Carousel */
 .mySlides {
