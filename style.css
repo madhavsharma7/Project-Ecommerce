@@ -469,6 +469,9 @@ h6 {
 
 
 /* Contact Us */
+#phone {
+    overflow: hidden;
+}
 
 .contact {
     z-index: 1;
