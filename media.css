@@ -195,19 +195,38 @@
          right: 0;
      }
 
-
      .contactinfo {
          display: none !important;
      }
 
      .contactForm2 {
-         position: absolute;
-         left: -50vw;
+         position: relative;
+         left: -75vw;
          width: 90vw !important;
-         height: 80vh;
-         top: 10vh;
-
+         height: 65vh;
+         top: 15vh;
+         margin-top: -8vh;
      }
+
+     .contactForm2 h2 {
+         font-size: 5vw;
+         width: 100vw;
+         position: relative;
+         left: -55dvw;
+     }
+
+     .formBox {
+         position: relative;
+         left: -55vw;
+         height: 5vh;
+         width: 50vw;
+     }
+
+     .formBox span {
+         font-size: 3vw !important;
+     }
+
+
  }
 
  @media screen and (max-width: 600px) {
