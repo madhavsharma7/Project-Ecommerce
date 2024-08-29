@@ -195,13 +195,19 @@
          right: 0;
      }
 
-     /* Contact Us */
 
      .contactinfo {
-         position: relative;
-         left: -12%
+         display: none !important;
      }
 
+     .contactForm2 {
+         position: absolute;
+         left: -50vw;
+         width: 90vw !important;
+         height: 80vh;
+         top: 10vh;
+
+     }
  }
 
  @media screen and (max-width: 600px) {
@@ -213,4 +219,5 @@
      .mySlides img {
          height: 35vh;
      }
+
  }
