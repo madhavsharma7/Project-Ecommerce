@@ -196,23 +196,34 @@
      }
 
      .contactinfo {
-         display: none !important;
+         /* position: relative;
+         top: -15vw !important;
+         left: -27vw; */
+         margin-top: -15%;
+         left: -12%;
+
+     }
+
+     .contact {
+         height: 130vh !important;
      }
 
      .contactForm2 {
-         position: relative;
-         left: -75vw;
+         /* position: relative; */
+         /* left: -75vw; */
+         /* left: -192vw; */
          width: 90vw !important;
          height: 65vh;
-         top: 15vh;
-         margin-top: -8vh;
+         /* top: 30vh; */
+         margin-top: 18%;
+         margin-left: 5vw;
      }
 
      .contactForm2 h2 {
          font-size: 5vw;
          width: 100vw;
          position: relative;
-         left: -55dvw;
+         left: -55vw;
      }
 
      .formBox {
