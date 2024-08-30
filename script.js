@@ -1,7 +1,8 @@
 let showproductdiv = document.querySelector("#all-products");
 let cartCount = 0;
 let cartItemIdCounter = 0;
-let totalPrice=0; 
+let totalPrice = 0;
+let addedProductIds = new Set();
 
 function toggleNavbar() {
     const navbar = document.getElementById('navbar');
@@ -17,16 +18,17 @@ let displayproducts = async () => {
             <div class="product-items">
                 <a href="./Single/single.html?id=${element.id}">
                     <img src="${element.image}" alt="${element.title}" style="width: 150px; height: 150px;">
+                    <div class="product-details-content">
+                    <h2>${element.title}</h2>
+                    <p>${element.category}</p>
+                    <p>Price: Rs ${element.price}</p>
+                    <p>Rating: ${element.rating.rate} <span class="star">*</span></p>
                 </a>
-                <div class="product-details-content">
-                <h2>${element.title}</h2>
-                <p>${element.category}</p>
-                <p>Price: Rs ${element.price}</p>
-                <p>Rating: ${element.rating.rate}<span class="star">*</span></p>
-                <button class="addtocartbtn">Add to Cart</button> 
-                </div>
+                    <button class="addtocartbtn">Add to Cart</button> 
+                    </div>
+
             </div>`;
-            
+
     });
 
     document.querySelectorAll('.addtocartbtn').forEach((button, index) => {
@@ -57,10 +59,11 @@ let showProductDetails = async () => {
         <p><b>Category:</b> ${finalProduct.category}</p>
         <p><b>Description:</b> ${finalProduct.description}</p>
         <p><b>Price:</b> Rs ${finalProduct.price}</p>
-        <p><b>Rating:</b> ${finalProduct.rating.rate} <span>*</span> (${finalProduct.rating.count} reviews)</p>
+        <p><b>Rating:</b> ${finalProduct.rating.rate} <span class="star">*</span> (${finalProduct.rating.count} reviews)</p>
         <button class="addtocartbtn">Add to Cart</button>
      </div>
     `;
+
     let addToCartButton = document.querySelector('.addtocartbtn');
     if (addToCartButton) {
         addToCartButton.addEventListener('click', () => {
@@ -89,7 +92,7 @@ let removeFromCart = (cartItemId) => {
         cartCount--;
         document.getElementById('cart-count').textContent = cartCount;
 
-      // Subtract the item's price from the total price
+        // Subtract the item's price from the total price
         totalPrice -= parseFloat(price);
         document.getElementById('total-price').textContent = totalPrice.toFixed(2);
 
@@ -98,21 +101,37 @@ let removeFromCart = (cartItemId) => {
     }
 };
 
-let addtocart = (image, title, price) => {
+
+// Cart  
+
+let addtocart = (image, title, price, id) => {
+
+
+    // Check if the product is already in the cart
+    if (addedProductIds.has(id)) {
+        alert('This product is already in your cart.');
+        return;
+    }
+
     let cartItemsContainer = document.querySelector('.cart-items');
     let cartItemId = `cart-item-${cartItemIdCounter}`;
-
     cartItemsContainer.innerHTML += `
-        <div id="${cartItemId}" class="cart-item" style="display: flex; align-items: center; margin-bottom: 10px;">
+        <div id="${cartItemId}" class="cart-item" data-id="${id}" style="display: flex; align-items: center; margin-bottom: 10px;">
             <img src="${image}" alt="product image" style="width: 50px; height: 50px; margin-right: 10px;">
             <div class="cart-item-details">
                 <p> ${title}</p>
                 <span style="display: block;">Price: Rs ${price}</span>
-            </div>
+           
+               <div class="quantity_increase">
+                 <i class="fa-solid fa-minus fa-sm minus" ></i> 
+                  <span class="quantity">1</span> <!-- This will display the quantity -->
+                  <i class="fa-solid fa-plus fa-sm plus"></i>  
+               </div>
+             </div>
             <button class="dltitem" style="margin-left: 10px;" onclick="removeFromCart('${cartItemId}')">Delete</button>
         </div>
     `;
-     
+
     // Increment the cart count
     cartCount++;
 
@@ -126,6 +145,11 @@ let addtocart = (image, title, price) => {
     totalPrice += parseFloat(price);
     document.getElementById('total-price').textContent = totalPrice.toFixed(2);
 
+    // Add the product ID to the Set
+    addedProductIds.add(id);
+
+    setupQuantityControls();
+
 };
 
 // Open cart sidebar
@@ -136,9 +160,34 @@ document.querySelector('.fa-cart-shopping').addEventListener('click', () => {
 // Close cart sidebar
 document.getElementById('close-cart').addEventListener('click', () => {
     document.getElementById('cart-sidebar').classList.remove('active');
+
+
 });
 
 
+// Cart quntity
+
+// Function to set up quantity control event listeners
+function setupQuantityControls() {
+    document.querySelectorAll('.quantity_increase').forEach(container => {
+        const quantityElement = container.querySelector('.quantity');
+        const minusButton = container.querySelector('.minus');
+        const plusButton = container.querySelector('.plus');
+        let quantity = parseInt(quantityElement.textContent);
+
+        minusButton.addEventListener('click', () => {
+            if (quantity > 1) {
+                quantity--;
+                quantityElement.textContent = quantity;
+            }
+        });
+
+        plusButton.addEventListener('click', () => {
+            quantity++;
+            quantityElement.textContent = quantity;
+        });
+    });
+}
 
 
 // Carousel
@@ -190,3 +239,6 @@ window.onload = startSlideInterval;
 document.querySelectorAll('.prev, .next, .dot').forEach(function (element) {
     element.addEventListener('click', stopSlideInterval);
 });
+
+
+

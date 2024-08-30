@@ -36,3 +36,50 @@ loginForm.addEventListener('submit', (event) => {
     });
 });
 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('signupForm');
+    if (form) {
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent form from submitting the default way
+
+            // Get the form data
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Create the user object
+            const userData = {
+                username: username,
+                email: email,
+                password: password,
+            };
+
+            try {
+                // Send the POST request
+                const response = await fetch('https://fakestoreapi.com/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userData),
+                });
+
+                // Parse the response JSON
+                const result = await response.json();
+
+                if (response.ok) {
+                    console.log('User signed up successfully:', result);
+                    // You can redirect the user or show a success message here
+                } else {
+                    console.error('Failed to sign up:', result);
+                    // Handle error (e.g., show an error message)
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                // Handle network error or other issues
+            }
+        });
+    }
+});

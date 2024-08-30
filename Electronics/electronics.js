@@ -17,11 +17,12 @@ let displayproducts = async () => {
             <div class="product-items">
                 <a href="../Single/single.html?id=${element.id}">
                     <img src="${element.image}" alt="${element.title}">
+             
+                  <h2>${element.title}</h2>
+                  <p>Price: Rs ${element.price}</p>
+                  <p>Rating: ${element.rating.rate}<span class="star"> * </span></p>
+                  <button class="addtocartbtn" data-index="${index}">Add to Cart</button>
                 </a>
-                <h2>${element.title}</h2>
-                <p>Price: Rs ${element.price}</p>
-                <p>Rating: ${element.rating.rate}<span class="star"> * </span></p>
-                <button class="addtocartbtn" data-index="${index}">Add to Cart</button>
             </div>`;
     });
 

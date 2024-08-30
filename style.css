@@ -145,8 +145,15 @@
 }
 
 .cart-item img {
-    margin-right: 1vw;
+    height: 8vh !important;
+    width: 4vw !important;
 }
+
+/* .cart-item-details span {
+    padding-top: 2%;
+} */
+
+
 
 #cart-total {
     display: flex;
@@ -161,12 +168,13 @@
 }
 
 .dltitem {
+    position: fixed;
     font-size: 1vw;
     background-color: #ff4d4d;
     color: white;
     border: none;
-    padding: 5px 10px;
-    cursor: pointer;
+    padding: 0.3%;
+    margin-left: 32vw !important;
     border-radius: 5px;
 }
 
@@ -286,12 +294,53 @@
 
 }
 
+.product-items a {
+    text-decoration: none;
+    color: black;
+}
+
 .product-items p,
 .product-items h2 {
     padding: 0.2vw;
+    text-decoration: none;
     font-size: 1.2vw;
+    color: inherit;
 }
 
+.product-items p a,
+.product-items h2 a {
+    text-decoration: none;
+}
+
+.quantity_increase {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 1vh;
+    /* Adjust spacing between the icons and text */
+}
+
+.quantity_increase i {
+    border: 2px solid red;
+    border-radius: 50%;
+    /* Makes the border circular */
+    width: 24px;
+    /* Adjust the size as needed */
+    height: 24px;
+    /* Adjust the size as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    /* Adjust the icon size */
+    color: red;
+    /* Adjust the icon color */
+}
+
+.quantity_increase i:hover {
+    cursor: pointer;
+    /* Makes the icons appear clickable */
+}
 
 /* Footer */
 
@@ -468,6 +517,7 @@ h6 {
 }
 
 
+
 /* Contact Us */
 
 #phone {
@@ -573,8 +623,6 @@ h6 {
     width: 90%;
     height: 100%;
     box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5);
-
-
 }
 
 .contactForm2 h2 {
@@ -660,9 +708,6 @@ h6 {
     background: #ff568c;
 }
 
-
-
-
 /* Single Product */
 .product-details {
     display: flex;
@@ -676,6 +721,10 @@ h6 {
     width: 40%;
     transform: scale(0.5);
 
+}
+
+.star {
+    color: orange;
 }
 
 .product-details h2 {
@@ -698,11 +747,13 @@ h6 {
     font-size: 1.5vw;
 }
 
+.star {
+    color: orange;
+}
 
 #cart-total h3 {
     font-size: 2vw;
 }
-
 
 /* Contact Us */
 
