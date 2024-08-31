@@ -149,12 +149,6 @@
     width: 4vw !important;
 }
 
-/* .cart-item-details span {
-    padding-top: 2%;
-} */
-
-
-
 #cart-total {
     display: flex;
     justify-content: center;
@@ -164,7 +158,22 @@
 
 #cart-total h3 {
     text-align: center;
-    /* Center the text inside the h3 element */
+
+}
+
+.buy {
+    padding-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.buy button {
+    background-color: lightcyan;
+    padding: 1%;
+    font-size: 1.4vw;
 }
 
 .dltitem {
@@ -341,6 +350,8 @@
     cursor: pointer;
     /* Makes the icons appear clickable */
 }
+
+
 
 /* Footer */
 
