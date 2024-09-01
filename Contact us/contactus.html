@@ -88,35 +88,34 @@
 
                 <div class="contactForm2">
                     <h2>Send a Message</h2>
-                     <form method="post" action="
-https://script.google.com/macros/s/AKfycbwQh-_fqZgM2IjS7BlWJNPZSiQHss3dw35HYv_C6MNVJLvKojUrldfEqSVrBj43CV_cnA/exec" name="madcommerce">
+                     <form name="submit-to-google-sheet" >
 
                       <div class="formBox">
                      
                         <div class="inputBox w50">
-                            <input type="text" name="First Name" required>
+                            <input type="text" name="first" required>
                             <span>First Name</span>
                         </div>
                         <div class="inputBox w50">
-                            <input type="text" name="Last Name" required>
+                            <input type="text" name="last" required>
                             <span>Last Name</span>
                         </div>
                         <div class="inputBox w50">
-                            <input type="text" name="Email" required>
+                            <input type="text" name="email" required>
                             <span>Email Address</span>
                         </div>
                         <div class="inputBox w50">
-                            <input type="text" name="Phone Number" required>
+                            <input type="text" name="number" required>
                             <span>Mobile Number</span>
                         </div>
                         <div class="inputBox w100">
-                            <textarea name="Message" required></textarea>
+                            <textarea name="message" required></textarea>
                             <span>Write your message here...</span>
                         </div>
                         <div class="inputBox w100">
-                            <input type="submit" value="Send">
+                            <button type="submit">Submit</button>
                         </div>
-                     
+                       <div id="msg"></div>
                       </div>
                     </form> 
 
@@ -195,7 +194,8 @@ https://script.google.com/macros/s/AKfycbwQh-_fqZgM2IjS7BlWJNPZSiQHss3dw35HYv_C6
             </div>
         </div>
     </div>
+     
 </body>
 <script src="../script.js"></script>
-<script src="../Contact us/contactus.js"></script>
+<script src="./contactus.js"></script>
 </html>

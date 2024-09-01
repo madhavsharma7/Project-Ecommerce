@@ -250,3 +250,5 @@ document.querySelectorAll('.prev, .next, .dot').forEach(function (element) {
 
 
 
+
+
