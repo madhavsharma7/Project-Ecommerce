@@ -161,7 +161,7 @@ document.getElementById('close-cart').addEventListener('click', () => {
 
 });
 
-// Cart quntity
+// Cart quantity
 
 // Function to set up quantity control event listeners
 function setupQuantityControls() {
