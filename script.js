@@ -25,8 +25,6 @@ let displayproducts = async () => {
                     <p>Rating: ${element.rating.rate} <span class="star">*</span></p>
                 </a>
                     <button class="addtocartbtn">Add to Cart</button> 
-                    </div>
-
             </div>`;
     });
 
@@ -129,12 +127,13 @@ let addtocart = (image, title, price, id) => {
                <div class="quantity_increase">
                  <i class="fa-solid fa-minus fa-sm minus" ></i> 
                   <span class="quantity">1</span> <!-- This will display the quantity -->
-                  <i class="fa-solid fa-plus fa-sm plus"></i>  
+                  <i class="fa-solid fa-plus fa-sm plus"></i> 
+                  <button class="dltitem" style="margin-left: 10px;" onclick="removeFromCart('${cartItemId}','${id}','${price}')">Delete</button> 
                </div>
              </div>
-            <button class="dltitem" style="margin-left: 10px;" onclick="removeFromCart('${cartItemId}','${id}','${price}')">Delete</button>
         </div>
     `;
+
     // Increment the cart count
     cartCount++;
     // Update the cart count display

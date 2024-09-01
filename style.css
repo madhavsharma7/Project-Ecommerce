@@ -141,8 +141,13 @@
 .cart-item {
     display: flex;
     align-items: center;
-    margin-bottom: 1vw;
+    border: 1px solid #000;
+    /* Adds a 1px solid black border */
+    padding: 2%;
+    /* Optional: Adds some padding inside the border */
+    border-radius: 1%;
 }
+
 
 .cart-item img {
     height: 8vh !important;
@@ -158,7 +163,6 @@
 
 #cart-total h3 {
     text-align: center;
-
 }
 
 .buy {
@@ -177,13 +181,11 @@
 }
 
 .dltitem {
-    position: fixed;
     font-size: 1vw;
     background-color: #ff4d4d;
     color: white;
     border: none;
-    padding: 0.3%;
-    margin-left: 32vw !important;
+    padding: 2%;
     border-radius: 5px;
 }
 
@@ -729,9 +731,12 @@ h6 {
 }
 
 .product-details img {
-    width: 40%;
+    border: 2px solid black;
+    padding: 5%;
+    border-radius: 1px;
+    width: 40vw;
+    height: 90vh;
     transform: scale(0.5);
-
 }
 
 .star {
@@ -739,21 +744,28 @@ h6 {
 }
 
 .product-details h2 {
+    position: relative;
+    top: -15vh !important;
     font-size: 1.5vw;
     padding-bottom: 2%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
 }
 
 .product-details p {
+    text-align: center;
+    position: relative;
+    top: -12vh !important;
     padding: 0 5vw;
     font-size: 1.2vw;
     padding-bottom: 1vw;
 }
 
 .product-details button {
-
     position: relative;
-    top: 0;
+    top: -10vh;
     left: 0;
     font-size: 1.5vw;
 }
