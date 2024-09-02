@@ -4,22 +4,26 @@ const form = document.forms['submit-to-google-sheet'];
 
 form.addEventListener('submit', e => {
   e.preventDefault();
+
+  console.log("Button is working!");  // This will log to the console when the form is submitted
+  alert("Form submitted!");  // This will show an alert when the button is clicked and form is submitted
   
-  fetch(scriptURL, { 
-    method: 'POST',  
-    body: new FormData(form)
-  })
-  .then(response => {
-    if (response.ok) {
-      alert("Thank you for contacting us");
-    //   setTimeout(() => msg.innerHTML = "", 5000);
-      form.reset(); // Optionally reset the form after submission
-    } else {
-      warning("There was an issue with submitting your message. Please try again.");
-    }
-  })
-  .catch(error => {
-    console.error('Error!', error.message);
-    console.log("There was an error submitting your message. Please try again.");
-  });
+
+  // fetch(scriptURL, { 
+  //   method: 'POST',  
+  //   body: new FormData(form)
+  // })
+  // .then(response => {
+  //   if (response.ok) {
+  //     alert("Thank you for contacting us");
+  //   //   setTimeout(() => msg.innerHTML = "", 5000);
+  //     form.reset(); // Optionally reset the form after submission
+  //   } else {
+  //     warning("There was an issue with submitting your message. Please try again.");
+  //   }
+  // })
+  // .catch(error => {
+  //   console.error('Error!', error.message);
+  //   console.log("There was an error submitting your message. Please try again.");
+  // });
 });

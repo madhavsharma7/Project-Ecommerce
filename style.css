@@ -467,7 +467,7 @@
     cursor: pointer;
 }
 
-.input-container button i {
+.input-container button .i {
     font-size: 1.2vw;
     color: black;
     padding-top: 1.2vh;
@@ -722,6 +722,8 @@ h6 {
     background: #ff568c;
 }
 
+
+
 /* Single Product */
 .product-details {
     display: flex;
@@ -783,7 +785,7 @@ h6 {
 
 /* Contact Us */
 
-.contact {
+/* .contact {
     z-index: 1;
     position: relative;
     align-items: center;
@@ -809,7 +811,7 @@ h6 {
     min-height: 550px;
     display: flex;
     z-index: 1000;
-}
+} */
 
 .contact .container .contactinfo {
     position: relative;
