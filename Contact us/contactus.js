@@ -1,29 +1,52 @@
+
 const scriptURL = 'https://script.google.com/macros/s/AKfycbxaj313DuVqK31lwwMgB401ogmYKFA7z9QnJ6UvjkhUbO-_86nhoehmO7ep5whhVRuxww/exec';
-const form = document.forms['submit-to-google-sheet'];
-// const msg = document.getElementById("msg");
 
-form.addEventListener('submit', e => {
-  e.preventDefault();
+// Contact Form Submission
+const contactForm = document.forms['submit-to-google-sheet'];
+if (contactForm) {
+  contactForm.addEventListener('submit', e => {
+    e.preventDefault();
 
-  console.log("Button is working!");  // This will log to the console when the form is submitted
-  alert("Form submitted!");  // This will show an alert when the button is clicked and form is submitted
-  
+    fetch(scriptURL, { 
+      method: 'POST',  
+      body: new FormData(contactForm)
+    })
+    .then(response => {
+      if (response.ok) {
+        alert("Thank you for reaching out! We will get back to you soon.");
+        contactForm.reset(); // Optionally reset the form after submission
+      } else {
+        alert("There was an issue with submitting your message. Please try again.");
+      }
+    })
+    .catch(error => {
+      console.error('Error!', error.message);
+      alert("There was an error submitting your message. Please try again later.");
+    });
+  });
+}
 
-  // fetch(scriptURL, { 
-  //   method: 'POST',  
-  //   body: new FormData(form)
-  // })
-  // .then(response => {
-  //   if (response.ok) {
-  //     alert("Thank you for contacting us");
-  //   //   setTimeout(() => msg.innerHTML = "", 5000);
-  //     form.reset(); // Optionally reset the form after submission
-  //   } else {
-  //     warning("There was an issue with submitting your message. Please try again.");
-  //   }
-  // })
-  // .catch(error => {
-  //   console.error('Error!', error.message);
-  //   console.log("There was an error submitting your message. Please try again.");
-  // });
-});
+// Subscription Form Submission
+const subscriptionForm = document.forms['subscription-form'];
+if (subscriptionForm) {
+  subscriptionForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    fetch(scriptURL, { 
+      method: 'POST',  
+      body: new FormData(subscriptionForm)
+    })
+    .then(response => {
+      if (response.ok) {
+        alert("Thank you for subscribing! You will receive updates soon.");
+        subscriptionForm.reset(); // Optionally reset the form after submission
+      } else {
+        alert("There was an issue with your subscription. Please try again.");
+      }
+    })
+    .catch(error => {
+      console.error('Error!', error.message);
+      alert("There was an error submitting your subscription. Please try again later.");
+    });
+  });
+}

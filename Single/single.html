@@ -2,27 +2,27 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Single Page</title>
-    <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="../media.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Whisper&display=swap");
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Single Page</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../media.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Whisper&display=swap");
+  </style>
 </head>
 
 <body>
-    <div id="container">
+  <div id="container">
     <main id="main">
       <div class="logo">
         <a href="../index.html">Mad Commerce</a>
       </div>
       <div id="burger-menu" onclick="toggleNavbar()">
-                <div></div>
+        <div></div>
         <div></div>
         <div></div>
       </div>
@@ -45,10 +45,10 @@
     </main>
   </div>
 
-    </div>
+  </div>
 
-    <!-- Cart Sidebar -->
-    <div id="cart-sidebar">
+  <!-- Cart Sidebar -->
+  <div id="cart-sidebar">
     <div class="cart-header">
       <h2>Your Cart</h2>
       <span id="close-cart">&times;</span>
@@ -58,22 +58,22 @@
     </div>
     <div id="cart-total">
       <h3>Total Price: Rs <span id="total-price">0</span></h3>
-  
+
     </div>
-        <a  class="buy" href="#">
-          <button> Checkout </button>
-        </a>
+    <a class="buy" href="#">
+      <button> Checkout </button>
+    </a>
   </div>
 
 
-    <div class="product-details" id="product-details">
-        <!-- Product details will be populated here by JavaScript -->
-         <div class="product-image"></div>
-         <div class="product-text"></div>
+  <div class="product-details" id="product-details">
+    <!-- Product details will be populated here by JavaScript -->
+    <div class="product-image"></div>
+    <div class="product-text"></div>
 
-    </div>
+  </div>
 
-      <footer id="footer">
+  <footer id="footer">
     <div class="foot">
       <p>Mad Commerce</p>
     </div>
@@ -118,10 +118,11 @@
       <div class="sub">
         <p>Subscribe</p>
         <div class="input-container">
-          <input type="text" placeholder="Email Address" />
-          <button type="submit">
-            <i class="fa-solid fa-arrow-right fa-lg"></i>
-          </button>
+          <form name="subscription-form">
+            <input type="email" name="emailforsub" placeholder="Your email" required>
+            <button type="submit" name="subscribe"> <i class="fa-solid fa-arrow-right fa-lg"></i>
+            </button>
+          </form>
           <h6>Get digital marketing updates in your mailbox</h6>
         </div>
       </div>
@@ -145,10 +146,10 @@
     </div>
   </div>
 
- </main>
-    </div>
+  </main>
+  </div>
 
-    <script src="../script.js"></script>
+  <script src="../script.js"></script>
 
 </body>
 

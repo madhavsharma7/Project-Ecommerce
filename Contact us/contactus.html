@@ -165,17 +165,16 @@
 
                 <div class="sub">
                     <p>Subscribe</p>
-                    =<form name="submit-to-google-sheet">
-                        <div class="input-container">
-                            <input type="text" placeholder="Email Address" name="emailforsub" required />
-                            <input type="submit" value="Submit">
-                            <!-- <a><i name="subscribe" class="fa-solid fa-arrow-right fa-lg"></i></a> -->
-                            <h6>Get digital marketing updates in your mailbox</h6>
-                        </div>
-                    </form>
+                    <div class="input-container">
+                        <form name="subscription-form">
+                            <input type="email" name="emailforsub" placeholder="Your email" required>
+                            <button type="submit" name="subscribe"> <i class="fa-solid fa-arrow-right fa-lg"></i>
+                            </button>
+                        </form>
+                        <h6>Get digital marketing updates in your mailbox</h6>
+                    </div>
                 </div>
             </div>
-            
         </footer>
 
         <div id="footer2">
@@ -198,7 +197,7 @@
     </div>
 
 </body>
-<script src="../script.js"></script>
+<!-- <script src="../script.js"></script> -->
 <script src="./contactus.js"></script>
 
 </html>
