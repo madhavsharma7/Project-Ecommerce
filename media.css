@@ -129,6 +129,7 @@
      }
 
      .input-container .sub {
+         display: block;
          position: relative;
          top: 2.5vh;
          left: 4vw;
@@ -155,8 +156,9 @@
      }
 
      .social-icons i {
+
          width: 6vw;
-         height: 5vw;
+         height: 4vh;
          padding: 1vw;
          font-size: 4vw;
          color: white;
