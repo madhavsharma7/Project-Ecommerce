@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Simplified check (avoid comparing password)
                     if (result.username === username && result.email === email) {
                         alert('Account created successfully!');
-                        window.location.href = 'testing.html'; // Redirect to testing.html for testing 
+                        window.location.href = "./testing.html"; // Redirect to testing.html for testing 
                     } else {
                         console.error('Data mismatch:', result);
                         alert('Failed to sign up: Data mismatch.');
