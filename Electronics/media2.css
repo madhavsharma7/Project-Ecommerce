@@ -125,10 +125,16 @@
        }
 
        .input-container button i {
+           display: none;
+       }
+
+       .input-container .sub {
            position: relative;
-           left: 7vw;
-           top: 0.8vh;
-           font-size: 3vw;
+           top: 2.5vh;
+           left: 4vw;
+           border: 2px solid white;
+           color: white;
+
        }
 
        h6 {
