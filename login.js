@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             try {
                 // Send the POST request
+                    console.log(userData);
                 const response = await fetch('https://fakestoreapi.com/users', {
                     method: 'POST',
                     headers: {
@@ -72,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     body: JSON.stringify(userData),
                 });
 
+                console.log(userData);
                 // Parse the response JSON
                 const result = await response.json();
 

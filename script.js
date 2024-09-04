@@ -38,6 +38,59 @@ let displayproducts = async () => {
 
 displayproducts();
 
+
+// document.addEventListener("DOMContentLoaded", function() {
+//     const showproductdiv = document.querySelector("#all-products");
+
+//     if (!showproductdiv) {
+//         console.error('Element with id "all-products" not found in the DOM.');
+//         return;
+//     }
+
+//     let displayproducts = async () => {
+//         try {
+//             let response = await fetch("https://fakestoreapi.com/products");
+//             if (!response.ok) {
+//                 throw new Error('Network response was not ok');
+//             }
+//             let finalproducts = await response.json();
+
+//             if (!finalproducts) {
+//                 throw new Error('No products found');
+//             }
+
+//             showproductdiv.innerHTML = '';
+
+//             finalproducts.forEach(element => {
+//                 showproductdiv.innerHTML += `
+//                 <div class="product-items">
+//                     <a href="./Single/single.html?id=${element.id}">
+//                         <img src="${element.image}" alt="${element.title}" style="width: 150px; height: 150px;">
+//                         <div class="product-details-content">
+//                         <h2>${element.title}</h2>
+//                         <p>${element.category}</p>
+//                         <p>Price: Rs ${element.price}</p>
+//                         <p>Rating: ${element.rating.rate} <span class="star">*</span></p>
+//                     </a>
+//                         <button class="addtocartbtn">Add to Cart</button> 
+//                 </div>`;
+//             });
+
+//             document.querySelectorAll('.addtocartbtn').forEach((button, index) => {
+//                 button.addEventListener("click", () => {
+//                     let selectedProduct = finalproducts[index];
+//                     addtocart(selectedProduct.image, selectedProduct.title, selectedProduct.price, selectedProduct.id);
+//                 });
+//             });
+//         } catch (error) {
+//             console.error('Error fetching products:', error);
+//         }
+//     };
+
+//     displayproducts();
+// });
+
+
 //Single product
 let showProductDetails = async () => {
     // Extract the product ID from the URL
@@ -249,6 +302,7 @@ document.querySelectorAll('.prev, .next, .dot').forEach(function (element) {
 });
 
 
+// For CSV file
 
 const scriptURL = 'https://script.google.com/macros/s/AKfycbxaj313DuVqK31lwwMgB401ogmYKFA7z9QnJ6UvjkhUbO-_86nhoehmO7ep5whhVRuxww/exec';
 
@@ -276,8 +330,5 @@ if (subscriptionForm) {
     });
   });
 }
-
-
-
 
 
