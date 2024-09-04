@@ -1,7 +1,5 @@
 const loginForm = document.querySelector('.login form');
 
-
-
 // Sign In
 
 loginForm.addEventListener('submit', (event) => {
@@ -64,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             try {
                 // Send the POST request
-                    console.log(userData);
                 const response = await fetch('https://fakestoreapi.com/users', {
                     method: 'POST',
                     headers: {
@@ -73,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     body: JSON.stringify(userData),
                 });
 
-                console.log(userData);
                 // Parse the response JSON
                 const result = await response.json();
 
@@ -84,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Simplified check (avoid comparing password)
                     if (result.username === username && result.email === email) {
                         alert('Account created successfully!');
-                        window.location.href = "./testing.html"; // Redirect to testing.html for testing 
+                        window.location.href = "./index.html"; // Redirect to for testing 
                     } else {
                         console.error('Data mismatch:', result);
                         alert('Failed to sign up: Data mismatch.');
@@ -100,3 +96,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+ 

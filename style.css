@@ -86,6 +86,10 @@
 
 }
 
+#auth-link {
+    color: white;
+}
+
 /*  Cart Secion */
 #cart-count {
     position: absolute;
