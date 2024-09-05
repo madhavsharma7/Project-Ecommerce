@@ -3,6 +3,7 @@ let cartCount = 0;
 let cartItemIdCounter = 0;
 let totalPrice = 0;
 let addedProductIds = new Set();
+let cartItems = [];
 
 function toggleNavbar() {
     const navbar = document.getElementById('navbar');
@@ -37,59 +38,6 @@ let displayproducts = async () => {
 }
 
 displayproducts();
-
-
-// document.addEventListener("DOMContentLoaded", function() {
-//     const showproductdiv = document.querySelector("#all-products");
-
-//     if (!showproductdiv) {
-//         console.error('Element with id "all-products" not found in the DOM.');
-//         return;
-//     }
-
-//     let displayproducts = async () => {
-//         try {
-//             let response = await fetch("https://fakestoreapi.com/products");
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok');
-//             }
-//             let finalproducts = await response.json();
-
-//             if (!finalproducts) {
-//                 throw new Error('No products found');
-//             }
-
-//             showproductdiv.innerHTML = '';
-
-//             finalproducts.forEach(element => {
-//                 showproductdiv.innerHTML += `
-//                 <div class="product-items">
-//                     <a href="./Single/single.html?id=${element.id}">
-//                         <img src="${element.image}" alt="${element.title}" style="width: 150px; height: 150px;">
-//                         <div class="product-details-content">
-//                         <h2>${element.title}</h2>
-//                         <p>${element.category}</p>
-//                         <p>Price: Rs ${element.price}</p>
-//                         <p>Rating: ${element.rating.rate} <span class="star">*</span></p>
-//                     </a>
-//                         <button class="addtocartbtn">Add to Cart</button> 
-//                 </div>`;
-//             });
-
-//             document.querySelectorAll('.addtocartbtn').forEach((button, index) => {
-//                 button.addEventListener("click", () => {
-//                     let selectedProduct = finalproducts[index];
-//                     addtocart(selectedProduct.image, selectedProduct.title, selectedProduct.price, selectedProduct.id);
-//                 });
-//             });
-//         } catch (error) {
-//             console.error('Error fetching products:', error);
-//         }
-//     };
-
-//     displayproducts();
-// });
-
 
 //Single product
 let showProductDetails = async () => {
@@ -129,17 +77,12 @@ showProductDetails();
 
 
 let removeFromCart = (cartItemId, id, price) => {
-
     id = String(id);
-    // console.log(`Attempting to remove item with ID: ${cartItemId}`); // Debugging
 
     // Find the cart item by its ID and remove it
     let cartItem = document.getElementById(cartItemId);
-
-    // console.log(cartItem); // Check if cartItem is found
     if (cartItem) {
         cartItem.remove();
-        // console.log(`Removed item with ID: ${cartItemId} and ${id}`); // Debugging
 
         // Decrement the cart count and update the display
         cartCount--;
@@ -149,8 +92,10 @@ let removeFromCart = (cartItemId, id, price) => {
         totalPrice -= parseFloat(price);
         document.getElementById('total-price').textContent = totalPrice.toFixed(2);
 
-    } else {
-        // console.log(`Item with ID: ${cartItemId} not found`); // Debugging
+        // Update the cart in localStorage
+        let cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+        cartProducts = cartProducts.filter(product => product.id !== id);
+        localStorage.setItem('cart', JSON.stringify(cartProducts));
     }
 };
 
@@ -194,11 +139,17 @@ let addtocart = (image, title, price, id) => {
 
 
     // Add the price of the newly added item to the total price
-    totalPrice += parseInt(price);
+    totalPrice += parseFloat(price);
     document.getElementById('total-price').textContent = totalPrice.toFixed(2);
 
     // Add the product ID to the Set
     addedProductIds.add(id);
+
+    // Add the item to cartItems array
+    cartItems.push({ id, image, title, price: parseFloat(price), quantity: 1 });
+
+    // Save the cart items to localStorage
+    localStorage.setItem('cart', JSON.stringify(cartItems));
 
     setupQuantityControls();
 };
@@ -222,7 +173,9 @@ function setupQuantityControls() {
         const quantityElement = container.querySelector('.quantity');
         const minusButton = container.querySelector('.minus');
         const plusButton = container.querySelector('.plus');
-        const price = parseFloat(container.closest('.cart-item').dataset.price); // Use parseFloat to handle decimal values
+        const cartItemElement = container.closest('.cart-item');
+        const id = cartItemElement.dataset.id;
+        const price = parseFloat(cartItemElement.dataset.price);
         let quantity = parseInt(quantityElement.textContent);
         let totalPrice = parseFloat(document.getElementById('total-price').textContent);
 
@@ -231,20 +184,36 @@ function setupQuantityControls() {
                 quantity--;
                 quantityElement.textContent = quantity;
                 totalPrice -= price;
-            }
-            else {
+
+                // Update the quantity in the cartItems array
+                const item = cartItems.find(item => item.id === id);
+                if (item) item.quantity = quantity;
+            } else {
                 totalPrice -= price;
-                quantity = 0;
-                container.closest('.cart-item').remove();
+                cartItemElement.remove();
+
+                // Remove the item from the cartItems array
+                cartItems = cartItems.filter(item => item.id !== id);
             }
+
+            // Save the updated cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+
             document.getElementById('total-price').textContent = totalPrice.toFixed(2);
         });
 
         plusButton.addEventListener('click', () => {
-
             quantity++;
-            totalPrice += price;
+            totalPrice += price ;
             quantityElement.textContent = quantity;
+
+            // Update the quantity in the cartItems array
+            const item = cartItems.find(item => item.id === id);
+            if (item) item.quantity = quantity;
+
+            // Save the updated cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+
             document.getElementById('total-price').textContent = totalPrice.toFixed(2);
         });
 
@@ -330,5 +299,3 @@ if (subscriptionForm) {
     });
   });
 }
-
-

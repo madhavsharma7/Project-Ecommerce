@@ -4,23 +4,75 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Whisper&display=swap");
+    </style>
   </head>
 
   <body>
-    <h1>Checkout</h1>
-    <ul id="cart-products">
-      <!-- Cart products will be displayed here -->
-    </ul>
-    <div>
-      <label for="address">Shipping Address:</label>
-      <input
-        type="text"
-        id="address"
-        name="address"
-        placeholder="Enter your address"
-      />
+    <div id="container">
+      <main id="main">
+        <div class="logo">
+          <a href="./index.html">Mad Commerce</a>
+        </div>
+
+        <div id="burger-menu" onclick="toggleNavbar()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+
+        <div id="navbar">
+          <div class="nav-items">
+            <ul>
+              <li><a href="./Men/men.html">Men</a></li>
+              <li><a href="./Women/women.html">Women</a></li>
+              <li><a href="./Jewellery/jewellery.html">Jewellery</a></li>
+              <li><a href="./Electronics/electronic.html">Electronics</a></li>
+              <li><a href="./Contact us/contactus.html">Contact Us</a></li>
+              <li><a href="#">About</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="navbar-icons">
+          <a
+            ><i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count"></span
+          ></a>
+          <a id="user-link" href="./login.html"
+            ><i class="fa-regular fa-user"></i
+          ></a>
+        </div>
+      </main>
     </div>
-    <button id="place-order">Place Order</button>
+
+    <!-- Checkout  -->
+    <div id="checkout">
+      <h1>Checkout</h1>
+
+      <ul id="cart-products">
+        <!-- Cart products will be displayed here -->
+      </ul>
+      <div>
+        <label for="address">Shipping Address:</label>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          placeholder="Enter your address"
+        />
+      </div>
+      <button id="place-order">Place Order</button>
+    </div>
   </body>
   <script src="checkout.js"></script>
 </html>
