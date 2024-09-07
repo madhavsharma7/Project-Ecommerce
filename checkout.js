@@ -1,6 +1,8 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Fetch products from localStorage
     const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+
+
 
     // Clear the cart list to avoid duplicates
     const cartList = document.getElementById('cart-products');
@@ -12,46 +14,44 @@ document.addEventListener("DOMContentLoaded", function() {
     cartProducts.forEach(product => {
         const li = document.createElement('li');
         li.classList.add('cart-item');
-        
+
         // Create product image element
         const img = document.createElement('img');
         img.src = product.image;
         img.alt = product.name;
-        img.style.width = '100px';  // Adjust size as needed
-        img.style.height = '100px';
-        
+
         // Create product title element
         const title = document.createElement('h2');
         title.textContent = product.name;
 
-        // Create product price element
-        const price = document.createElement('p');
-        price.textContent = `Price: Rs ${product.price}`;
-        
         // Create product quantity element
         const quantity = document.createElement('p');
-        quantity.textContent = `Quantity: ${product.quantity}`;
+        quantity.textContent = ` ${product.quantity}`;
+
+        // Create product price element
+        const price = document.createElement('p');
+        price.textContent = `Rs ${product.price}`;
 
         // Calculate total price
         totalPrice += product.price * product.quantity;
-      
+
         // Append all elements to the list item
         li.appendChild(img);
         li.appendChild(title);
-        li.appendChild(price);
         li.appendChild(quantity);
+        li.appendChild(price);
 
         // Append the list item to the cart list
         cartList.appendChild(li);
     });
 
     // Display the total price on the checkout page
-    const totalPriceElement = document.createElement('p');
+    const totalPriceElement = document.createElement('h2');
     totalPriceElement.textContent = `Total Price: Rs ${totalPrice.toFixed(2)}`;
     cartList.appendChild(totalPriceElement);
 
     // Handle the Place Order button click
-    document.getElementById('place-order').addEventListener('click', function() {
+    document.getElementById('place-order').addEventListener('click', function () {
         const address = document.getElementById('address').value;
 
         if (address.trim() === '') {
@@ -66,3 +66,5 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.removeItem('cart');
     });
 });
+
+
