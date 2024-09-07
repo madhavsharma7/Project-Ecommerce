@@ -73,7 +73,7 @@ document.getElementById('place-order').addEventListener('click', function () {
     localStorage.removeItem('cart');
 
     // Redirect to index.html after the alert is dismissed
-    window.location.href = 'index.html';
+    window.location.href = '../index.html';
 
 });
 
