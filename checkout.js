@@ -45,12 +45,17 @@ document.addEventListener("DOMContentLoaded", function () {
         cartList.appendChild(li);
     });
 
-    // Display the total price on the checkout page
-    const totalPriceElement = document.createElement('h2');
-    totalPriceElement.textContent = `Total Price: Rs ${totalPrice.toFixed(2)}`;
-    cartList.appendChild(totalPriceElement);
+     const totalPriceContainer = document.querySelector('.address-section');  // Append it to the right section
 
+    // Display the total price on the checkout page
+    const totalPriceElement = document.createElement('h4');
+    totalPriceElement.classList.add('total-price');
+    totalPriceElement.textContent = `Total Price: Rs ${totalPrice.toFixed(2)}`;
+   
     // Handle the Place Order button click
+    const addressInput = document.getElementById('address');
+    addressInput.insertAdjacentElement('afterend', totalPriceElement);
+
     document.getElementById('place-order').addEventListener('click', function () {
         const address = document.getElementById('address').value;
 

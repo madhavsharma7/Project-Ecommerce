@@ -357,8 +357,6 @@
     /* Makes the icons appear clickable */
 }
 
-
-
 /* Footer */
 
 #footer {
@@ -983,7 +981,6 @@ h6 {
 
 #checkout {
     overflow: hidden;
-
 }
 
 #checkout h1 {
@@ -993,14 +990,11 @@ h6 {
     text-align: center;
 }
 
-
 .checkout-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    /* Align at the top */
     gap: 20px;
-    /* Space between cart and address */
     padding: 20px;
 }
 
@@ -1024,18 +1018,22 @@ h6 {
     margin-right: 10%;
     padding-left: 2%;
     font-size: 1.5vw;
-    padding-bottom: 2%;
+
 }
 
 #cart-products img {
     width: 7vw !important;
     height: 15vh !important;
+}
 
+#cart-products li {
+    margin-top: 2%;
 }
 
 #cart-products p {
     margin-left: 35%;
     font-size: 1.2vw;
+    font-weight: 500;
 }
 
 /* Right  */
@@ -1054,6 +1052,13 @@ h6 {
     padding: 8px;
     margin-top: 10px;
     box-sizing: border-box;
+}
+
+.address-section h4 {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    font-size: 1.5vw;
 }
 
 .address-section button {
