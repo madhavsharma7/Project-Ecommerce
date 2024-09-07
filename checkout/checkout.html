@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Check Out</title>
   <link rel="shortcut icon" type="x-icon" href="./img/bag icon.jpg" />
-  <link rel="stylesheet" href="./style.css" />
-  <link rel="stylesheet" href="./media.css"/>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../media.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -21,7 +21,7 @@
   <div id="container">
     <main id="main">
       <div class="logo">
-        <a href="./index.html">Mad Commerce</a>
+        <a href="../index.html">Mad Commerce</a>
       </div>
 
       <div id="burger-menu" onclick="toggleNavbar()">
@@ -33,11 +33,11 @@
       <div id="navbar">
         <div class="nav-items">
           <ul>
-            <li><a href="./Men/men.html">Men</a></li>
-            <li><a href="./Women/women.html">Women</a></li>
-            <li><a href="./Jewellery/jewellery.html">Jewellery</a></li>
-            <li><a href="./Electronics/electronic.html">Electronics</a></li>
-            <li><a href="./Contact us/contactus.html">Contact Us</a></li>
+            <li><a href="../Men/men.html">Men</a></li>
+            <li><a href="../Women/women.html">Women</a></li>
+            <li><a href="../Jewellery/jewellery.html">Jewellery</a></li>
+            <li><a href="../Electronics/electronic.html">Electronics</a></li>
+            <li><a href="../Contact us/contactus.html">Contact Us</a></li>
             <li><a href="#">About</a></li>
           </ul>
         </div>
@@ -45,7 +45,7 @@
       <div class="navbar-icons">
         <a><i class="fa-solid fa-cart-shopping"></i>
           <span id="cart-count"></span></a>
-        <a id="user-link" href="./login.html"><i class="fa-regular fa-user"></i></a>
+        <a id="user-link" href="../login.html"><i class="fa-regular fa-user"></i></a>
       </div>
   </div>
 
@@ -69,7 +69,10 @@
       <div class="address-section">
         <div class="address">
           <label for="address">Shipping Address:</label><br>
-          <input type="text" id="address" name="address" placeholder="Enter your address" />
+          <input type="text" id="firstname" name="firstname" placeholder="First Name" required/>
+          <input type="text" id="lastname" name="lastname" placeholder="Last Name" required/>
+          <input type="text" id="phonenumber" name="phonenumber" placeholder="Phone Number" required/>
+          <input type="text" id="address" name="address" placeholder="Enter your address" required/>
         </div>
         <button id="place-order">Place Order</button>
       </div>
