@@ -507,6 +507,10 @@ h6 {
     gap: 2vw;
 }
 
+.social-icons a {
+    text-decoration: none;
+}
+
 .social-icons i {
     color: white;
     cursor: pointer;
@@ -999,6 +1003,7 @@ h6 {
     gap: 20px;
     padding: 20px;
 }
+
 
 /* Cart section */
 .cart-section {
