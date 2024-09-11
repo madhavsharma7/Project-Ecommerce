@@ -53,6 +53,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
 }
 
 .nav-items ul {
@@ -66,6 +67,7 @@
     color: white;
     text-decoration: none;
     padding: 0.5vw;
+
 }
 
 .nav-items a:hover {
@@ -88,6 +90,25 @@
 
 #auth-link {
     color: white;
+}
+
+.search i {
+    font-size: 1.8vw;
+    opacity: 0.5;
+    cursor: pointer;
+    color: white;
+
+}
+
+#search-box {
+    display: none;
+    padding: 5px;
+    font-size: 16px;
+
+}
+
+#navbar.hidden {
+    display: none;
 }
 
 /*  Cart Secion */
