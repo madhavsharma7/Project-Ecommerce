@@ -49,6 +49,7 @@
     background-color: white;
 }
 
+/* 
 #navbar {
     display: flex;
     align-items: center;
@@ -59,63 +60,134 @@
 .nav-items ul {
     display: flex;
     list-style: none;
-    gap: 5vw;
+    gap: 3vw;
+
 }
 
 .nav-items a {
+
     font-size: 3vh;
     color: white;
     text-decoration: none;
     padding: 0.5vw;
-
 }
 
 .nav-items a:hover {
     border-bottom: 1px solid white;
+} */
+
+/* Basic styling for the navbar */
+#navbar {
+    position: relative;
+    left: 9.5%;
+}
+
+.dropdown-btn {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.dropdown-content {
+    display: none;
+    /* Initially hide the dropdown */
+    position: absolute;
+    background-color: #000;
+    /* min-width: 160px; */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-content ul li a {
+    display: block;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+}
+
+
+.dropdown-btn:hover .dropdown-content {
+    display: block;
+}
+
+.show {
+    display: block;
+}
+
+.Outernav {
+    position: relative;
+    left: 4%;
+}
+
+.Outernav ul {
+    display: flex;
+    list-style: none;
+    gap: 2vw;
+    flex-wrap: nowrap;
+}
+
+.Outernav a {
+    font-size: 3vh;
+    color: white;
+    text-decoration: none;
 }
 
 .navbar-icons {
     display: flex;
     align-items: center;
     gap: 2vw;
-
 }
 
 .navbar-icons a {
     color: white;
     font-size: 1.5vw;
     text-decoration: none;
-
 }
+
+/* #user-link {
+    border: 2px solid white;
+    padding: 5%;
+} */
 
 #auth-link {
     color: white;
+    align-items: center;
 }
 
-.search i {
-    font-size: 1.8vw;
-    opacity: 0.5;
-    cursor: pointer;
-    color: white;
+.search {
+    display: flex;
+    position: relative;
+    left: 15%;
+}
+
+.search input[type="submit"] {
+    width: 20%;
+    font-size: 1vw;
+    margin-left: 2%;
 
 }
 
-#search-box {
-    display: none;
-    padding: 5px;
-    font-size: 16px;
+.search input {
+    font-size: 1.3vw;
+    width: 30vw;
+    border: none;
+    outline: none;
 
-}
-
-#navbar.hidden {
-    display: none;
 }
 
 /*  Cart Secion */
 #cart-count {
     position: absolute;
     top: 10px;
-    right: 4%;
     color: white;
     background-color: red;
     border-radius: 50%;
@@ -220,7 +292,7 @@
 #services {
     display: flex;
     align-items: center;
-    padding: 15vh 0;
+    padding: 8vh 0;
 }
 
 .icons i {

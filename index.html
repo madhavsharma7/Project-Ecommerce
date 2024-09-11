@@ -18,16 +18,15 @@
 
 <body>
   <div id="container">
+
     <main id="main">
-
-      <a class="search" onclick="toggleSearch()">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </a>
-
-      <input type="text" id="search-box" placeholder="Search...">
-
       <div class="logo">
         <a href="./index.html">Mad Commerce</a>
+      </div>
+
+      <div class="search">
+        <input type="text" placeholder="Search Item">
+
       </div>
 
       <div id="burger-menu" onclick="toggleNavbar()">
@@ -36,7 +35,7 @@
         <div></div>
       </div>
 
-      <div id="navbar">
+      <!-- <div id="navbar">
 
         <div class="nav-items">
           <ul>
@@ -48,60 +47,79 @@
             <li><a href="#">About</a></li>
           </ul>
         </div>
+      </div> -->
+
+      <div id="navbar">
+        <button class="dropdown-btn"> Category &#9662;</button> <!-- Dropdown button -->
+        <div class="nav-items dropdown-content">
+          <ul>
+            <li><a href="./Men/men.html">Men</a></li>
+            <li><a href="./Women/women.html">Women</a></li>
+            <li><a href="./Jewellery/jewellery.html">Jewellery</a></li>
+            <li><a href="./Electronics/electronic.html">Electronics</a></li>
+
+          </ul>
+
+        </div>
+      </div>
+      <div class="Outernav">
+        <ul>
+          <li><a href="./Contact us/contactus.html">Contact Us</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
       </div>
       <div class="navbar-icons">
-
+        <a id="user-link" href="./login.html"> Login </i></a>
         <a><i class="fa-solid fa-cart-shopping"></i> <span id="cart-count"></span></a>
-        <a id="user-link" href="./login.html"><i class="fa-regular fa-user"></i></a>
+
       </div>
 
     </main>
-  </div>
 
-  <!-- Cart Sidebar -->
-  <div id="cart-sidebar">
-    <div class="cart-header">
-      <h2>Your Cart</h2>
-      <span id="close-cart">&times;</span>
-    </div>
-    <div class="cart-items">
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar">
+      <div class="cart-header">
+        <h2>Your Cart</h2>
+        <span id="close-cart">&times;</span>
+      </div>
+      <div class="cart-items">
 
-      <!-- Cart items will be dynamically added here -->
+        <!-- Cart items will be dynamically added here -->
 
-    </div>
-    <div id="cart-total">
-      <h3>Total Price: Rs <span id="total-price">0</span></h3>
+      </div>
+      <div id="cart-total">
+        <h3>Total Price: Rs <span id="total-price">0</span></h3>
 
-    </div>
-    <a class="buy" href="./checkout/checkout.html">
-      <button> Checkout </button>
+      </div>
+      <a class="buy" href="./checkout/checkout.html">
+        <button> Checkout </button>
 
-    </a>
-  </div>
-
-  <!-- Carousel -->
-
-  <div class="slideshow-container">
-
-    <div class="mySlides fade">
-      <img src="./img/template 2.png" alt="template 1">
+      </a>
     </div>
 
-    <div class="mySlides fade">
-      <img src="./img/template 3.png" alt="template 2">
-    </div>
+    <!-- Carousel -->
 
-    <div class="mySlides fade">
-      <img src="./img/templete 1.png" alt="template 3">
-    </div>
-  </div>
-  <br>
+    <div class="slideshow-container">
 
-  <div style="text-align:center">
-    <span class="dot" onclick="currentSlide(1)"></span>
-    <span class="dot" onclick="currentSlide(2)"></span>
-    <span class="dot" onclick="currentSlide(3)"></span>
-  </div>
+      <div class="mySlides fade">
+        <img src="./img/template 2.png" alt="template 1">
+      </div>
+
+      <div class="mySlides fade">
+        <img src="./img/template 3.png" alt="template 2">
+      </div>
+
+      <div class="mySlides fade">
+        <img src="./img/templete 1.png" alt="template 3">
+      </div>
+    </div>
+    <br>
+
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
   </div>
 
   <!-- Services -->
