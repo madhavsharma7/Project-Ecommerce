@@ -205,7 +205,6 @@ function setupQuantityControls() {
 }
 
 
-
 const scriptURL = 'https://script.google.com/macros/s/AKfycbxaj313DuVqK31lwwMgB401ogmYKFA7z9QnJ6UvjkhUbO-_86nhoehmO7ep5whhVRuxww/exec';
 
 // Subscription Form Submission
@@ -232,3 +231,5 @@ if (subscriptionForm) {
     });
   });
 }
+
+
