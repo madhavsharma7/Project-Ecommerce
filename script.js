@@ -10,12 +10,19 @@ function toggleNavbar() {
     navbar.classList.toggle('active');
 }
 
-let displayproducts = async () => {
-    let product =await fetch("https://fakestoreapi.com/products");
-    let finalproducts = await product.json();
-    showproductdiv.innerHTML = ''; // Clear the container before adding new products
-    finalproducts.forEach(element => {
-        showproductdiv.innerHTML += `
+let displayproducts = async (searchTerm = "") => {
+    try {
+        let product = await fetch("https://fakestoreapi.com/products");
+        let finalproducts = await product.json();
+        // showproductdiv.innerHTML = ''; // Clear the container before adding new products
+
+        let filteredProducts = finalproducts.filter(element =>
+            element.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        
+        //  finalproducts
+        filteredProducts.forEach(element => {
+            showproductdiv.innerHTML += `
             <div class="product-items">
                 <a href="./Single/single.html?id=${element.id}">
                     <img src="${element.image}" alt="${element.title}" style="width: 150px; height: 150px;">
@@ -27,17 +34,40 @@ let displayproducts = async () => {
                 </a>
                     <button class="addtocartbtn">Add to Cart</button> 
             </div>`;
-    });
-
-    document.querySelectorAll('.addtocartbtn').forEach((button, index) => {
-        button.addEventListener("click", () => {
-            let selectedProduct = finalproducts[index];
-            addtocart(selectedProduct.image, selectedProduct.title, selectedProduct.price, selectedProduct.id);
         });
-    });
+
+        if (filteredProducts.length === 0) {
+            showproductdiv.innerHTML = '<p>No products found.</p>';
+        }
+
+        document.querySelectorAll('.addtocartbtn').forEach((button, index) => {
+            button.addEventListener("click", () => {
+                let selectedProduct = filteredProducts[index];
+                addtocart(selectedProduct.image, selectedProduct.title, selectedProduct.price, selectedProduct.id);
+            });
+        });
+    } catch (error) {
+        console.error("error fetching or displaying products:", error);
+    }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    // Add event listener to search input
+    document.getElementById('searchInput').addEventListener('input', (event) => {
+        let searchTerm = event.target.value;
+        displayproducts(searchTerm);  // Update displayed products based on search term
+    });
+
+    // Add event listener to search icon
+    document.getElementById('searchButton').addEventListener('click', () => {
+        let searchTerm = document.getElementById('searchInput').value;
+        displayproducts(searchTerm);  // Update displayed products based on search term
+    });
+});
+
+
 displayproducts();
+
 
 //Single product
 let showProductDetails = async () => {
@@ -204,7 +234,7 @@ function setupQuantityControls() {
 
         plusButton.addEventListener('click', () => {
             quantity++;
-            totalPrice += price ;
+            totalPrice += price;
             quantityElement.textContent = quantity;
 
             // Update the quantity in the cartItems array
@@ -278,30 +308,32 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbxaj313DuVqK31lwwMgB4
 // Subscription Form Submission
 const subscriptionForm = document.forms['subscription-form'];
 if (subscriptionForm) {
-  subscriptionForm.addEventListener('submit', e => {
-    e.preventDefault();
+    subscriptionForm.addEventListener('submit', e => {
+        e.preventDefault();
 
-    fetch(scriptURL, { 
-      method: 'POST',  
-      body: new FormData(subscriptionForm)
-    })
-    .then(response => {
-      if (response.ok) {
-        alert("Thank you for subscribing! You will receive updates soon.");
-        subscriptionForm.reset(); // Optionally reset the form after submission
-      } else {
-        alert("There was an issue with your subscription. Please try again.");
-      }
-    })
-    .catch(error => {
-      console.error('Error!', error.message);
-      alert("There was an error submitting your subscription. Please try again later.");
+        fetch(scriptURL, {
+            method: 'POST',
+            body: new FormData(subscriptionForm)
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert("Thank you for subscribing! You will receive updates soon.");
+                    subscriptionForm.reset(); // Optionally reset the form after submission
+                } else {
+                    alert("There was an issue with your subscription. Please try again.");
+                }
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert("There was an error submitting your subscription. Please try again later.");
+            });
     });
-  });
 }
 
 
 
-document.querySelector('.dropdown-btn').addEventListener('click', function() {
-  document.querySelector('.dropdown-content').classList.toggle('show');
+document.querySelector('.dropdown-btn').addEventListener('click', function () {
+    document.querySelector('.dropdown-content').classList.toggle('show');
 });
+
+

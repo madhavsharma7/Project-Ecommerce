@@ -169,11 +169,11 @@
     left: 15%;
 }
 
-.search a {
+.search button {
     position: relative;
-    left: -7%;
-    top: 0.2vh;
-    font-size: 2vw;
+    left: -4%;
+    width: 2vw;
+    font-size: 1.2vw;
     color: black;
 }
 
@@ -183,7 +183,6 @@
     height: 5vh;
     border: none;
     outline: none;
-
 }
 
 /*  Cart Secion */
