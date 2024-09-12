@@ -180,9 +180,14 @@
     width: 2vw;
     font-size: 1.2vw;
     color: black;
+    background-color: white;
+    border: none;
+    ;
+
 }
 
 .search input {
+    padding-left: 2%;
     font-size: 1.2vw;
     width: 30vw;
     height: 5vh;
