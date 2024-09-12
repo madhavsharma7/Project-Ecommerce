@@ -14,13 +14,19 @@ let displayproducts = async (searchTerm = "") => {
     try {
         let product = await fetch("https://fakestoreapi.com/products");
         let finalproducts = await product.json();
-        // showproductdiv.innerHTML = ''; // Clear the container before adding new products
 
+        // Clear the container before adding new products
+        showproductdiv.innerHTML = '';
+
+        // Trim the search term to avoid extra spaces affecting the filtering
+        let trimmedSearchTerm = searchTerm.trim().toLowerCase();
+
+        // Filter products based on the search term
         let filteredProducts = finalproducts.filter(element =>
-            element.title.toLowerCase().includes(searchTerm.toLowerCase())
+            element.title.toLowerCase().includes(trimmedSearchTerm)
         );
-        
-        //  finalproducts
+
+        // Display products
         filteredProducts.forEach(element => {
             showproductdiv.innerHTML += `
             <div class="product-items">
@@ -36,10 +42,12 @@ let displayproducts = async (searchTerm = "") => {
             </div>`;
         });
 
+        // Handle case when no products are found
         if (filteredProducts.length === 0) {
             showproductdiv.innerHTML = '<p>No products found.</p>';
         }
 
+        // Attach event listeners to 'Add to Cart' buttons
         document.querySelectorAll('.addtocartbtn').forEach((button, index) => {
             button.addEventListener("click", () => {
                 let selectedProduct = filteredProducts[index];
@@ -63,10 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
         let searchTerm = document.getElementById('searchInput').value;
         displayproducts(searchTerm);  // Update displayed products based on search term
     });
+
+    // Display products on initial load without search term
+    displayproducts();  // Load all products when the page is loaded
 });
-
-
-displayproducts();
 
 
 //Single product
