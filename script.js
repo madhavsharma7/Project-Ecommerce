@@ -59,6 +59,7 @@ let displayproducts = async (searchTerm = "") => {
     }
 }
 
+// Search bar 
 document.addEventListener("DOMContentLoaded", () => {
     // Add event listener to search input
     document.getElementById('searchInput').addEventListener('input', (event) => {

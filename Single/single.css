@@ -40,3 +40,31 @@
 #cart-total h3 {
     font-size: 2vw;
 }
+
+.search {
+    display: flex;
+    position: relative;
+    left: 15%;
+}
+
+.search button {
+    position: relative;
+    left: -4%;
+    width: 2vw;
+    font-size: 1.2vw;
+    color: black;
+    background-color: white;
+    border: none;
+    ;
+
+}
+
+.search input {
+    padding-left: 2%;
+    font-size: 1.2vw;
+    width: 30vw;
+    height: 5vh;
+    border: none;
+    outline: none;
+}
+

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../media.css">
 
     <title>Contact Us </title>
-      <link rel="shortcut icon" type="x-icon" href="../img/contact us.png">
+    <link rel="shortcut icon" type="x-icon" href="../img/contact us.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -25,27 +25,44 @@
                 <div class="logo">
                     <a href="../index.html">Mad Commerce</a>
                 </div>
+
+                <div class="search">
+                    <input type="text" id="searchInput" placeholder="Search Item">
+                    <button type="submit" id="searchButton"> <i class="fa-solid fa-magnifying-glass fa-sm"></i>
+                    </button>
+                </div>
+
                 <div id="burger-menu" onclick="toggleNavbar()">
                     <div></div>
                     <div></div>
                     <div></div>
                 </div>
+
                 <div id="navbar">
-                    <div class="nav-items">
+                    <button class="dropdown-btn"> Category <i class="fa-solid fa-chevron-down"></i></button>
+                    <!-- Dropdown button -->
+                    <div class="nav-items dropdown-content">
                         <ul>
                             <li><a href="../Men/men.html">Men</a></li>
                             <li><a href="../Women/women.html">Women</a></li>
                             <li><a href="../Jewellery/jewellery.html">Jewellery</a></li>
                             <li><a href="../Electronics/electronic.html">Electronics</a></li>
-                            <li><a href="../Contact us/contactus.html">Contact Us</a></li>
-                            <li><a href="#">About</a></li>
                         </ul>
+
                     </div>
                 </div>
-                <div class="navbar-icons">
-                    <a><i class="fa-solid fa-cart-shopping"></i> <span id="cart-count"></span></a>
-                    <a id="user-link" href="../login.html"><i class="fa-regular fa-user"></i></a>
+                <div class="Outernav">
+                    <ul>
+                        <li><a href="./Contact us/contactus.html">Contact Us</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
                 </div>
+                <div class="navbar-icons">
+                    <a id="user-link" href="./login.html"> Login </i></a>
+                    <a><i class="fa-solid fa-cart-shopping"></i> <span id="cart-count"></span></a>
+
+                </div>
+
             </main>
         </div>
 
