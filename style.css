@@ -169,16 +169,18 @@
     left: 15%;
 }
 
-.search input[type="submit"] {
-    width: 20%;
-    font-size: 1vw;
-    margin-left: 2%;
-
+.search a {
+    position: relative;
+    left: -7%;
+    top: 0.2vh;
+    font-size: 2vw;
+    color: black;
 }
 
 .search input {
-    font-size: 1.3vw;
+    font-size: 1.2vw;
     width: 30vw;
+    height: 5vh;
     border: none;
     outline: none;
 
