@@ -49,32 +49,6 @@
     background-color: white;
 }
 
-/* 
-#navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-}
-
-.nav-items ul {
-    display: flex;
-    list-style: none;
-    gap: 3vw;
-
-}
-
-.nav-items a {
-
-    font-size: 3vh;
-    color: white;
-    text-decoration: none;
-    padding: 0.5vw;
-}
-
-.nav-items a:hover {
-    border-bottom: 1px solid white;
-} */
 
 /* Basic styling for the navbar */
 #navbar {
@@ -157,11 +131,6 @@
     font-size: 1.5vw;
     text-decoration: none;
 }
-
-/* #user-link {
-    border: 2px solid white;
-    padding: 5%;
-} */
 
 #auth-link {
     color: white;
@@ -1193,4 +1162,11 @@ h6 {
 
 .address-section button:hover {
     background-color: #218838;
+}
+                            /* About */
+.about h1{
+    text-align: center;
+}
+.about{
+    margin-top: 7vw;
 }

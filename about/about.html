@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mad Commerce</title>
+    <link rel="shortcut icon" type="x-icon" href="./img/bag icon.jpg">
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../media.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Whisper&display=swap");
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+        <main id="main">
+            <div class="logo">
+                <a href="../index.html">Mad Commerce</a>
+            </div>
+
+            <div class="search">
+                <input type="text" id="searchInput" placeholder="Search Item">
+                <button type="submit" id="searchButton"> <i class="fa-solid fa-magnifying-glass fa-sm"></i>
+                </button>
+            </div>
+
+            <div id="burger-menu" onclick="toggleNavbar()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div id="navbar">
+                <button class="dropdown-btn"> Category <i class="fa-solid fa-chevron-down"></i></button>
+                <!-- Dropdown button -->
+                <div class="nav-items dropdown-content">
+                    <ul>
+                        <li><a href="../Men/men.html">Men</a></li>
+                        <li><a href="../Women/women.html">Women</a></li>
+                        <li><a href="../Jewellery/jewellery.html">Jewellery</a></li>
+                        <li><a href="../Electronics/electronic.html">Electronics</a></li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="Outernav">
+                <ul>
+                    <li><a href="./Contact us/contactus.html">Contact Us</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+            <div class="navbar-icons">
+                <a id="user-link" href="../login.html"> Login </i></a>
+                <a><i class="fa-solid fa-cart-shopping"></i> <span id="cart-count"></span></a>
+
+            </div>
+        </main>
+
+        <!-- Cart Sidebar -->
+        <div id="cart-sidebar">
+            <div class="cart-header">
+                <h2>Your Cart</h2>
+                <span id="close-cart">&times;</span>
+            </div>
+            <div class="cart-items">
+
+                <!-- Cart items will be dynamically added here -->
+
+            </div>
+            <div id="cart-total">
+                <h3>Total Price: Rs <span id="total-price">0</span></h3>
+
+            </div>
+            <a class="buy" href="./checkout/checkout.html">
+                <button> Checkout </button>
+
+            </a>
+        </div>
+
+        <div class="about">
+            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque facere placeat possimus laborum quia
+                in
+                sint pariatur<> molestias quibusdam qui similique<> nesciunt quas, hic delectus veritatis
+                        dolore?<>
+                            Beatae, molestiae quasi.Lorem ipsum, dolor sit amet consectetur adipisicing elit.<>
+                                Assumenda
+                                quis
+                                aut cumque fugiat sit quia, <>qui
+                                    necessitatibus dignissimos!<> Nemo earum tenetur ipsu<>m voluptate recusandae
+                                            possimu<>s tempora est
+                                                laboriosam in
+                                                alia s .</h1>
+        </div>
+
+
+        <footer id="footer">
+            <div class="foot">
+                <p>Mad Commerce</p>
+            </div>
+            <hr>
+
+            <div class="icons2">
+                <div class="icon-item">
+                    <i class="fa-solid fa-phone fa-lg" style="color: #ffffff;"></i>
+                    <p>+91-98*****575</p>
+                </div>
+                <div class="icon-item">
+                    <i class="fa-regular fa-envelope fa-lg" style="color: white;"></i>
+                    <p>madcommerce@gmail.com</p>
+                </div>
+                <div class="icon-item">
+                    <i class="fa-solid fa-location-dot fa-lg" style="color: #eff1f5;"></i>
+                    <p>One Neil Road #02-02,<br>Singapore 0833304</p>
+                </div>
+            </div>
+
+            <div class="footer-content">
+                <ul>
+                    <p class="ul">About</p>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Awards</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Career</a></li>
+                </ul>
+                <ul>
+                    <p class="ul">Company</p>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+                <ul>
+                    <p class="ul">Resources</p>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+
+                <div class="sub">
+                    <p>Subscribe</p>
+                    <div class="input-container">
+                        <form name="subscription-form">
+                            <input type="email" name="emailforsub" placeholder="Your email" required>
+                            <button type="submit" name="subscribe"> <i class="fa-solid fa-arrow-right fa-lg"></i>
+                            </button>
+                            <button class="sub" type="submit" name="subscribe"> Subscribe </button>
+                        </form>
+                        <h6>Get digital marketing updates in your mailbox</h6>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div id="footer2">
+            <div class="for-social">
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                </div>
+
+                <a class="arrow-up" href="#container"><i class="fa-solid fa-arrow-up fa-lg"></i></a>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; <span id="year"></span> Mad Commerce. All rights reserved.</p>
+            </div>
+        </div>
+        <script src="../script.js"></script>
+        </main>
+
+
+    </div>
