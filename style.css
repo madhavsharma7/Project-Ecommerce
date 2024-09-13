@@ -1163,10 +1163,24 @@ h6 {
 .address-section button:hover {
     background-color: #218838;
 }
-                            /* About */
-.about h1{
+
+/* About */
+.about h1 {
     text-align: center;
 }
-.about{
+
+.about {
     margin-top: 7vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.about h1 {
+    padding: 2%;
+    font-size: 2vw;
+}
+
+.about h2 {
+    font-size: 2.5vw;
 }
