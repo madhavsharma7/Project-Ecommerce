@@ -359,7 +359,6 @@
     padding: 0.5vw;
     font-size: 1.2vw;
     transform: translateX(-50%);
-    /* Centers the button horizontally */
 }
 
 .product-image img {
@@ -376,7 +375,7 @@
     position: relative;
     flex-basis: 31%;
     margin-bottom: 5%;
-    height: 50vh;
+    height: 52vh;
     border: 1px solid black;
     text-align: center;
     transition: all 0.5s;
