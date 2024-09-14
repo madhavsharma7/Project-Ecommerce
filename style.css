@@ -357,17 +357,26 @@
     background-color: #000000;
     color: white;
     padding: 0.5vw;
-    font-size: 1vw;
-    margin-bottom: 1vw;
+    font-size: 1.2vw;
+    transform: translateX(-50%);
+    /* Centers the button horizontally */
 }
 
 .product-image img {
     height: 20%;
 }
 
+.product-details-content button {
+    position: absolute;
+    bottom: 2vh;
+
+}
+
 .product-items {
+    position: relative;
     flex-basis: 31%;
     margin-bottom: 5%;
+    height: 50vh;
     border: 1px solid black;
     text-align: center;
     transition: all 0.5s;
@@ -849,7 +858,7 @@ h6 {
 .product-details button {
     position: relative;
     top: -10vh;
-    left: 0;
+    left: 4vw;
     font-size: 1.5vw;
 }
 
