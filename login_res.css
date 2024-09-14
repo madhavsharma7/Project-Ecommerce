@@ -1,0 +1,69 @@
+/* General body styling for responsive */
+@media (max-width: 600px) {
+    body {
+        background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+        padding: 0 10px;
+    }
+
+    /* Login background container */
+    .login-bk {
+        position: relative;
+        left: -24%;
+        width: 150%;
+        margin-top: 10%;
+        box-shadow: 5px 15px 30px #000;
+        border-radius: 8px;
+    }
+
+    label {
+        font-size: 7vw;
+        margin: 20px 0;
+        padding-bottom: 15%;
+
+    }
+
+    #signup label {
+        padding-top: 10%;
+
+    }
+
+    #signup input {
+        font-size: 3vw;
+    }
+
+    .login input {
+        font-size: 3vw;
+    }
+
+    input {
+        width: 70%;
+        height: 1vh;
+    }
+
+    button {
+        width: 50%;
+        height: 45px;
+        font-size: 1.1em;
+        margin-top: 20px;
+    }
+
+    .login {
+        height: 100%;
+        background: #eee;
+        border-radius: 50% / 5%;
+        transform: translateY(-100px);
+    }
+
+    .login label {
+        font-size: 6vw;
+        padding-bottom: 15vh;
+    }
+
+    .redirect {
+        margin-top: 20px;
+    }
+
+    .redirect a {
+        font-size: 1.2em;
+    }
+}
