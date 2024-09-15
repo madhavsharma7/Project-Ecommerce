@@ -1,17 +1,52 @@
    @media screen and (max-width: 600px) {
 
+       .search {
+           display: none;
+       }
+
+       .Outernav {
+           display: none;
+       }
+
+       .dropdown-btn {
+           display: none;
+       }
 
        .logo a {
            font-size: 6vw;
        }
 
-       .nav-items li {
-           display: block;
+       .navbar-icons a {
+           position: relative;
+           left: -40%;
+           font-size: 5vw;
+           padding: 2vw;
        }
 
-       .navbar-icons a {
-           font-size: 4vw;
-           padding: 2vw;
+       .nav-items {
+           position: fixed;
+           top: 6%;
+           right: -100%;
+           height: 100vh;
+           width: 80%;
+           background-color: rgba(0, 0, 0, 0.8);
+           backdrop-filter: blur(10px);
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           justify-content: center;
+           transition: right 0.3s ease-in-out;
+
+       }
+
+       .nav-items ul li a {
+           gap: 5%;
+           font-size: 5vw;
+           /* Larger font size for smaller screens */
+       }
+
+       .nav-items ul li {
+           margin-bottom: 5vh;
        }
 
        #cart-count {
@@ -20,12 +55,48 @@
            left: 1vw;
        }
 
-       #user-link {
-           padding-right: 15vw;
-       }
-
        #services {
            margin-top: -20%;
+       }
+
+       #products h4 {
+           font-size: 5vw;
+       }
+
+       .product-items img {
+           padding: 2vw !important;
+       }
+
+       #all-products {
+           margin-top: -8%;
+       }
+
+       .product-items h2 {
+           font-size: 3.2vw;
+       }
+
+       .product-items p {
+           margin-top: 2%;
+           font-size: 3.2vw;
+       }
+
+       .product-items span {
+           color: orange;
+       }
+
+       .product-items {
+           position: relative;
+           /* Ensures the button is positioned relative to this container */
+       }
+
+       .addtocartbtn {
+           position: absolute;
+           bottom: 8px;
+           left: 50%;
+           padding: 2%;
+           width: 70%;
+           height: 5vh;
+           font-size: 1rem;
        }
 
        .icons {
@@ -135,6 +206,7 @@
            left: 4vw;
            border: 2px solid white;
            color: white;
+
        }
 
        h6 {
@@ -206,13 +278,13 @@
 
        .product-items img {
            width: 37vw;
-           height: 25.83vh;
+           height: 25vh;
            padding: 4vw;
        }
 
        .product-items h2 {
-           font-size: 3.5vw;
-           padding: 0.8vw;
+           font-size: 3.2vw;
+           /* padding: 0.8vw; */
        }
 
        .product-items p {

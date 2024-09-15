@@ -353,12 +353,19 @@
 }
 
 .addtocartbtn {
+    position: absolute;
+    bottom: 8%;
     cursor: pointer;
+    /* Position the button 8 pixels from the bottom */
+    transform: translateX(-50%);
+    left: 50%;
+    width: 40%;
+    height: 5vh;
+    padding: 2%;
+    font-size: 1.2vw;
     background-color: #000000;
     color: white;
-    padding: 0.5vw;
-    font-size: 1.2vw;
-    transform: translateX(-50%);
+    /* Adjust font size for consistency */
 }
 
 .product-image img {
@@ -388,8 +395,7 @@
 .product-items img {
     padding: 1vw;
     width: 50%;
-    height: 20vh;
-
+    height: 25vh;
 }
 
 .product-items a {
@@ -840,8 +846,6 @@ h6 {
     top: -15vh !important;
     font-size: 1.5vw;
     padding-bottom: 2%;
-    justify-content: center;
-    align-items: center;
     text-align: center;
 }
 
@@ -857,8 +861,11 @@ h6 {
 .product-details button {
     position: relative;
     top: -10vh;
-    left: 4vw;
+    left: 5.5vw;
+    width: auto;
+    height: 8vh;
     font-size: 1.5vw;
+    padding: 0 2%;
 }
 
 .star {
@@ -1171,4 +1178,3 @@ h6 {
 .address-section button:hover {
     background-color: #218838;
 }
-

@@ -16,10 +16,6 @@
            font-size: 6vw;
        }
 
-       .nav-items li {
-           display: block;
-       }
-
        .navbar-icons a {
            position: relative;
            left: -40%;
@@ -59,10 +55,6 @@
            left: 1vw;
        }
 
-       #user-link {
-           padding-right: 15vw;
-       }
-
        #services {
            margin-top: -20%;
        }
@@ -92,18 +84,19 @@
            color: orange;
        }
 
-       .addtocartbtn {
+       .product-items {
            position: relative;
-           font-size: 3.5vw;
-           left: 35%;
-           top: 2vh;
+           /* Ensures the button is positioned relative to this container */
        }
 
-       .product-items button {
+       .addtocartbtn {
+           position: absolute;
+           bottom: 8px;
+           left: 50%;
+           padding: 2%;
            width: 70%;
-           bottom: 1%;
            height: 5vh;
-
+           font-size: 1rem;
        }
 
        .icons {
