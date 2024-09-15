@@ -287,9 +287,10 @@
     }
 
     .product-details button {
-        font-size: 4vw;
-        padding: 1vw;
-        margin-left: 12%;
+        font-size: 3.5vw;
+        width: 25vw;
+        height: 5vh;
+        margin-left: 15%;
     }
 
 
