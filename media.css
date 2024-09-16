@@ -349,7 +349,8 @@
 
     .topics {
         font-size: 3vw;
-        margin-left: 5%;
+        margin-left: 4%;
+
     }
 
     #cart-products img {
@@ -384,6 +385,31 @@
     .address-section button {
         font-size: 5vw;
     }
+
+    .select-address {
+        padding: 2%;
+    }
+
+    .select-address label {
+        font-size: 3vw;
+        top: -10vh;
+    }
+
+    #add-address {
+        font-size: 3.6vw;
+    }
+
+    #dlt {
+        display: none;
+    }
+
+    span {
+        display: inline-block;
+        cursor: pointer;
+        color: #ff0000;
+        font-size: 4vw;
+    }
+
 
 
 }

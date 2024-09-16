@@ -1205,8 +1205,6 @@ h6 {
     margin-left: 5px;
 }
 
-
-
 /* Add address button */
 #add-address {
     font-size: 1.1vw;
@@ -1224,6 +1222,10 @@ h6 {
 }
 
 /* Delete address button */
+span {
+    display: none;
+}
+
 .delete-address {
     padding: 2%;
     background-color: #d9534f;

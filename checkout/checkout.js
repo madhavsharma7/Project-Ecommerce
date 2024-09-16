@@ -60,7 +60,11 @@ document.addEventListener("DOMContentLoaded", function () {
         newAddress.innerHTML = `
             <input type="radio" name="selected-address" value="New Address" required>
             <input type="text" name="new-address" placeholder="Enter new address" required>
-            <button class="delete-address" type="button">Delete Address</button>
+            <button class="delete-address" id="dlt" type="button">Delete Address</button>
+            <span class="delete-address">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            </span>
+        
         `;
         addressList.appendChild(newAddress);
 
