@@ -16,6 +16,10 @@
         font-size: 6vw;
     }
 
+    .hide {
+        display: block;
+    }
+
     .navbar-icons a {
         position: relative;
         left: -40%;
@@ -292,7 +296,6 @@
         height: 5vh;
         margin-left: 15%;
     }
-
 
     /* Cart */
 
