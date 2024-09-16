@@ -1138,15 +1138,17 @@ h6 {
 /* Right  */
 
 /* Address section */
-
+/* 
 .address label {
     font-size: 1.5vw;
     color: white;
 }
 
 .address-section {
+    position: relative;
+    top: -10vh;
     width: 35vw;
-    height: 60vh;
+    height: 68vh;
     border: 1px black solid;
     background: url(./img/color.jpg);
     padding: 20px;
@@ -1181,4 +1183,124 @@ h6 {
 
 .address-section button:hover {
     background-color: #218838;
+} */
+
+/* Total price styling */
+.total-price {
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #333;
+}
+
+/* Address section */
+.personal-info {
+    padding: 2%;
+
+}
+
+.personal-info input {
+    width: 100%;
+    height: 5vh;
+    margin-top: 2%;
+    font-size: 1.2vw;
+}
+
+.address-section {
+    background: url("./img/color.jpg");
+    padding: 20px;
+    width: 35vw;
+    height: 60vh;
+
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.select-address label {
+    color: white;
+    font-size: 1.2vw;
+}
+
+.address-section h4 {
+    font-size: 1.5vw;
+    text-align: center;
+    color: white;
+}
+
+.address-section h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+#address-list {
+    margin-bottom: 15px;
+}
+
+#address-list div {
+    margin-bottom: 10px;
+}
+
+#address-list input[type="radio"] {
+    margin-right: 2%;
+
+}
+
+#address-list input[type="text"] {
+    font-size: 1vw;
+    height: 5vh;
+    width: 60%;
+    margin-left: 5px;
+
+}
+
+/* Add address button */
+#add-address {
+    font-size: 1.1vw;
+    height: 6vh;
+    width: 100%;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+#add-address:hover {
+    background-color: #4cae4c;
+}
+
+/* Delete address button */
+.delete-address {
+    padding: 2%;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10%;
+    cursor: pointer;
+}
+
+.delete-address:hover {
+    background-color: #c9302c;
+}
+
+/* Place Order button */
+#place-order {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #0275d8;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#place-order:hover {
+    background-color: #025aa5;
 }

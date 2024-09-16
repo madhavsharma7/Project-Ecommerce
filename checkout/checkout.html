@@ -81,15 +81,29 @@
         </div>
 
         <div class="address-section">
-          <div class="address">
-            <label for="address">Shipping Address:</label><br>
+          <h4> Shipping Address </h4>
+          <!-- Personal Information Inputs -->
+          <div class="personal-info">
             <input type="text" id="firstname" name="firstname" placeholder="First Name" required />
             <input type="text" id="lastname" name="lastname" placeholder="Last Name" required />
             <input type="text" id="phonenumber" name="phonenumber" placeholder="Phone Number" required />
-            <input type="text" id="address" name="address" placeholder="Enter your address" required />
           </div>
-          <button id="place-order">Place Order</button>
+          <!-- Address List -->
+          <div class="address-list">
+            <div id="address-list">
+              <div class="select-address">
+                <input type="radio" name="selected-address" value="Existing Address 1" required>
+                <label>Existing Address 1: 1234 Street Name</label>
+              </div>
+              <!-- More address selections can be added here -->
+            </div>
+            <button id="add-address" type="button">Add More Address</button>
+          </div>
+
+          <!-- Place Order Button -->
+          <button id="place-order" type="submit">Place Order</button>
         </div>
+
       </div>
     </div>
 

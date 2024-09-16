@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Create product quantity element
         const quantity = document.createElement('p');
-        quantity.textContent = ` ${product.quantity}`;
+        quantity.textContent = `${product.quantity}`;
 
         // Create product price element
         const price = document.createElement('p');
@@ -45,24 +45,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Display the total price on the checkout page
     const totalPriceElement = document.createElement('h4');
-
     totalPriceElement.classList.add('total-price');
     totalPriceElement.textContent = `Total Price: Rs ${totalPrice.toFixed(2)}`;
 
-    // Handle the Place Order button click
-    const addressInput = document.getElementById('address');
+    // Add the total price element after the cart list
+    const addressInput = document.getElementById('cart-products');
     addressInput.insertAdjacentElement('afterend', totalPriceElement);
 
+    // Handle adding new addresses dynamically
+    const addressList = document.getElementById('address-list');
+    document.getElementById('add-address').addEventListener('click', function () {
+        const newAddress = document.createElement('div');
+        newAddress.innerHTML = `
+        <div class="form">
+            <input type="radio" name="selected-address" value="New Address" required>
+            <input type="text" name="new-address" placeholder="Enter new address" required>
+            <button class="delete-address" type="button">Delete Address</button>
+        </div>
+        `;
+        addressList.appendChild(newAddress);
+
+        // Add delete address functionality
+        newAddress.querySelector('.delete-address').addEventListener('click', function () {
+            newAddress.remove();
+        });
+    });
 });
 
+// Handle the Place Order button click
 document.getElementById('place-order').addEventListener('click', function () {
-    const firstName = document.getElementById('firstname').value;
-    const lastName = document.getElementById('lastname').value;
-    const phoneNumber = document.getElementById('phonenumber').value;
-    const address = document.getElementById('address').value;
+    const selectedAddress = document.querySelector('input[name="selected-address"]:checked');
 
-    if (address.trim() === '' ||firstName.trim()==='' || lastName.trim() === '' || phoneNumber.trim() === '' || address.trim() === '') {
-        alert('Please enter your details');
+    if (!selectedAddress) {
+        alert('Please select an address before placing the order.');
         return;
     }
 
@@ -74,12 +89,9 @@ document.getElementById('place-order').addEventListener('click', function () {
 
     // Redirect to index.html after the alert is dismissed
     window.location.href = '../index.html';
-
 });
 
+// Dropdown toggle logic
 document.querySelector('.dropdown-btn').addEventListener('click', function () {
     document.querySelector('.dropdown-content').classList.toggle('show');
 });
-
-
-
