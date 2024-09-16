@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cartList = document.getElementById('cart-products');
     cartList.innerHTML = '';
 
-    let totalPrice = 0;  // Initialize total price
+    let totalPrice = 0; // Initialize total price
 
     // Populate cart items
     cartProducts.forEach(product => {
@@ -24,11 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Create product quantity element
         const quantity = document.createElement('p');
-        quantity.textContent = `${product.quantity}`;
+        quantity.textContent = `Quantity: ${product.quantity}`;
 
         // Create product price element
         const price = document.createElement('p');
-        price.textContent = `Rs ${product.price}`;
+        price.textContent = `Price: Rs ${product.price}`;
 
         // Calculate total price
         totalPrice += product.price * product.quantity;
@@ -48,20 +48,19 @@ document.addEventListener("DOMContentLoaded", function () {
     totalPriceElement.classList.add('total-price');
     totalPriceElement.textContent = `Total Price: Rs ${totalPrice.toFixed(2)}`;
 
-    // Add the total price element after the cart list
-    const addressInput = document.getElementById('cart-products');
-    addressInput.insertAdjacentElement('afterend', totalPriceElement);
+    // Add the total price element after the "Add More Address" button
+    const addAddressButton = document.getElementById('add-address');
+    addAddressButton.insertAdjacentElement('afterend', totalPriceElement);
 
     // Handle adding new addresses dynamically
     const addressList = document.getElementById('address-list');
     document.getElementById('add-address').addEventListener('click', function () {
         const newAddress = document.createElement('div');
+        newAddress.classList.add('form');
         newAddress.innerHTML = `
-        <div class="form">
             <input type="radio" name="selected-address" value="New Address" required>
             <input type="text" name="new-address" placeholder="Enter new address" required>
             <button class="delete-address" type="button">Delete Address</button>
-        </div>
         `;
         addressList.appendChild(newAddress);
 
@@ -70,25 +69,35 @@ document.addEventListener("DOMContentLoaded", function () {
             newAddress.remove();
         });
     });
-});
 
-// Handle the Place Order button click
-document.getElementById('place-order').addEventListener('click', function () {
-    const selectedAddress = document.querySelector('input[name="selected-address"]:checked');
+    // Handle the Place Order button click
+    document.getElementById('place-order').addEventListener('click', function () {
+        const selectedAddress = document.querySelector('input[name="selected-address"]:checked');
+        const firstName = document.getElementById('firstname').value.trim();
+        const lastName = document.getElementById('lastname').value.trim();
+        const phoneNumber = document.getElementById('phonenumber').value.trim();
 
-    if (!selectedAddress) {
-        alert('Please select an address before placing the order.');
-        return;
-    }
+        // Validate that an address is selected
+        if (!selectedAddress) {
+            alert('Please select an address before placing the order.');
+            return;
+        }
 
-    // Additional logic for placing the order can be added here
-    alert('Order placed successfully!');
+        // Validate that the first name, last name, and phone number fields are filled
+        if (!firstName || !lastName || !phoneNumber) {
+            alert('Please fill your details');
+            return;
+        }
 
-    // Clear the cart from localStorage after placing the order
-    localStorage.removeItem('cart');
+        // Additional logic for placing the order can be added here
+        alert('Order placed successfully!');
 
-    // Redirect to index.html after the alert is dismissed
-    window.location.href = '../index.html';
+        // Clear the cart from localStorage after placing the order
+        localStorage.removeItem('cart');
+
+        // Redirect to index.html after the alert is dismissed
+        window.location.href = '../index.html';
+    });
 });
 
 // Dropdown toggle logic
