@@ -349,7 +349,7 @@
 
     .topics {
         font-size: 3vw;
-        margin-left: 8%;
+        margin-left: 5%;
     }
 
     #cart-products img {
@@ -358,8 +358,9 @@
     }
 
     #cart-products p {
-        font-size: 3vw;
-        margin-left: 27%;
+        font-size: 2.5vw;
+        margin-left: 22%;
+
     }
 
     .address label {
