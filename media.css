@@ -230,6 +230,11 @@
         right: 0;
     }
 
+
+    .contact::before {
+        height: 100%;
+    }
+
     .contactinfo {
         margin-top: -15%;
         left: -12%;
@@ -244,7 +249,6 @@
 
         width: 90vw !important;
         height: 65vh;
-
         margin-top: 18%;
         margin-left: 5vw;
     }
