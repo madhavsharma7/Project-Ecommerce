@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const phoneNumber = document.getElementById('phonenumber').value.trim();
 
         // Validate that an address is selected
-        if (!selectedAddress || !firstName || !lastName || !phoneNumber) {
+        if (!selectedAddress) {
             alert('Please select an address before placing the order.');
             return;
         }
