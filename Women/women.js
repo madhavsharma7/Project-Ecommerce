@@ -21,7 +21,7 @@ let displayproducts = async () => {
                     <img src="${element.image}" alt="${element.title}">
                   <h2>${element.title}</h2>
                   <p>Price: Rs ${element.price}</p>
-                  <p>Rating: ${element.rating.rate}<span class="star"> * </span></p>'  
+                  <p>Rating: ${element.rating.rate}<span class="star"> * </span></p>
                 </a>
                   <button class="addtocartbtn" data-index="${index}">Add to Cart</button>
             </div>`;
