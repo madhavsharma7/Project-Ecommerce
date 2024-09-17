@@ -22,8 +22,8 @@ let displayproducts = async () => {
                   <h2>${element.title}</h2>
                   <p>Price: Rs ${element.price}</p>
                   <p>Rating: ${element.rating.rate}<span class="star"> * </span></p>
-                  <button class="addtocartbtn" data-index="${index}">Add to Cart</button>
                 </a>
+                  <button class="addtocartbtn" data-index="${index}">Add to Cart</button>
             </div>`;
     });
 
@@ -71,7 +71,7 @@ let showProductDetails = async () => {
     let addToCartButton = document.querySelector('.addtocartbtn');
     if (addToCartButton) {
         addToCartButton.addEventListener('click', () => {
-            addtocart(finalProduct.image, finalProduct.title, finalProduct.price,finalProduct.id);
+            addtocart(finalProduct.image, finalProduct.title, finalProduct.price, finalProduct.id);
         });
     } else {
         console.error('Add to Cart button not found!');
@@ -81,35 +81,35 @@ let showProductDetails = async () => {
 // Call the function directly
 showProductDetails();
 
-let removeFromCart = (cartItemId , id, price) => {
-    id=String(id)
-   // console.log(`Attempting to remove item with ID: ${cartItemId}`); // Debugging
+let removeFromCart = (cartItemId, id, price) => {
+    id = String(id)
+    // console.log(`Attempting to remove item with ID: ${cartItemId}`); // Debugging
 
     // Find the cart item by its ID and remove it
     let cartItem = document.getElementById(cartItemId);
 
     if (cartItem) {
         cartItem.remove();
-       // console.log(`Removed item with ID: ${cartItemId} and ${id}`); // Debugging
+        // console.log(`Removed item with ID: ${cartItemId} and ${id}`); // Debugging
 
         // Decrement the cart count and update the display
         cartCount--;
         document.getElementById('cart-count').textContent = cartCount;
 
-         // Subtract the item's price from the total price
+        // Subtract the item's price from the total price
         totalPrice -= parseFloat(price);
         document.getElementById('total-price').textContent = totalPrice.toFixed(2);
 
-        } else {
+    } else {
         // console.log(`Item with ID: ${cartItemId} not found`); // Debugging
     }
-    
+
 };
 
 
 // Cart
-let addtocart = (image, title, price,id) => {
-    id=String(id);
+let addtocart = (image, title, price, id) => {
+    id = String(id);
 
 
     // Check if the product is already in the cart
@@ -140,7 +140,7 @@ let addtocart = (image, title, price,id) => {
              </div>
         </div> 
     `;
- // Increment the cart count
+    // Increment the cart count
     cartCount++;
     // Update the cart count display
     document.getElementById('cart-count').textContent = cartCount;
@@ -153,7 +153,7 @@ let addtocart = (image, title, price,id) => {
     addedProductIds.add(id);
 
     setupQuantityControls();
-   
+
 };
 
 // Open cart sidebar
@@ -210,26 +210,26 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbxaj313DuVqK31lwwMgB4
 // Subscription Form Submission
 const subscriptionForm = document.forms['subscription-form'];
 if (subscriptionForm) {
-  subscriptionForm.addEventListener('submit', e => {
-    e.preventDefault();
+    subscriptionForm.addEventListener('submit', e => {
+        e.preventDefault();
 
-    fetch(scriptURL, { 
-      method: 'POST',  
-      body: new FormData(subscriptionForm)
-    })
-    .then(response => {
-      if (response.ok) {
-        alert("Thank you for subscribing! You will receive updates soon.");
-        subscriptionForm.reset(); // Optionally reset the form after submission
-      } else {
-        alert("There was an issue with your subscription. Please try again.");
-      }
-    })
-    .catch(error => {
-      console.error('Error!', error.message);
-      alert("There was an error submitting your subscription. Please try again later.");
+        fetch(scriptURL, {
+            method: 'POST',
+            body: new FormData(subscriptionForm)
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert("Thank you for subscribing! You will receive updates soon.");
+                    subscriptionForm.reset(); // Optionally reset the form after submission
+                } else {
+                    alert("There was an issue with your subscription. Please try again.");
+                }
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert("There was an error submitting your subscription. Please try again later.");
+            });
     });
-  });
 }
 
 document.querySelector('.dropdown-btn').addEventListener('click', function () {

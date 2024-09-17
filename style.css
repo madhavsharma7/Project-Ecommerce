@@ -1195,7 +1195,8 @@ h6 {
 
 #address-list input[type="radio"] {
     margin-right: 2%;
-
+    margin-top: 1.5vh;
+    margin-bottom: 1.5%;
 }
 
 #address-list input[type="text"] {
@@ -1222,7 +1223,7 @@ h6 {
 }
 
 /* Delete address button */
-span {
+#delicon {
     display: none;
 }
 

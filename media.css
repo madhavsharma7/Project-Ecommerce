@@ -392,7 +392,11 @@
 
     .select-address label {
         font-size: 3vw;
-        top: -10vh;
+    }
+
+    .select-address input[type="radio"] {
+        margin-left: -1.2vw;
+
     }
 
     #add-address {
@@ -403,15 +407,17 @@
         display: none;
     }
 
-    span {
-        display: inline-block;
-        cursor: pointer;
-        color: #ff0000;
-        font-size: 4vw;
+    #address-list input[type="text"] {
+        font-size: 3vw;
+        width: 57vw;
     }
 
-
-
+    #delicon {
+        display: inline-block;
+        cursor: pointer;
+        color: white;
+        font-size: 3vw;
+    }
 }
 
 

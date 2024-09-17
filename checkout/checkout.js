@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <input type="radio" name="selected-address" value="New Address" required>
             <input type="text" name="new-address" placeholder="Enter new address" required>
             <button class="delete-address" id="dlt" type="button">Delete Address</button>
-            <span class="delete-address">
+            <span class="delete-address" id="delicon">
             <i class="fa fa-trash" aria-hidden="true"></i>
             </span>
         
@@ -70,6 +70,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Add delete address functionality
         newAddress.querySelector('.delete-address').addEventListener('click', function () {
+            newAddress.remove();
+        });
+        newAddress.querySelector('#delicon').addEventListener('click', function () {
             newAddress.remove();
         });
     });
