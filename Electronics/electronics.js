@@ -33,10 +33,7 @@ let displayproducts = async () => {
             let index = button.getAttribute('data-index');
             let selectedProduct = finalproducts[index];
             addtocart(selectedProduct.image, selectedProduct.title, selectedProduct.price, selectedProduct.id);
-            // if (selectedProduct) {  
-            // } else {
-            //     console.error(`Product at index ${index} is undefined`);
-            // }
+
         });
     });
 };
