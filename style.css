@@ -257,6 +257,7 @@
 
 .buy button {
     border: none;
+    cursor: pointer;
     background-color: #1F316F;
     color: white;
     padding: 2%;
@@ -1065,7 +1066,7 @@ h6 {
 .mySlides img {
     padding-top: 4%;
     width: 100%;
-    height: 90vh;
+    height: 95vh;
     vertical-align: middle;
 }
 
