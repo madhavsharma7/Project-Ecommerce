@@ -1,5 +1,7 @@
 @media screen and (max-width: 600px) {
 
+
+
     .search {
         display: none;
     }
@@ -308,6 +310,12 @@
 
     }
 
+    .buy button {
+        font-size: 5vw;
+        color: white;
+
+    }
+
     #close-cart {
         font-size: 12vw;
     }
@@ -330,11 +338,6 @@
 
     #cart-total h3 {
         font-size: 4vw;
-    }
-
-    .buy button {
-        font-size: 5vw;
-        color: white;
     }
 
     /* checkout page */

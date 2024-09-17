@@ -16,6 +16,10 @@
            font-size: 6vw;
        }
 
+       .hide {
+           display: block;
+       }
+
        .navbar-icons a {
            position: relative;
            left: -40%;
@@ -352,8 +356,7 @@
 
        .buy button {
            font-size: 5vw;
-           color: black;
-           border: 1px solid black;
+           color: white;
        }
 
 

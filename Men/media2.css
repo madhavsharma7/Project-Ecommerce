@@ -23,6 +23,10 @@
            padding: 2vw;
        }
 
+       .hide {
+           display: block;
+       }
+
        .nav-items {
            position: fixed;
            top: 6%;
@@ -328,6 +332,12 @@
 
        }
 
+       .buy button {
+           font-size: 5vw;
+           color: white;
+
+       }
+
        #close-cart {
            font-size: 12vw;
        }
@@ -350,11 +360,7 @@
            font-size: 4vw;
        }
 
-       .buy button {
-           font-size: 5vw;
-           color: black;
-           border: 1px solid black;
-       }
+
 
 
    }

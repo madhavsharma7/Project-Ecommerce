@@ -12,6 +12,10 @@
            display: none;
        }
 
+       .hide {
+           display: block;
+       }
+
        .logo a {
            font-size: 6vw;
        }
@@ -352,7 +356,7 @@
 
        .buy button {
            font-size: 5vw;
-           color: black;
-           border: 1px solid black;
+           color: white;
+
        }
    }
