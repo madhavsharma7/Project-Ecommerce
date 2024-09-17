@@ -106,6 +106,7 @@ let removeFromCart = (cartItemId, id, price) => {
 
 };
 
+// check out 
 
 // Cart
 let addtocart = (image, title, price, id) => {
