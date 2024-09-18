@@ -6,7 +6,7 @@ loginForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const emailInput = loginForm.querySelector('input[name="email"]').value;
-    const passwordInput = loginForm.querySelector('input[name="pswd"]').value;
+    const passwordInput = loginForm.querySelector('input[name="password"]').value;
 
     console.log(`Attempting login with email: ${emailInput}, password: ${passwordInput}`);
 
@@ -26,7 +26,7 @@ loginForm.addEventListener('submit', (event) => {
                 localStorage.setItem('userName', user.username);
 
                 // Redirect to index.html
-                window.location.href = "./index.html";
+                window.location.href = "../index.html";
             } else {
                 // console.log('Invalid email or password');
                 alert('Invalid email or password');
@@ -43,7 +43,7 @@ loginForm.addEventListener('submit', (event) => {
 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('signup');
-    
+
     if (form) {
         form.addEventListener('submit', async function (event) {
             event.preventDefault(); // Prevent form from submitting the default way
@@ -90,9 +90,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Parse the response JSON
                 const result = await response.json();
 
-            
+
                 // Log the entire response to see what data is being returned
-                
+
                 // console.log('API Response:', result);
 
                 if (response.ok) {
@@ -112,4 +112,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
- 
+

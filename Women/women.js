@@ -3,6 +3,7 @@ let cartCount = 0;
 let cartItemIdCounter = 0;
 let totalPrice = 0;
 let addedProductIds = new Set();
+let cartItems = [];
 
 
 function toggleNavbar() {
@@ -10,12 +11,22 @@ function toggleNavbar() {
     navbar.classList.toggle('active');
 }
 
-let displayproducts = async () => {
-    let response = await fetch("https://fakestoreapi.com/products/category/women's clothing");
-    finalproducts = await response.json();
+let displayproducts = async (searchTerm = "") => {
+    try {
 
-    finalproducts.forEach((element, index) => {
-        showproductdiv.innerHTML += `
+        let response = await fetch("https://fakestoreapi.com/products/category/women's clothing");
+        finalproducts = await response.json();
+
+        // Trim the search term to avoid extra spaces affecting the filtering
+        let trimmedSearchTerm = searchTerm.trim().toLowerCase();
+
+        // Filter products based on the search term
+        let filteredProducts = finalproducts.filter(element =>
+            element.title.toLowerCase().includes(trimmedSearchTerm)
+        );
+
+        finalproducts.forEach((element, index) => {
+            showproductdiv.innerHTML += `
             <div class="product-items">
                 <a href="../Single/single.html?id=${element.id}">
                     <img src="${element.image}" alt="${element.title}">
@@ -25,23 +36,45 @@ let displayproducts = async () => {
                 </a>
                   <button class="addtocartbtn" data-index="${index}">Add to Cart</button>
             </div>`;
-    });
-
-    // Add event listeners to buttons
-    document.querySelectorAll('.addtocartbtn').forEach(button => {
-        button.addEventListener("click", () => {
-            let index = button.getAttribute('data-index');
-            let selectedProduct = finalproducts[index];
-            addtocart(selectedProduct.image, selectedProduct.title, selectedProduct.price, selectedProduct.id);
-            // if (selectedProduct) {  
-            // } else {
-            //     console.error(`Product at index ${index} is undefined`);
-            // }
         });
-    });
+
+        // Handle case when no products are found
+        if (filteredProducts.length === 0) {
+            showproductdiv.innerHTML = '<p>No products found.</p>';
+        }
+
+        // Add event listeners to buttons
+        document.querySelectorAll('.addtocartbtn').forEach(button => {
+            button.addEventListener("click", () => {
+                let index = button.getAttribute('data-index');
+                let selectedProduct = finalproducts[index];
+                addtocart(selectedProduct.image, selectedProduct.title, selectedProduct.price, selectedProduct.id);
+
+            });
+        });
+    } catch (error) {
+        console.error("error fetching or displaying products:", error);
+    }
 };
 
-displayproducts();
+// Search bar 
+document.addEventListener("DOMContentLoaded", () => {
+    // Add event listener to search input
+    document.getElementById('searchInput').addEventListener('input', (event) => {
+        let searchTerm = event.target.value;
+        displayproducts(searchTerm);  // Update displayed products based on search term
+    });
+
+    // Add event listener to search icon
+    document.getElementById('searchButton').addEventListener('click', () => {
+        let searchTerm = document.getElementById('searchInput').value;
+        displayproducts(searchTerm);  // Update displayed products based on search term
+    });
+
+    // Display products on initial load without search term
+    displayproducts();  // Load all products when the page is loaded
+});
+
 
 // SIngle Product
 
@@ -100,6 +133,11 @@ let removeFromCart = (cartItemId, id, price) => {
         totalPrice -= parseFloat(price);
         document.getElementById('total-price').textContent = totalPrice.toFixed(2);
 
+        // Update the cart in localStorage
+        let cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+        cartProducts = cartProducts.filter(product => product.id !== id);
+        localStorage.setItem('cart', JSON.stringify(cartProducts));
+
     } else {
         // console.log(`Item with ID: ${cartItemId} not found`); // Debugging
     }
@@ -153,6 +191,12 @@ let addtocart = (image, title, price, id) => {
     // Add the product ID to the Set
     addedProductIds.add(id);
 
+    // Add the item to cartItems array
+    cartItems.push({ id, image, title, price: parseFloat(price), quantity: 1 });
+
+    // Save the cart items to localStorage
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+
     setupQuantityControls();
 
 };
@@ -176,7 +220,9 @@ function setupQuantityControls() {
         const quantityElement = container.querySelector('.quantity');
         const minusButton = container.querySelector('.minus');
         const plusButton = container.querySelector('.plus');
-        const price = parseFloat(container.closest('.cart-item').dataset.price); // Use parseFloat to handle decimal values
+        const cartItemElement = container.closest('.cart-item');
+        const id = cartItemElement.dataset.id;
+        const price = parseFloat(cartItemElement.dataset.price);
         let quantity = parseInt(quantityElement.textContent);
         let totalPrice = parseFloat(document.getElementById('total-price').textContent);
 
@@ -185,11 +231,17 @@ function setupQuantityControls() {
                 quantity--;
                 quantityElement.textContent = quantity;
                 totalPrice -= price;
+
+                // Update the quantity in the cartItems array
+                const item = cartItems.find(item => item.id === id);
+                if (item) item.quantity = quantity;
             }
             else {
                 totalPrice -= price;
-                quantity = 0;
-                container.closest('.cart-item').remove();
+                cartItemElement.remove();
+
+                // Remove the item from the cartItems array
+                cartItems = cartItems.filter(item => item.id !== id);
             }
             document.getElementById('total-price').textContent = totalPrice.toFixed(2);
         });
@@ -199,12 +251,19 @@ function setupQuantityControls() {
             quantity++;
             totalPrice += price;
             quantityElement.textContent = quantity;
+
+            // Update the quantity in the cartItems array
+            const item = cartItems.find(item => item.id === id);
+            if (item) item.quantity = quantity;
+
+            // Save the updated cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+
             document.getElementById('total-price').textContent = totalPrice.toFixed(2);
         });
 
     });
 }
-
 
 const scriptURL = 'https://script.google.com/macros/s/AKfycbxaj313DuVqK31lwwMgB401ogmYKFA7z9QnJ6UvjkhUbO-_86nhoehmO7ep5whhVRuxww/exec';
 
@@ -232,7 +291,6 @@ if (subscriptionForm) {
             });
     });
 }
-
 
 document.querySelector('.dropdown-btn').addEventListener('click', function () {
     document.querySelector('.dropdown-content').classList.toggle('show');

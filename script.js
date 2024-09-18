@@ -236,7 +236,7 @@ function setupQuantityControls() {
             }
 
             // Save the updated cart to localStorage
-            localStorage.setItem('cart', JSON.stringify(cartItems));
+            // localStorage.setItem('cart', JSON.stringify(cartItems));
 
             document.getElementById('total-price').textContent = totalPrice.toFixed(2);
         });
