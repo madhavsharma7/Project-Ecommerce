@@ -1,9 +1,5 @@
    @media screen and (max-width: 600px) {
 
-       .show {
-           display: none;
-       }
-
        .search {
            display: none;
        }
@@ -20,33 +16,17 @@
            font-size: 6vw;
        }
 
+       .navbar-icons a {
+           position: relative;
+           left: -40%;
+           font-size: 5vw;
+           padding: 2vw;
+       }
+
        .hide {
            display: block;
        }
 
-       #burger-menu {
-           position: relative;
-           left: 41vw;
-           display: flex;
-       }
-
-       #user-link {
-           color: white;
-           text-align: center;
-           font-size: 5vw;
-
-       }
-
-       #navbar.active .nav-items {
-           right: 0;
-       }
-
-       .navbar-icons a {
-           position: relative;
-           left: -12vw;
-           font-size: 5vw;
-           padding: 2vw;
-       }
 
        .nav-items {
            position: fixed;
@@ -61,17 +41,21 @@
            align-items: center;
            justify-content: center;
            transition: right 0.3s ease-in-out;
-
        }
 
-       .nav-items ul li a {
-           gap: 5%;
-           font-size: 5vw;
-           /* Larger font size for smaller screens */
+       .nav-items ul {
+           flex-direction: column;
+           gap: 2rem;
        }
 
-       .nav-items ul li {
-           margin-bottom: 5vh;
+       #burger-menu {
+           position: relative;
+           left: 47vw;
+           display: flex;
+       }
+
+       #navbar.active .nav-items {
+           right: 0;
        }
 
        #cart-count {
@@ -269,7 +253,6 @@
 
 
 
-
        /* Category */
 
        .product-items img {
@@ -291,31 +274,6 @@
            font-size: 3vw;
        }
 
-
-       /* Single Page */
-
-       .product-details img {
-           position: relative;
-           width: 90vw;
-           height: 70vh;
-       }
-
-       .product-details h2 {
-           font-size: 4vw;
-           justify-content: center;
-           align-items: center;
-           text-align: center;
-       }
-
-       .product-details p {
-           text-align: center;
-           font-size: 3vw;
-       }
-
-       .product-details button {
-           font-size: 3vw;
-           padding: 1vw;
-       }
 
        /* Cart */
 
@@ -353,6 +311,33 @@
        }
 
 
+       /* Single Page  */
 
+       .product-details {
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+       }
 
+       .product-details img {
+           position: relative;
+           width: 90vw;
+           height: 70vh;
+       }
+
+       .product-details h2 {
+           font-size: 4vw;
+       }
+
+       .product-details p {
+           padding-top: 2%;
+           font-size: 3vw;
+       }
+
+       .product-details button {
+           font-size: 3.5vw;
+           width: 25vw;
+           height: 5vh;
+           margin-left: 15%;
+       }
    }
