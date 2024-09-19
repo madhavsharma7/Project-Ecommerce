@@ -346,3 +346,43 @@ document.querySelector('.dropdown-btn').addEventListener('click', function () {
 });
 
 
+// login name change 
+
+document.addEventListener('DOMContentLoaded', function () {
+    const userLink = document.getElementById('user-link');
+    const userName = localStorage.getItem('userName'); // Get the stored username
+
+    if (userName) {
+        // If the user is logged in, display their username instead of 'Login'
+        userLink.textContent = userName;
+        userLink.href = "./Login/login.html"; // Optionally change the link
+    }
+});
+
+
+// Logout 
+
+document.addEventListener('DOMContentLoaded', function () {
+    const userLink = document.getElementById('user-link');
+    const logoutBtn = document.getElementById('logout-btn');
+    const userName = localStorage.getItem('userName'); // Get the stored username
+
+    if (userName) {
+        // If the user is logged in, display their username and show the logout button
+        userLink.textContent = userName;
+        userLink.href = "#"; // Optionally disable the login link
+        logoutBtn.style.display = "inline"; // Show the logout button
+    }
+
+    // Logout button functionality
+    logoutBtn.addEventListener('click', function () {
+        // Clear the stored username (or any other session info)
+        localStorage.removeItem('userName');
+
+        // Show a logout confirmation alert
+        alert('You are logged out.');
+
+        // Optionally, you can refresh the page to reflect the logout status
+        location.reload();
+    });
+});

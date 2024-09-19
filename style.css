@@ -53,7 +53,7 @@
 /* Basic styling for the navbar */
 #navbar {
     position: relative;
-    left: 9.5%;
+    left: 9%;
 }
 
 .dropdown-btn {
@@ -62,7 +62,7 @@
     padding: 10px;
     border: none;
     cursor: pointer;
-    font-size: 1.3vw;
+    font-size: 1.4vw;
 }
 
 .dropdown-content {
@@ -114,12 +114,12 @@
 .Outernav ul {
     display: flex;
     list-style: none;
-    gap: 2vw;
+    gap: 1vw;
     flex-wrap: nowrap;
 }
 
 .Outernav a {
-    font-size: 3vh;
+    font-size: 1.5vw;
     color: white;
     text-decoration: none;
 }
@@ -127,7 +127,7 @@
 .navbar-icons {
     display: flex;
     align-items: center;
-    gap: 2vw;
+    gap: 1vw;
 }
 
 .navbar-icons a {
@@ -144,7 +144,7 @@
 .search {
     display: flex;
     position: relative;
-    left: 15%;
+    left: 10%;
 }
 
 .search button {
@@ -166,6 +166,12 @@
     height: 5vh;
     border: none;
     outline: none;
+}
+
+
+#logout-btn {
+    cursor: pointer;
+    font-size: 1.4vw;
 }
 
 /*  Cart Secion */
