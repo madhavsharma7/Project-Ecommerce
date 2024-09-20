@@ -23,6 +23,15 @@
 }
 
 /* Navbar  */
+.nav-items {
+    display: none;
+}
+
+/* Show dropdown when toggled */
+.nav-items.show {
+    display: block;
+}
+
 .logo {
     font-family: "Whisper", cursive;
     color: white;
@@ -93,16 +102,16 @@
 
 }
 
-
-.dropdown-btn:hover .dropdown-content {
-    display: block;
+.dropdown-content ul li a:hover {
+    background-color: #444;
+    /* Adds a hover effect for dropdown items */
 }
 
-.hide {
+.hide-dropdown {
     display: none;
 }
 
-.show {
+.nav-items.show {
     display: block;
 }
 
@@ -136,11 +145,6 @@
     text-decoration: none;
 }
 
-#auth-link {
-    color: white;
-    align-items: center;
-}
-
 .search {
     display: flex;
     position: relative;
@@ -155,7 +159,6 @@
     color: black;
     background-color: white;
     border: none;
-    ;
 
 }
 
@@ -169,7 +172,13 @@
 }
 
 
-#logout-btn {
+#user-link-navbar {
+    color: white;
+    font-size: 1.4vw;
+    margin-top: 0.3%;
+}
+
+#logout-btn-navbar {
     cursor: pointer;
     font-size: 1.4vw;
 }

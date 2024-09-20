@@ -10,6 +10,8 @@ function toggleNavbar() {
     navbar.classList.toggle('active');
 }
 
+
+
 let displayproducts = async (searchTerm = "") => {
     try {
         let product = await fetch("https://fakestoreapi.com/products");
@@ -339,25 +341,33 @@ if (subscriptionForm) {
     });
 }
 
+// document.querySelector('.dropdown-toggle').addEventListener('click', function () {
+//     document.querySelector('.nav-items').classList.toggle('show');
+// });
 
+// Select the dropdown button and dropdown content
+const dropdownBtn = document.querySelector('.dropdown-btn');
+const dropdownContent = document.querySelector('.dropdown-content');
 
-document.querySelector('.dropdown-btn').addEventListener('click', function () {
-    document.querySelector('.dropdown-content').classList.toggle('show');
+// Add an event listener to toggle the visibility of the dropdown
+dropdownBtn.addEventListener('click', function () {
+    dropdownContent.classList.toggle('show');
 });
-
 
 // login name change 
 
 document.addEventListener('DOMContentLoaded', function () {
-    const userLink = document.getElementById('user-link');
     const userName = localStorage.getItem('userName'); // Get the stored username
+    const navbarUserLink = document.getElementById('user-link-navbar');
+    const dropdownUserLink = document.getElementById('user-link-dropdown');
 
     if (userName) {
-        // If the user is logged in, display their username instead of 'Login'
-        userLink.textContent = userName;
-        userLink.href = "./Login/login.html"; // Optionally change the link
+        // Update both the navbar and dropdown with the username
+        if (navbarUserLink) navbarUserLink.textContent = userName;
+        if (dropdownUserLink) dropdownUserLink.textContent = userName;
     }
 });
+
 
 
 // Logout 
@@ -371,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // If the user is logged in, display their username and show the logout button
         userLink.textContent = userName;
         userLink.href = "#"; // Optionally disable the login link
-        logoutBtn.style.display = "inline"; // Show the logout button
+        // logoutBtn.style.display = "inline"; // Show the logout button
     }
 
     // Logout button functionality

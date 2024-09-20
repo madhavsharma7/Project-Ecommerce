@@ -1,11 +1,10 @@
 @media screen and (max-width: 600px) {
-
-    .show {
+    .search {
         display: none;
     }
 
-    .search {
-        display: none;
+    .hide-dropdown {
+        display: block;
     }
 
     .Outernav {
@@ -20,10 +19,6 @@
         font-size: 6vw;
     }
 
-    .hide {
-        display: block;
-    }
-
     #burger-menu {
         position: relative;
         left: 41vw;
@@ -32,9 +27,7 @@
 
     #user-link {
         color: white;
-        text-align: center;
         font-size: 5vw;
-
     }
 
     #navbar.active .nav-items {
@@ -50,7 +43,7 @@
 
     .nav-items {
         position: fixed;
-        top: 6%;
+        top: 7.5%;
         right: -100%;
         height: 100vh;
         width: 80%;
@@ -61,17 +54,17 @@
         align-items: center;
         justify-content: center;
         transition: right 0.3s ease-in-out;
-
     }
 
     .nav-items ul li a {
-        gap: 5%;
         font-size: 5vw;
         /* Larger font size for smaller screens */
     }
 
     .nav-items ul li {
-        margin-bottom: 5vh;
+        margin-top: 5vh;
+        margin-bottom: 4vh;
+        text-align: center;
     }
 
     #cart-count {
