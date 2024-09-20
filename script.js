@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     const userLink = document.getElementById('user-link');
-    const logoutBtn = document.getElementById('logout-btn');
+    const logoutBtn = document.getElementById('logout-btn-navbar');
     const userName = localStorage.getItem('userName'); // Get the stored username
 
     if (userName) {
