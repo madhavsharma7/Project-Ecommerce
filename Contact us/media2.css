@@ -1,9 +1,5 @@
    @media screen and (max-width: 600px) {
 
-       .show {
-           display: none;
-       }
-
        .search {
            display: none;
        }
@@ -20,8 +16,13 @@
            font-size: 6vw;
        }
 
-       .hide {
+
+       .hide-dropdown {
            display: block;
+       }
+
+       .nav-items.show {
+           display: none;
        }
 
        #burger-menu {
@@ -34,7 +35,6 @@
            color: white;
            text-align: center;
            font-size: 5vw;
-
        }
 
        #navbar.active .nav-items {
@@ -80,6 +80,50 @@
            left: 1vw;
        }
 
+
+       /* Contact Us */
+
+       .contact::before {
+           height: 100%;
+       }
+
+       .contactinfo {
+           margin-top: -15%;
+           left: -12%;
+
+       }
+
+       .contact {
+           height: 130vh !important;
+       }
+
+       .contactForm2 {
+
+           width: 90vw !important;
+           height: 65vh;
+           margin-top: 18%;
+           margin-left: 5vw;
+       }
+
+       .contactForm2 h2 {
+           font-size: 5vw;
+           width: 100vw;
+           position: relative;
+           left: -55vw;
+       }
+
+       .formBox {
+           position: relative;
+           left: -55vw;
+           height: 5vh;
+           width: 50vw;
+       }
+
+       .formBox span {
+           font-size: 3vw !important;
+       }
+
+       /* Footer  */
        #footer {
            margin-top: 0;
            /* Remove the negative margin */
@@ -166,47 +210,7 @@
            font-size: 2.5vw;
        }
 
-       /* Contact Us */
 
-       .contact::before {
-           height: 100%;
-       }
-
-       .contactinfo {
-           margin-top: -15%;
-           left: -12%;
-
-       }
-
-       .contact {
-           height: 130vh !important;
-       }
-
-       .contactForm2 {
-
-           width: 90vw !important;
-           height: 65vh;
-           margin-top: 18%;
-           margin-left: 5vw;
-       }
-
-       .contactForm2 h2 {
-           font-size: 5vw;
-           width: 100vw;
-           position: relative;
-           left: -55vw;
-       }
-
-       .formBox {
-           position: relative;
-           left: -55vw;
-           height: 5vh;
-           width: 50vw;
-       }
-
-       .formBox span {
-           font-size: 3vw !important;
-       }
 
 
    }

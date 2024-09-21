@@ -1,9 +1,4 @@
    @media screen and (max-width: 600px) {
-
-       .show {
-           display: none;
-       }
-
        .search {
            display: none;
        }
@@ -20,9 +15,15 @@
            font-size: 6vw;
        }
 
-       .hide {
+
+       .hide-dropdown {
            display: block;
        }
+
+       .nav-items.show {
+           display: none;
+       }
+
 
        #burger-menu {
            position: relative;
