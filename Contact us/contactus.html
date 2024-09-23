@@ -69,156 +69,175 @@
                 </div>
 
             </main>
-        </div>
+            <!-- Cart Sidebar -->
+            <div id="cart-sidebar">
+                <div class="cart-header">
+                    <h2>Your Cart</h2>
+                    <span id="close-cart">&times;</span>
+                </div>
+                <div class="cart-items">
 
-        <!-- Navbar end here  -->
+                    <!-- Cart items will be dynamically added here -->
 
-        <!-- Contact Us Window -->
-
-        <section class="contact" id="contact">
-            <div class="container">
-                <div class="contactinfo">
-                    <div>
-                        <h2>Contact Info</h2>
-                        <hr>
-                        <ul class="info">
-                            <li>
-                                <span><img src="../img/location.png" alt="location image"></span>
-                                <span>One Neil Road #02-02,
-                                    Singapore 0833304</span>
-                            </li>
-                            <li>
-                                <span><img src="../img/mail.png" alt="location image"></span>
-                                <span>madcommerce@gmail.com</span>
-                            </li>
-                            <li>
-                                <span><img src="../img/telephone.png" alt="location image"></span>
-                                <span>9810688575</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <ul class="social">
-                            <li><a href="#"><img src="../img/facebook.png" alt="facebook"></a></li>
-                            <li><a href="#"><img src="../img/twitter.png" alt="twitter"></a></li>
-                            <li><a href="#"><img src="../img/whatsapp.png" alt="whatsapp"></a></li>
-                            <li><a href="#"><img src="../img/youtube.png" alt="youtube"></a></li>
-                            <li><a href="#"><img src="../img/instagram.png" alt="instagram"></a></li>
-                        </ul>
-
-                    </div>
                 </div>
 
-                <div class="contactForm2">
-                    <h2>Send a Message</h2>
-                    <form name="submit-to-google-sheet">
+                <div id="cart-total">
+                    <h3>Total Price: Rs <span id="total-price">0</span></h3>
 
-                        <div class="formBox">
+                </div>
+                <a class="buy" href="../checkout/checkout.html">
+                    <button> Checkout </button>
+                </a>
+            </div>
 
-                            <div class="inputBox w50">
-                                <input type="text" name="firstname" required>
-                                <span>First Name</span>
-                            </div>
-                            <div class="inputBox w50">
-                                <input type="text" name="lastname" required>
-                                <span>Last Name</span>
-                            </div>
-                            <div class="inputBox w50">
-                                <input type="text" name="email" required>
-                                <span>Email Address</span>
-                            </div>
-                            <div class="inputBox w50">
-                                <input type="text" name="phonenumber" required>
-                                <span>Mobile Number</span>
-                            </div>
-                            <div class="inputBox w100">
-                                <textarea name="message" required></textarea>
-                                <span>Write your message here...</span>
-                            </div>
-                            <div class="inputBox w100">
-                                <input type="submit">
-                            </div>
+            <!-- Navbar end here  -->
+
+            <!-- Contact Us Window -->
+
+            <section class="contact" id="contact">
+                <div class="container">
+                    <div class="contactinfo">
+                        <div>
+                            <h2>Contact Info</h2>
+                            <hr>
+                            <ul class="info">
+                                <li>
+                                    <span><img src="../img/location.png" alt="location image"></span>
+                                    <span>One Neil Road #02-02,
+                                        Singapore 0833304</span>
+                                </li>
+                                <li>
+                                    <span><img src="../img/mail.png" alt="location image"></span>
+                                    <span>madcommerce@gmail.com</span>
+                                </li>
+                                <li>
+                                    <span><img src="../img/telephone.png" alt="location image"></span>
+                                    <span>9810688575</span>
+                                </li>
+                            </ul>
                         </div>
-                    </form>
+                        <div>
+                            <ul class="social">
+                                <li><a href="#"><img src="../img/facebook.png" alt="facebook"></a></li>
+                                <li><a href="#"><img src="../img/twitter.png" alt="twitter"></a></li>
+                                <li><a href="#"><img src="../img/whatsapp.png" alt="whatsapp"></a></li>
+                                <li><a href="#"><img src="../img/youtube.png" alt="youtube"></a></li>
+                                <li><a href="#"><img src="../img/instagram.png" alt="instagram"></a></li>
+                            </ul>
 
-        </section>
+                        </div>
+                    </div>
 
+                    <div class="contactForm2">
+                        <h2>Send a Message</h2>
+                        <form name="submit-to-google-sheet">
 
-        <!-- Footer -->
-        <footer id="footer">
-            <div class="foot">
-                <p>Mad Commerce</p>
-            </div>
-            <hr>
-            <div class="icons2">
-                <div class="icon-item">
-                    <i class="fa-solid fa-phone fa-lg" style="color: #ffffff;"></i>
-                    <p>+91-98*****575</p>
-                </div>
-                <div class="icon-item">
-                    <i class="fa-regular fa-envelope fa-lg" style="color: white;"></i>
-                    <p>madcommerce@gmail.com</p>
-                </div>
-                <div class="icon-item">
-                    <i class="fa-solid fa-location-dot fa-lg" style="color: #eff1f5;"></i>
-                    <p>One Neil Road #02-02,<br>Singapore 0833304</p>
-                </div>
-            </div>
+                            <div class="formBox">
 
-            <div class="footer-content">
-                <ul>
-                    <p class="ul">About</p>
-                    <li><a href="#">Our Story</a></li>
-                    <li><a href="#">Awards</a></li>
-                    <li><a href="#">Our Team</a></li>
-                    <li><a href="#">Career</a></li>
-                </ul>
-                <ul>
-                    <p class="ul">Company</p>
-                    <li><a href="#">Our Services</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Press</a></li>
-                </ul>
-                <ul>
-                    <p class="ul">Resources</p>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Newsletter</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-
-                <div class="sub">
-                    <p>Subscribe</p>
-                    <div class="input-container">
-                        <form name="subscription-form">
-                            <input type="email" name="emailforsub" placeholder="Your email" required>
-                            <button type="submit" name="subscribe"> <i class="fa-solid fa-arrow-right fa-lg"></i>
-                            </button>
-                            <button class="sub" type="submit" name="subscribe"> Subscribe </button>
+                                <div class="inputBox w50">
+                                    <input type="text" name="firstname" required>
+                                    <span>First Name</span>
+                                </div>
+                                <div class="inputBox w50">
+                                    <input type="text" name="lastname" required>
+                                    <span>Last Name</span>
+                                </div>
+                                <div class="inputBox w50">
+                                    <input type="text" name="email" required>
+                                    <span>Email Address</span>
+                                </div>
+                                <div class="inputBox w50">
+                                    <input type="text" name="phonenumber" required>
+                                    <span>Mobile Number</span>
+                                </div>
+                                <div class="inputBox w100">
+                                    <textarea name="message" required></textarea>
+                                    <span>Write your message here...</span>
+                                </div>
+                                <div class="inputBox w100">
+                                    <input type="submit">
+                                </div>
+                            </div>
                         </form>
-                        <h6>Get digital marketing updates in your mailbox</h6>
+
+            </section>
+
+
+            <!-- Footer -->
+            <footer id="footer">
+                <div class="foot">
+                    <p>Mad Commerce</p>
+                </div>
+                <hr>
+                <div class="icons2">
+                    <div class="icon-item">
+                        <i class="fa-solid fa-phone fa-lg" style="color: #ffffff;"></i>
+                        <p>+91-98*****575</p>
+                    </div>
+                    <div class="icon-item">
+                        <i class="fa-regular fa-envelope fa-lg" style="color: white;"></i>
+                        <p>madcommerce@gmail.com</p>
+                    </div>
+                    <div class="icon-item">
+                        <i class="fa-solid fa-location-dot fa-lg" style="color: #eff1f5;"></i>
+                        <p>One Neil Road #02-02,<br>Singapore 0833304</p>
                     </div>
                 </div>
-            </div>
-        </footer>
 
-        <div id="footer2">
-            <div class="for-social">
-                <div class="social-icons">
-                    <a href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
-                    <a href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                <div class="footer-content">
+                    <ul>
+                        <p class="ul">About</p>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Awards</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Career</a></li>
+                    </ul>
+                    <ul>
+                        <p class="ul">Company</p>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                    <ul>
+                        <p class="ul">Resources</p>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+
+                    <div class="sub">
+                        <p>Subscribe</p>
+                        <div class="input-container">
+                            <form name="subscription-form">
+                                <input type="email" name="emailforsub" placeholder="Your email" required>
+                                <button type="submit" name="subscribe"> <i class="fa-solid fa-arrow-right fa-lg"></i>
+                                </button>
+                                <button class="sub" type="submit" name="subscribe"> Subscribe </button>
+                            </form>
+                            <h6>Get digital marketing updates in your mailbox</h6>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <div id="footer2">
+                <div class="for-social">
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter fa-lg"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                    </div>
+
+                    <a class="arrow-up" href="#container"><i class="fa-solid fa-arrow-up fa-lg"></i></a>
+
                 </div>
 
-                <a class="arrow-up" href="#container"><i class="fa-solid fa-arrow-up fa-lg"></i></a>
-
-            </div>
-
-            <div class="copyright">
-                <p>&copy; <span id="year"></span> Mad Commerce. All rights reserved.</p>
+                <div class="copyright">
+                    <p>&copy; <span id="year"></span> Mad Commerce. All rights reserved.</p>
+                </div>
             </div>
         </div>
-    </div>
 
 </body>
 <!-- <script src="../script.js"></script> -->

@@ -183,6 +183,111 @@
     font-size: 1.4vw;
 }
 
+/*  Cart Secion */
+#cart-count {
+    position: absolute;
+    top: 10px;
+    color: white;
+    background-color: red;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+#cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -50%;
+    width: 40%;
+    height: 100%;
+    background-color: white;
+    box-shadow: -3px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    overflow-y: auto;
+    transition: right 0.3s ease-in-out;
+    padding: 2vw;
+}
+
+#cart-sidebar.active {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1vw;
+    border-bottom: 1px solid #ccc;
+}
+
+.cart-header h2 {
+    font-size: 2vw;
+}
+
+#close-cart {
+    font-size: 2vw;
+    cursor: pointer;
+}
+
+.cart-items {
+    margin-top: 2vw;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #000;
+    /* Adds a 1px solid black border */
+    padding: 2%;
+    /* Optional: Adds some padding inside the border */
+    border-radius: 1%;
+}
+
+
+.cart-item img {
+    height: 8vh !important;
+    width: 4vw !important;
+}
+
+#cart-total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50%;
+}
+
+#cart-total h3 {
+    text-align: center;
+}
+
+.buy {
+    padding-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.buy button {
+    border: none;
+    cursor: pointer;
+    background-color: #1F316F;
+    color: white;
+    padding: 2%;
+    font-size: 1.4vw;
+}
+
+.dltitem {
+    font-size: 1vw;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 0.3vw;
+    border-radius: 5px;
+}
+
 /* About */
 
 .about {

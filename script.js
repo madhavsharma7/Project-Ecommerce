@@ -236,10 +236,7 @@ function setupQuantityControls() {
                 // Remove the item from the cartItems array
                 cartItems = cartItems.filter(item => item.id !== id);
             }
-
-            // Save the updated cart to localStorage
-            // localStorage.setItem('cart', JSON.stringify(cartItems));
-
+            
             document.getElementById('total-price').textContent = totalPrice.toFixed(2);
         });
 
@@ -341,9 +338,6 @@ if (subscriptionForm) {
     });
 }
 
-// document.querySelector('.dropdown-toggle').addEventListener('click', function () {
-//     document.querySelector('.nav-items').classList.toggle('show');
-// });
 
 // Select the dropdown button and dropdown content
 const dropdownBtn = document.querySelector('.dropdown-btn');
@@ -353,6 +347,8 @@ const dropdownContent = document.querySelector('.dropdown-content');
 dropdownBtn.addEventListener('click', function () {
     dropdownContent.classList.toggle('show');
 });
+
+
 
 // login name change 
 
@@ -367,8 +363,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (dropdownUserLink) dropdownUserLink.textContent = userName;
     }
 });
-
-
 
 // Logout 
 
