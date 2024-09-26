@@ -362,31 +362,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Logout 
 
-document.addEventListener('DOMContentLoaded', function () {
-    const userLink = document.getElementById('user-link');
-    const logoutBtn = document.getElementById('logout-btn-navbar');
-    const userName = localStorage.getItem('userName'); // Get the stored username
+// document.addEventListener('DOMContentLoaded', function () {
+//     const userLink = document.getElementById('user-link');
+//     const logoutBtn = document.getElementById('logout-btn-navbar');
+//     const userName = localStorage.getItem('userName'); // Get the stored username
 
-    if (userName) {
-        // If the user is logged in, display their username and show the logout button
-        userLink.textContent = userName;
-        userLink.href = "#"; // Optionally disable the login link
-        // logoutBtn.style.display = "inline"; // Show the logout button
-    }
+//     if (userName) {
+//         // If the user is logged in, display their username and show the logout button
+//         userLink.textContent = userName;
+//         userLink.href = "#"; // Optionally disable the login link
+//         // logoutBtn.style.display = "inline"; // Show the logout button
+//     }
 
-    // Logout button functionality
-    logoutBtn.addEventListener('click', function () {
-        // Clear the stored username (or any other session info)
-        localStorage.removeItem('userName');
+//     // Logout button functionality
+//     logoutBtn.addEventListener('click', function () {
+//         // Clear the stored username (or any other session info)
+//         localStorage.removeItem('userName');
 
-        // Show a logout confirmation alert
-        alert('You are logged out.');
+//         // Show a logout confirmation alert
+//         alert('You are logged out.');
 
-        // Optionally, you can refresh the page to reflect the logout status
-        location.reload();
-    });
-});
-
+//         // Optionally, you can refresh the page to reflect the logout status
+//         location.reload();
+//     });
+// });
 
 // Fetch the cart data based on userId
 function fetchCartDataForUser(userId) {
@@ -397,11 +396,9 @@ function fetchCartDataForUser(userId) {
             // console.log('Carts Data:', carts); // Log the fetched cart data
 
             const cartItemsContainer = document.getElementById('cart-items');
-            const totalPriceContainer = document.getElementById('total-price');
             cartItemsContainer.innerHTML = ''; // Clear previous cart items to avoid repetition
-            let totalPrice = 0; // Initialize total price
 
-            if (carts.length === 0) {
+            if (!carts || carts.length === 0) {
                 console.log('No cart data available for this user');
                 return; // Exit if there is no cart data
             }
@@ -421,26 +418,19 @@ function fetchCartDataForUser(userId) {
                     fetch(`https://fakestoreapi.com/products/${product.productId}`)
                         .then(res => res.json())
                         .then(productDetails => {
-                            // Calculate total price for each product (price * quantity)
-                            const productTotalPrice = productDetails.price * product.quantity;
-                            totalPrice += productTotalPrice; // Add to total price
-
                             const cartItem = document.createElement('div');
                             cartItem.classList.add('cart-entry');
 
                             // Dynamically add product details including image, name, and quantity
                             cartItem.innerHTML = `
-                        <img src="${productDetails.image}" alt="${productDetails.title}" class="cart-entry-image">
-                        <div class="cart-entry-details">
-                        <p class="cart-entry-title">${productDetails.title}</p>
-                        <p class="cart-entry-quantity">Quantity: ${product.quantity}</p>
-                        <p class="cart-entry-price">Price: Rs ${productDetails.price}</p>
-                        
-                    `;
+                                <img src="${productDetails.image}" alt="${productDetails.title}" class="cart-entry-image">
+                                <div class="cart-entry-details">
+                                    <p class="cart-entry-title">${productDetails.title}</p>
+                                    <p class="cart-entry-quantity">Quantity: ${product.quantity}</p>
+                                    <p class="cart-entry-price">Price: Rs ${productDetails.price}</p>
+                                </div>
+                            `;
                             cartItemsContainer.appendChild(cartItem);
-
-                            // Update total price in the UI
-                            totalPriceContainer.innerHTML = `${totalPrice.toFixed(2)}`;
                         })
                         .catch(err => console.log('Error fetching product details:', err));
                 });
@@ -449,34 +439,56 @@ function fetchCartDataForUser(userId) {
         .catch(err => console.log('Error fetching cart data:', err));
 }
 
+// Function to clear the cart display
+function clearCartDisplay() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    if (cartItemsContainer) {
+        cartItemsContainer.innerHTML = ''; // Clear the cart display
+    }
+}
+
 // Function to handle logout
 function logout() {
     // Clear cart items from the page
-    const cartItemsContainer = document.getElementById('cart-items');
-    cartItemsContainer.innerHTML = ''; // Clear the cart display
+    clearCartDisplay();
 
-    // Remove userId from localStorage
-    localStorage.removeItem('userId');
+    // Remove any stored cart data and user details
+    localStorage.removeItem('cartData'); // If cart is stored in localStorage
+    localStorage.removeItem('userId');   // Remove userId from localStorage
+    localStorage.removeItem('userName'); // Remove userName from localStorage
 
-    // Optional: Add an alert or message to confirm logout
+    // Optional: Show a logout confirmation
     alert('You have been logged out.');
+
+    // Optionally refresh the page to reflect logout status
+    location.reload();
 }
 
 // On page load or after login, check if userId is stored and fetch cart
 document.addEventListener('DOMContentLoaded', function () {
     const userId = localStorage.getItem('userId');
+    const userName = localStorage.getItem('userName'); // Get the stored username
+    const userLink = document.getElementById('user-link');
+    const logoutBtn = document.getElementById('logout-btn-navbar');
+
     // console.log('Loaded userId from localStorage:', userId); // Log the stored userId
+
 
     if (userId) {
         fetchCartDataForUser(userId); // Fetch the cart data if userId exists
     } else {
-        // console.log('No userId found in localStorage, please login');
+        // console.log('No userId found in localStorage, clearing cart');
+        clearCartDisplay(); // Clear cart if no user is logged in
+    }
+
+    // Display user's name in navbar if logged in
+    if (userName && userLink) {
+        userLink.textContent = userName;
+        userLink.href = "#"; // Optionally disable the login link
     }
 
     // Attach logout event listener to the logout button
-    const logoutBtn = document.getElementById('logout-btn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', logout); // Call logout when button is clicked
     }
 });
-
