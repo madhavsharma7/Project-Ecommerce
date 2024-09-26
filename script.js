@@ -10,8 +10,6 @@ function toggleNavbar() {
     navbar.classList.toggle('active');
 }
 
-
-
 let displayproducts = async (searchTerm = "") => {
     try {
         let product = await fetch("https://fakestoreapi.com/products");
@@ -57,7 +55,7 @@ let displayproducts = async (searchTerm = "") => {
             });
         });
     } catch (error) {
-        console.error("error fetching or displaying products:", error);
+        // console.error("error fetching or displaying products:", error);
     }
 }
 
@@ -236,7 +234,7 @@ function setupQuantityControls() {
                 // Remove the item from the cartItems array
                 cartItems = cartItems.filter(item => item.id !== id);
             }
-            
+
             document.getElementById('total-price').textContent = totalPrice.toFixed(2);
         });
 
@@ -348,8 +346,6 @@ dropdownBtn.addEventListener('click', function () {
     dropdownContent.classList.toggle('show');
 });
 
-
-
 // login name change 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -390,3 +386,97 @@ document.addEventListener('DOMContentLoaded', function () {
         location.reload();
     });
 });
+
+
+// Fetch the cart data based on userId
+function fetchCartDataForUser(userId) {
+    // console.log('Fetching cart for userId:', userId); // Log userId to make sure it's correct
+    fetch(`https://fakestoreapi.com/carts/user/${userId}`)
+        .then(res => res.json())
+        .then(carts => {
+            // console.log('Carts Data:', carts); // Log the fetched cart data
+
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalPriceContainer = document.getElementById('total-price');
+            cartItemsContainer.innerHTML = ''; // Clear previous cart items to avoid repetition
+            let totalPrice = 0; // Initialize total price
+
+            if (carts.length === 0) {
+                console.log('No cart data available for this user');
+                return; // Exit if there is no cart data
+            }
+
+            // Loop through each cart and display products
+            carts.forEach(cart => {
+                const productIds = new Set(); // Use a Set to avoid duplicate productIds
+
+                cart.products.forEach(product => {
+                    if (productIds.has(product.productId)) {
+                        // If productId already exists, skip to avoid duplicates
+                        return;
+                    }
+                    productIds.add(product.productId); // Track the unique productIds
+
+                    // Fetch product details using productId
+                    fetch(`https://fakestoreapi.com/products/${product.productId}`)
+                        .then(res => res.json())
+                        .then(productDetails => {
+                            // Calculate total price for each product (price * quantity)
+                            const productTotalPrice = productDetails.price * product.quantity;
+                            totalPrice += productTotalPrice; // Add to total price
+
+                            const cartItem = document.createElement('div');
+                            cartItem.classList.add('cart-entry');
+
+                            // Dynamically add product details including image, name, and quantity
+                            cartItem.innerHTML = `
+                        <img src="${productDetails.image}" alt="${productDetails.title}" class="cart-entry-image">
+                        <div class="cart-entry-details">
+                        <p class="cart-entry-title">${productDetails.title}</p>
+                        <p class="cart-entry-quantity">Quantity: ${product.quantity}</p>
+                        <p class="cart-entry-price">Price: Rs ${productDetails.price}</p>
+                        
+                    `;
+                            cartItemsContainer.appendChild(cartItem);
+
+                            // Update total price in the UI
+                            totalPriceContainer.innerHTML = `${totalPrice.toFixed(2)}`;
+                        })
+                        .catch(err => console.log('Error fetching product details:', err));
+                });
+            });
+        })
+        .catch(err => console.log('Error fetching cart data:', err));
+}
+
+// Function to handle logout
+function logout() {
+    // Clear cart items from the page
+    const cartItemsContainer = document.getElementById('cart-items');
+    cartItemsContainer.innerHTML = ''; // Clear the cart display
+
+    // Remove userId from localStorage
+    localStorage.removeItem('userId');
+
+    // Optional: Add an alert or message to confirm logout
+    alert('You have been logged out.');
+}
+
+// On page load or after login, check if userId is stored and fetch cart
+document.addEventListener('DOMContentLoaded', function () {
+    const userId = localStorage.getItem('userId');
+    // console.log('Loaded userId from localStorage:', userId); // Log the stored userId
+
+    if (userId) {
+        fetchCartDataForUser(userId); // Fetch the cart data if userId exists
+    } else {
+        // console.log('No userId found in localStorage, please login');
+    }
+
+    // Attach logout event listener to the logout button
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', logout); // Call logout when button is clicked
+    }
+});
+

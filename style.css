@@ -288,6 +288,46 @@
     border-radius: 5px;
 }
 
+/* User cart data  */
+.cart-entry {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.cart-entry-image {
+    width: 4vw;
+    height: 8vh;
+    margin-right: 5%;
+}
+
+.cart-entry-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cart-entry-title {
+    font-size: 1.2vw;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.cart-entry-quantity {
+    color: black;
+    font-size: 1.1vw;
+    margin-bottom: 1%;
+}
+
+.cart-entry-price {
+    color: black;
+    font-size: 1.1vw;
+    margin-bottom: 1%;
+}
+
+
 /* Services */
 #services {
     display: flex;

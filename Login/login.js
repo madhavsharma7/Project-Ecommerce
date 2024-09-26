@@ -24,6 +24,9 @@ loginForm.addEventListener('submit', (event) => {
 
                 // Store the user's name in localStorage to access it in index.html
                 localStorage.setItem('userName', user.username);
+                localStorage.setItem('userId', user.id);
+
+                console.log('Stored userId:', user.id); // Check if userId is being stored properly
 
                 // Redirect to index.html
                 window.location.href = "../index.html";

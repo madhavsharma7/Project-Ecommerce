@@ -362,9 +362,29 @@
         color: white;
         font-size: 3vw;
     }
+
+    /* User cart */
+
+    .cart-entry-image {
+        height: 10vh;
+        width: 12vw;
+    }
+
+    .cart-entry-title {
+        font-size: 3.5vw;
+    }
+
+    .cart-entry-quantity {
+        font-size: 3.5vw;
+    }
+
+    .cart-entry-price {
+        font-size: 3.2vw;
+    }
 }
 
 
+/* Carousel */
 @media screen and (max-width: 600px) {
     .slideshow-container {
         height: 100%;
