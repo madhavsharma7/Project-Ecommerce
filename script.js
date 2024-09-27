@@ -367,8 +367,6 @@ function fetchCartDataForUser(userId) {
     fetch(`https://fakestoreapi.com/carts/user/${userId}`)
         .then(res => res.json())
         .then(carts => {
-            // console.log('Carts Data:', carts); // Log the fetched cart data
-
             const cartItemsContainer = document.getElementById('cart-items');
             cartItemsContainer.innerHTML = ''; // Clear previous cart items to avoid repetition
 
@@ -376,6 +374,7 @@ function fetchCartDataForUser(userId) {
                 console.log('No cart data available for this user');
                 return; // Exit if there is no cart data
             }
+            const cartItems = [];
             let fetchedTotal = 0;
 
             // Loop through each cart and display products
@@ -410,9 +409,22 @@ function fetchCartDataForUser(userId) {
                             const productTotalPrice = parseFloat(productDetails.price) * product.quantity;
                             fetchedTotal += productTotalPrice;
 
+                            // add the product to cartitems array 
+                            cartItems.push({
+                                id: product.productId,
+                                image: productDetails.image,
+                                title: productDetails.title,
+                                price: parseFloat(productDetails.price),
+                                quantity: product.quantity
+                            });
+
                             // Update the global total price with the fetched items' total
                             totalPrice += productTotalPrice;
                             document.getElementById('total-price').textContent = totalPrice.toFixed(2); // Update total price display
+
+                            // Save cart data and total price to localStorage for persistence
+                            localStorage.setItem('cart', JSON.stringify(cartItems));
+                            localStorage.setItem('totalPrice', fetchedTotal.toFixed(2));
                         })
                         .catch(err => console.log('Error fetching product details:', err));
                 });
