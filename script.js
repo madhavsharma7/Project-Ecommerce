@@ -376,6 +376,7 @@ function fetchCartDataForUser(userId) {
                 console.log('No cart data available for this user');
                 return; // Exit if there is no cart data
             }
+            let fetchedTotal = 0;
 
             // Loop through each cart and display products
             carts.forEach(cart => {
@@ -405,6 +406,13 @@ function fetchCartDataForUser(userId) {
                                 </div>
                             `;
                             cartItemsContainer.appendChild(cartItem);
+
+                            const productTotalPrice = parseFloat(productDetails.price) * product.quantity;
+                            fetchedTotal += productTotalPrice;
+
+                            // Update the global total price with the fetched items' total
+                            totalPrice += productTotalPrice;
+                            document.getElementById('total-price').textContent = totalPrice.toFixed(2); // Update total price display
                         })
                         .catch(err => console.log('Error fetching product details:', err));
                 });
