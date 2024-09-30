@@ -431,7 +431,6 @@ function fetchCartDataForUser(userId) {
                             // Update the cart count display
                             document.getElementById('cart-count').textContent = cartCount;
 
-
                             // Save cart data and total price to localStorage for persistence
                             localStorage.setItem('cart', JSON.stringify(cartItems));
                             localStorage.setItem('totalPrice', fetchedTotal.toFixed(2));
@@ -475,7 +474,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const userName = localStorage.getItem('userName'); // Get the stored username
     const userLink = document.getElementById('user-link');
     const logoutBtn = document.getElementById('logout-btn-navbar');
-
+    const logoutBtnResp = document.getElementById('logout-btn'); // For responsive
     // console.log('Loaded userId from localStorage:', userId); // Log the stored userId
 
     if (userId) {
@@ -494,5 +493,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Attach logout event listener to the logout button
     if (logoutBtn) {
         logoutBtn.addEventListener('click', logout); // Call logout when button is clicked
+    }
+
+    if (logoutBtnResp) {
+        logoutBtnResp.addEventListener('click', logout); // Responsive view logout
     }
 });
