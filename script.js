@@ -388,6 +388,9 @@ function fetchCartDataForUser(userId) {
                     }
                     productIds.add(product.productId); // Track the unique productIds
 
+                    let cartItemsContainer = document.querySelector('.cart-items');
+                    // Increment the cart item ID counter for the next item
+                    cartItemIdCounter++;
                     // Fetch product details using productId
                     fetch(`https://fakestoreapi.com/products/${product.productId}`)
                         .then(res => res.json())
@@ -409,6 +412,7 @@ function fetchCartDataForUser(userId) {
                             const productTotalPrice = parseFloat(productDetails.price) * product.quantity;
                             fetchedTotal += productTotalPrice;
 
+
                             // add the product to cartitems array 
                             cartItems.push({
                                 id: product.productId,
@@ -422,6 +426,12 @@ function fetchCartDataForUser(userId) {
                             totalPrice += productTotalPrice;
                             document.getElementById('total-price').textContent = totalPrice.toFixed(2); // Update total price display
 
+                            // Increment the cart count
+                            cartCount++;
+                            // Update the cart count display
+                            document.getElementById('cart-count').textContent = cartCount;
+
+
                             // Save cart data and total price to localStorage for persistence
                             localStorage.setItem('cart', JSON.stringify(cartItems));
                             localStorage.setItem('totalPrice', fetchedTotal.toFixed(2));
@@ -429,6 +439,7 @@ function fetchCartDataForUser(userId) {
                         .catch(err => console.log('Error fetching product details:', err));
                 });
             });
+
         })
         .catch(err => console.log('Error fetching cart data:', err));
 }
