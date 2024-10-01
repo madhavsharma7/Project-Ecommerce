@@ -16,17 +16,38 @@
            font-size: 6vw;
        }
 
-       .navbar-icons a {
-           position: relative;
-           left: -40%;
-           font-size: 5vw;
-           padding: 2vw;
-       }
 
-       .hide {
+       .hide-dropdown {
            display: block;
        }
 
+       .nav-items.show {
+           display: none;
+       }
+
+
+       #burger-menu {
+           position: relative;
+           left: 41vw;
+           display: flex;
+       }
+
+       #user-link {
+           color: white;
+           text-align: center;
+           font-size: 5vw;
+       }
+
+       #navbar.active .nav-items {
+           right: 0;
+       }
+
+       .navbar-icons a {
+           position: relative;
+           left: -12vw;
+           font-size: 5vw;
+           padding: 2vw;
+       }
 
        .nav-items {
            position: fixed;
@@ -41,21 +62,17 @@
            align-items: center;
            justify-content: center;
            transition: right 0.3s ease-in-out;
+
        }
 
-       .nav-items ul {
-           flex-direction: column;
-           gap: 2rem;
+       .nav-items ul li a {
+           gap: 5%;
+           font-size: 5vw;
+           /* Larger font size for smaller screens */
        }
 
-       #burger-menu {
-           position: relative;
-           left: 47vw;
-           display: flex;
-       }
-
-       #navbar.active .nav-items {
-           right: 0;
+       .nav-items ul li {
+           margin-bottom: 5vh;
        }
 
        #cart-count {
@@ -63,6 +80,7 @@
            top: -2vh;
            left: 1vw;
        }
+
 
        #services {
            margin-top: -20%;
