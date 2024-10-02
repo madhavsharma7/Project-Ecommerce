@@ -360,88 +360,96 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
-// Fetch the cart data based on userId
 function fetchCartDataForUser(userId) {
-    // console.log('Fetching cart for userId:', userId); // Log userId to make sure it's correct
     fetch(`https://fakestoreapi.com/carts/user/${userId}`)
         .then(res => res.json())
         .then(carts => {
             const cartItemsContainer = document.getElementById('cart-items');
-            cartItemsContainer.innerHTML = ''; // Clear previous cart items to avoid repetition
+            cartItemsContainer.innerHTML = ''; // Clear previous cart items
 
             if (!carts || carts.length === 0) {
                 console.log('No cart data available for this user');
                 return; // Exit if there is no cart data
             }
-            const cartItems = [];
-            let fetchedTotal = 0;
 
-            // Loop through each cart and display products
+            const cartItemsMap = new Map(); // Map to store productId and combined details
+            let totalPrice = 0;
+
+            // Loop through each cart and process products
             carts.forEach(cart => {
-                const productIds = new Set(); // Use a Set to avoid duplicate productIds
-
                 cart.products.forEach(product => {
-                    if (productIds.has(product.productId)) {
-                        // If productId already exists, skip to avoid duplicates
-                        return;
+                    const productId = product.productId;
+
+                    // Check if the product already exists in the cartItemsMap
+                    if (cartItemsMap.has(productId)) {
+                        // If product already exists, increase its quantity
+                        cartItemsMap.get(productId).quantity += product.quantity;
+                    } else {
+                        // Fetch product details and add it to the map
+                        fetch(`https://fakestoreapi.com/products/${productId}`)
+                            .then(res => res.json())
+                            .then(productDetails => {
+                                cartItemsMap.set(productId, {
+                                    id: productId,
+                                    image: productDetails.image,
+                                    title: productDetails.title,
+                                    price: parseFloat(productDetails.price),
+                                    quantity: product.quantity
+                                });
+
+                                // Update the UI and calculate totals
+                                updateCartUI(cartItemsMap, cartItemsContainer);
+                                calculateTotals(cartItemsMap);
+                            })
+                            .catch(err => console.log('Error fetching product details:', err));
                     }
-                    productIds.add(product.productId); // Track the unique productIds
-
-                    let cartItemsContainer = document.querySelector('.cart-items');
-                    // Increment the cart item ID counter for the next item
-                    cartItemIdCounter++;
-                    // Fetch product details using productId
-                    fetch(`https://fakestoreapi.com/products/${product.productId}`)
-                        .then(res => res.json())
-                        .then(productDetails => {
-                            const cartItem = document.createElement('div');
-                            cartItem.classList.add('cart-entry');
-
-                            // Dynamically add product details including image, name, and quantity
-                            cartItem.innerHTML = `
-                                <img src="${productDetails.image}" alt="${productDetails.title}" class="cart-entry-image">
-                                <div class="cart-entry-details">
-                                    <p class="cart-entry-title">${productDetails.title}</p>
-                                    <p class="cart-entry-quantity">Quantity: ${product.quantity}</p>
-                                    <p class="cart-entry-price">Price: Rs ${productDetails.price}</p>
-                                </div>
-                            `;
-                            cartItemsContainer.appendChild(cartItem);
-
-                            const productTotalPrice = parseFloat(productDetails.price) * product.quantity;
-                            fetchedTotal += productTotalPrice;
-
-
-                            // add the product to cartitems array 
-                            cartItems.push({
-                                id: product.productId,
-                                image: productDetails.image,
-                                title: productDetails.title,
-                                price: parseFloat(productDetails.price),
-                                quantity: product.quantity
-                            });
-
-                            // Update the global total price with the fetched items' total
-                            totalPrice += productTotalPrice;
-                            document.getElementById('total-price').textContent = totalPrice.toFixed(2); // Update total price display
-
-                            // Increment the cart count
-                            cartCount++;
-                            // Update the cart count display
-                            document.getElementById('cart-count').textContent = cartCount;
-
-                            // Save cart data and total price to localStorage for persistence
-                            localStorage.setItem('cart', JSON.stringify(cartItems));
-                            localStorage.setItem('totalPrice', fetchedTotal.toFixed(2));
-                        })
-                        .catch(err => console.log('Error fetching product details:', err));
                 });
             });
-
         })
         .catch(err => console.log('Error fetching cart data:', err));
 }
+
+// Function to update the cart UI
+function updateCartUI(cartItemsMap, cartItemsContainer) {
+    cartItemsContainer.innerHTML = ''; // Clear container before rendering
+
+    cartItemsMap.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-entry');
+
+        // Dynamically add product details including image, name, and quantity
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.title}" class="cart-entry-image">
+            <div class="cart-entry-details">
+                <p class="cart-entry-title">${item.title}</p>
+                <p class="cart-entry-quantity">Quantity: ${item.quantity}</p>
+                <p class="cart-entry-price">Price: Rs ${item.price}</p>
+            </div>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+    });
+}
+
+// Function to calculate and display total price and cart count
+function calculateTotals(cartItemsMap) {
+    let totalPrice = 0;
+    let uniqueItemCount = cartItemsMap.size; // Get the count of unique items
+
+    // Loop through map to calculate total price
+    cartItemsMap.forEach(item => {
+        const productTotalPrice = item.price * item.quantity;
+        totalPrice += productTotalPrice;
+    });
+
+    // Update the total price and unique item count in the UI
+    document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+    document.getElementById('cart-count').textContent = uniqueItemCount; // Set cart count as the number of unique items
+
+    // Save cart data and total price to localStorage
+    localStorage.setItem('cart', JSON.stringify(Array.from(cartItemsMap.values())));
+    localStorage.setItem('totalPrice', totalPrice.toFixed(2));
+}
+
 
 // Function to clear the cart display
 function clearCartDisplay() {
