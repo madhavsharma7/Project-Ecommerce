@@ -120,9 +120,7 @@ let removeFromCart = (cartItemId, id, price) => {
 
     if (cartItem) {
         cartItem.remove();
-        // console.log(`Removed item with ID: ${cartItemId} and ${id}`); // Debugging
-
-        // Decrement the cart count and update the display
+    
         cartCount--;
         document.getElementById('cart-count').textContent = cartCount;
 
