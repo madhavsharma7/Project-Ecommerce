@@ -2,12 +2,21 @@ let showproductdiv = document.querySelector("#all-products");
 let cartCount = 0;
 let cartItemIdCounter = 0;
 let totalPrice = 0;
-let addedProductIds = new Set();
-let cartItems = [];
+let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+let addedProductIds = new Set(cartItems.map(item => String(item.id))); // Track added product IDs
 
 function toggleNavbar() {
-    const navbar = document.getElementById('navbar');
-    navbar.classList.toggle('active');
+    const navbar = document.getElementById("navbar");
+    navbar.classList.toggle("active");
+}
+
+// Function to update local storage and UI
+function updateLocalStorage() {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+    totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    cartCount = cartItems.length; // Or use a unique item count if you want
+    document.getElementById("total-price").textContent = totalPrice.toFixed(2);
+    document.getElementById("cart-count").textContent = cartCount;
 }
 
 let displayproducts = async (searchTerm = "") => {
@@ -16,18 +25,18 @@ let displayproducts = async (searchTerm = "") => {
         let finalproducts = await product.json();
 
         // Clear the container before adding new products
-        showproductdiv.innerHTML = '';
+        showproductdiv.innerHTML = "";
 
         // Trim the search term to avoid extra spaces affecting the filtering
         let trimmedSearchTerm = searchTerm.trim().toLowerCase();
 
         // Filter products based on the search term
-        let filteredProducts = finalproducts.filter(element =>
+        let filteredProducts = finalproducts.filter((element) =>
             element.title.toLowerCase().includes(trimmedSearchTerm)
         );
 
         // Display products
-        filteredProducts.forEach(element => {
+        filteredProducts.forEach((element) => {
             showproductdiv.innerHTML += `
             <div class="product-items">
                 <a href="./Single/single.html?id=${element.id}">
@@ -44,51 +53,38 @@ let displayproducts = async (searchTerm = "") => {
 
         // Handle case when no products are found
         if (filteredProducts.length === 0) {
-            showproductdiv.innerHTML = '<p>No products found.</p>';
+            showproductdiv.innerHTML = "<p>No products found.</p>";
         }
 
         // Attach event listeners to 'Add to Cart' buttons
-        document.querySelectorAll('.addtocartbtn').forEach((button, index) => {
+        document.querySelectorAll(".addtocartbtn").forEach((button, index) => {
             button.addEventListener("click", () => {
                 let selectedProduct = filteredProducts[index];
-                addtocart(selectedProduct.image, selectedProduct.title, selectedProduct.price, selectedProduct.id);
+                addtocart(
+                    selectedProduct.image,
+                    selectedProduct.title,
+                    selectedProduct.price,
+                    selectedProduct.id
+                );
             });
         });
     } catch (error) {
         // console.error("error fetching or displaying products:", error);
     }
-}
-
-// Search bar 
-document.addEventListener("DOMContentLoaded", () => {
-    // Add event listener to search input
-    document.getElementById('searchInput').addEventListener('input', (event) => {
-        let searchTerm = event.target.value;
-        displayproducts(searchTerm);  // Update displayed products based on search term
-    });
-
-    // Add event listener to search icon
-    document.getElementById('searchButton').addEventListener('click', () => {
-        let searchTerm = document.getElementById('searchInput').value;
-        displayproducts(searchTerm);  // Update displayed products based on search term
-    });
-
-    // Display products on initial load without search term
-    displayproducts();  // Load all products when the page is loaded
-});
+};
 
 
 //Single product
 let showProductDetails = async () => {
     // Extract the product ID from the URL
     const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('id');
+    const productId = urlParams.get("id");
 
     // Fetch the product details using the product ID
     let product = await fetch(`https://fakestoreapi.com/products/${productId}`);
     let finalProduct = await product.json();
 
-    let productDetailsDiv = document.getElementById('product-details');
+    let productDetailsDiv = document.getElementById("product-details");
     productDetailsDiv.innerHTML = `
      <div class="product-details">
         <img  src="${finalProduct.image}" alt="${finalProduct.title}">
@@ -101,13 +97,18 @@ let showProductDetails = async () => {
      </div>
     `;
 
-    let addToCartButton = document.querySelector('.addtocartbtn');
+    let addToCartButton = document.querySelector(".addtocartbtn");
     if (addToCartButton) {
-        addToCartButton.addEventListener('click', () => {
-            addtocart(finalProduct.image, finalProduct.title, finalProduct.price, finalProduct.id);
+        addToCartButton.addEventListener("click", () => {
+            addtocart(
+                finalProduct.image,
+                finalProduct.title,
+                finalProduct.price,
+                finalProduct.id
+            );
         });
     } else {
-        console.error('Add to Cart button not found!');
+        console.error("Add to Cart button not found!");
     }
 };
 
@@ -115,146 +116,380 @@ let showProductDetails = async () => {
 showProductDetails();
 
 
-let removeFromCart = (cartItemId, id, price) => {
-    id = String(id);
-
-    // Find the cart item by its ID and remove it
-    let cartItem = document.getElementById(cartItemId);
-    if (cartItem) {
-        cartItem.remove();
-
-        // Decrement the cart count and update the display
-        cartCount--;
-        document.getElementById('cart-count').textContent = cartCount;
-
-        // Subtract the item's price from the total price
-        totalPrice -= parseFloat(price);
-        document.getElementById('total-price').textContent = totalPrice.toFixed(2);
-
-        // Update the cart in localStorage
-        let cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
-        cartProducts = cartProducts.filter(product => product.id !== id);
-        localStorage.setItem('cart', JSON.stringify(cartProducts));
-    }
-};
-
-
-// Cart  
-
+// Cart
 let addtocart = (image, title, price, id) => {
     id = String(id);
+
+    // Check if the product is already in the cart
+    let existingCartItem = cartItems.find((item) => item.id === id);
 
     // Check if the product is already in the cart
     if (addedProductIds.has(id)) {
         alert('This product is already in your cart.');
         return;
     }
+    else {
+        // If the product is not in the cart, add a new item
+        cartItemIdCounter++; // Increment the cart item ID counter for the next item
 
-    let cartItemsContainer = document.querySelector('.cart-items');
-    // Increment the cart item ID counter for the next item
-    cartItemIdCounter++;
+        cartItems.push({ id, image, title, price: parseFloat(price), quantity: 1 });
 
-    let cartItemId = `cart-item-${cartItemIdCounter}`;
-    cartItemsContainer.innerHTML += `
-        <div id="${cartItemId}" class="cart-item" data-id="${id}" data-price="${price}" style="display: flex; align-items: center; margin-bottom: 10px;">
-            <img src="${image}" alt="product image" style="width: 50px; height: 50px; margin-right: 10px;">
-            <div class="cart-item-details">
-                <p> ${title}</p>
-                <span style="display: block;">Price: Rs ${price}</span>
-               <div class="quantity_increase">
-                 <i class="fa-solid fa-minus fa-sm minus" ></i> 
-                  <span class="quantity">1</span> <!-- This will display the quantity -->
-                  <i class="fa-solid fa-plus fa-sm plus"></i> 
-                  <button class="dltitem" style="margin-left: 10px;" onclick="removeFromCart('${cartItemId}','${id}','${price}')">Delete</button> 
-               </div>
-             </div>
-        </div>
-    `;
+        let cartItemsContainer = document.querySelector(".cart-items");
+        let cartItemId = `cart-item-${cartItemIdCounter}`;
 
-    // Increment the cart count
+        // Add a new item to the cart UI
+        cartItemsContainer.innerHTML += `
+            <div id="${cartItemId}" class="cart-item" data-id="${id}" data-price="${price}" style="display: flex; align-items: center; margin-bottom: 10px;">
+                <img src="${image}" alt="product image" style="width: 50px; height: 50px; margin-right: 10px;">
+                <div class="cart-item-details">
+                    <p>${title}</p>
+                    <span style="display: block;">Price: Rs ${price}</span>
+                    <div class="quantity_increase">
+                        <i class="fa-solid fa-minus fa-sm minus"></i>
+                        <span class="quantity">1</span> <!-- This will display the quantity -->
+                        <i class="fa-solid fa-plus fa-sm plus"></i>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    // Update the total cart count and price
     cartCount++;
-    // Update the cart count display
-    document.getElementById('cart-count').textContent = cartCount;
-
-
-    // Add the price of the newly added item to the total price
     totalPrice += parseFloat(price);
-    document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+    document.getElementById("cart-count").textContent = cartCount;
+    document.getElementById("total-price").textContent = totalPrice.toFixed(2);
 
-    // Add the product ID to the Set
+    // Add the product ID to the Set to prevent duplicate entries
     addedProductIds.add(id);
 
-    // Add the item to cartItems array
-    cartItems.push({ id, image, title, price: parseFloat(price), quantity: 1 });
+    // // Save the cart items to localStorage
+    localStorage.setItem("cart", JSON.stringify(cartItems));
 
-    // Save the cart items to localStorage
-    localStorage.setItem('cart', JSON.stringify(cartItems));
-
+    // Call the function to set up the quantity controls for the cart items
     setupQuantityControls();
 };
 
+
+// Function to remove from cart
+let removeFromCart = (id) => {
+    cartItems = cartItems.filter(item => item.id !== id);
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+
+    updateLocalStorage();
+    renderCartItems();
+};
+
+
+// Initialize UI on page load
+document.addEventListener("DOMContentLoaded", () => {
+    renderCartItems();
+    updateLocalStorage(); // This will also update the total price and count on initial load
+});
+
 // Open cart sidebar
-document.querySelector('.fa-cart-shopping').addEventListener('click', () => {
-    document.getElementById('cart-sidebar').classList.add('active');
+document.querySelector(".fa-cart-shopping").addEventListener("click", () => {
+    document.getElementById("cart-sidebar").classList.add("active");
 });
 
 // Close cart sidebar
-document.getElementById('close-cart').addEventListener('click', () => {
-    document.getElementById('cart-sidebar').classList.remove('active');
-
+document.getElementById("close-cart").addEventListener("click", () => {
+    document.getElementById("cart-sidebar").classList.remove("active");
 });
 
 // Cart quantity
 
-// Function to set up quantity control event listeners
 function setupQuantityControls() {
-    document.querySelectorAll('.quantity_increase').forEach(container => {
-        const quantityElement = container.querySelector('.quantity');
-        const minusButton = container.querySelector('.minus');
-        const plusButton = container.querySelector('.plus');
-        const cartItemElement = container.closest('.cart-item');
+    document.querySelectorAll(".quantity_increase").forEach((container) => {
+        const quantityElement = container.querySelector(".quantity");
+        const minusButton = container.querySelector(".minus");
+        const plusButton = container.querySelector(".plus");
+        const cartItemElement = container.closest(".cart-item");
         const id = cartItemElement.dataset.id;
         const price = parseFloat(cartItemElement.dataset.price);
         let quantity = parseInt(quantityElement.textContent);
-        let totalPrice = parseFloat(document.getElementById('total-price').textContent);
+        let totalPrice = parseFloat(document.getElementById("total-price").textContent);
 
-        minusButton.addEventListener('click', () => {
+        // Event listener for the minus button
+        minusButton.addEventListener("click", () => {
             if (quantity > 1) {
                 quantity--;
                 quantityElement.textContent = quantity;
                 totalPrice -= price;
 
                 // Update the quantity in the cartItems array
-                const item = cartItems.find(item => item.id === id);
+                const item = cartItems.find((item) => item.id === id);
                 if (item) item.quantity = quantity;
             } else {
                 totalPrice -= price;
                 cartItemElement.remove();
 
                 // Remove the item from the cartItems array
-                cartItems = cartItems.filter(item => item.id !== id);
+                cartItems = cartItems.filter((item) => item.id !== id);
             }
 
-            document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+            document.getElementById("total-price").textContent = totalPrice.toFixed(2);
+            // Update localStorage
+            localStorage.setItem("cart", JSON.stringify(cartItems));
         });
 
-        plusButton.addEventListener('click', () => {
+        // Event listener for the plus button
+        plusButton.addEventListener("click", () => {
             quantity++;
-            totalPrice += price;
             quantityElement.textContent = quantity;
+            totalPrice += price;
 
             // Update the quantity in the cartItems array
-            const item = cartItems.find(item => item.id === id);
+            const item = cartItems.find((item) => item.id === id);
             if (item) item.quantity = quantity;
 
+            document.getElementById("total-price").textContent = totalPrice.toFixed(2);
             // Save the updated cart to localStorage
-            localStorage.setItem('cart', JSON.stringify(cartItems));
-
-            document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+            localStorage.setItem("cart", JSON.stringify(cartItems));
         });
-
     });
 }
+
+// Select the dropdown button and dropdown content
+const dropdownBtn = document.querySelector(".dropdown-btn");
+const dropdownContent = document.querySelector(".dropdown-content");
+
+// Add an event listener to toggle the visibility of the dropdown
+dropdownBtn.addEventListener("click", function () {
+    dropdownContent.classList.toggle("show");
+});
+
+// login name change
+
+document.addEventListener("DOMContentLoaded", function () {
+    const userName = localStorage.getItem("userName"); // Get the stored username
+    const navbarUserLink = document.getElementById("user-link-navbar");
+    const dropdownUserLink = document.getElementById("user-link-dropdown");
+
+    if (userName) {
+        // Update both the navbar and dropdown with the username
+        if (navbarUserLink) navbarUserLink.textContent = userName;
+        if (dropdownUserLink) dropdownUserLink.textContent = userName;
+    }
+});
+
+
+function fetchCartDataForUser(userId) {
+    fetch(`https://fakestoreapi.com/carts/user/${userId}`)
+        .then((res) => res.json())
+        .then((carts) => {
+            const cartItemsContainer = document.getElementById("cart-items");
+            cartItemsContainer.innerHTML = ""; // Clear previous cart items
+
+            if (!carts || carts.length === 0) {
+                console.log("No cart data available for this user");
+                return; // Exit if there is no cart data
+            }
+
+            cartItemsMap = new Map(); // Map to store productId and combined details
+            let totalPrice = 0;
+
+            // Loop through each cart and process products
+            carts.forEach((cart) => {
+                cart.products.forEach((product) => {
+                    const productId = product.productId;
+
+                    // Check if the product already exists in the cartItemsMap
+                    if (cartItemsMap.has(productId)) {
+                        // If product already exists, increase its quantity
+                        cartItemsMap.get(productId).quantity += product.quantity;
+                    } else {
+                        // Fetch product details and add it to the map
+                        fetch(`https://fakestoreapi.com/products/${productId}`)
+                            .then((res) => res.json())
+                            .then((productDetails) => {
+                                cartItemsMap.set(productId, {
+                                    id: productId,
+                                    image: productDetails.image,
+                                    title: productDetails.title,
+                                    price: parseFloat(productDetails.price),
+                                    quantity: product.quantity,
+                                });
+
+                                // Update the UI and calculate totals
+                                updateCartUI(cartItemsMap, cartItemsContainer);
+                                calculateTotals(cartItemsMap);
+
+                            })
+                            .catch((err) =>
+                                console.log("Error fetching product details:", err)
+                            );
+                    }
+                });
+            });
+        })
+        .catch((err) => console.log("Error fetching cart data:", err));
+}
+
+// Function to update the cart UI
+function updateCartUI(cartItemsMap, cartItemsContainer) {
+    cartItemsContainer.innerHTML = ""; // Clear container before rendering
+
+    cartItemsMap.forEach((item) => {
+        const cartItem = document.createElement("div");
+        cartItem.classList.add("cart-entry");
+
+        // Dynamically add product details including image, name, and quantity
+        cartItem.innerHTML = `
+        <img src="${item.image}" alt="${item.title}" class="cart-entry-image">
+            <div class="cart-entry-details">
+                <p class="cart-entry-title">${item.title}</p>
+                <p class="cart-entry-price">Price: Rs ${item.price}</p>
+                <div class="cart-entry-quantity-controls">
+                    <button class="decrease-qty-btn" data-id="${item.id}"> <i class="fa-solid fa-minus fa-sm minus"></i> </button>
+                    <span class="cart-entry-quantity">${item.quantity}</span>
+                    <button class="increase-qty-btn" data-id="${item.id}">  <i class="fa-solid fa-plus fa-sm plus"></i></button>
+                </div>
+            </div>
+        `;
+
+
+        cartItem.dataset.id = item.id;
+        cartItem.dataset.price = item.price;
+        cartItemsContainer.appendChild(cartItem);
+
+        // setupQuantityControls();
+
+        // Attach event listeners for the increase/decrease buttons
+        cartItem
+            .querySelector(".increase-qty-btn")
+            .addEventListener("click", () => changeQuantity(item.id, 1));
+        cartItem
+            .querySelector(".decrease-qty-btn")
+            .addEventListener("click", () => changeQuantity(item.id, -1));
+    });
+}
+
+// Function to calculate and display total price and cart count
+function calculateTotals(cartItemsMap) {
+    totalPrice = 0;
+    cartCount = 0;
+    let uniqueItemCount = cartItemsMap.size; // Get the count of unique items
+
+    // Loop through map to calculate total price
+    cartItemsMap.forEach((item) => {
+        const productTotalPrice = item.price * item.quantity;
+        totalPrice += productTotalPrice;
+    });
+
+    // Update the total price and unique item count in the UI
+    document.getElementById("total-price").textContent = totalPrice.toFixed(2);
+    document.getElementById("cart-count").textContent = uniqueItemCount; // Set cart count as the number of unique items
+
+    localStorage.setItem("cart", JSON.stringify(Array.from(cartItemsMap.values())));
+    localStorage.setItem("totalPrice", totalPrice.toFixed(2));
+}
+
+
+// Function to change the quantity of an item in the cart
+function changeQuantity(productId, change) {
+    let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    let totalPrice = parseFloat(localStorage.getItem("totalPrice")) || 0;
+
+    const product = cartItems.find((item) => item.id === productId);
+    if (!product) return;
+
+    // Update quantity
+    product.quantity += change;
+    if (product.quantity <= 0) {
+        // Remove the item from the cart if quantity is zero
+        cartItems = cartItems.filter((item) => item.id !== productId);
+    }
+
+    // Recalculate the total price
+    totalPrice += change * product.price;
+
+    // Update UI and storage
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+    localStorage.setItem("totalPrice", totalPrice.toFixed(2));
+
+    // Re-render the cart UI
+    const cartItemsMap = new Map(cartItems.map((item) => [item.id, item]));
+    updateCartUI(cartItemsMap, document.getElementById("cart-items"));
+    calculateTotals(cartItemsMap);
+}
+
+// Function to clear the cart display
+function clearCartDisplay() {
+    const cartItemsContainer = document.getElementById("cart-items");
+    if (cartItemsContainer) {
+        cartItemsContainer.innerHTML = ""; // Clear the cart display
+    }
+}
+
+
+// Function to handle logout
+function logout() {
+    // Clear cart items from the page
+    clearCartDisplay();
+
+    // Remove any stored cart data and user details
+    localStorage.removeItem("cartData"); // If cart is stored in localStorage
+    localStorage.removeItem("userId"); // Remove userId from localStorage
+    localStorage.removeItem("userName"); // Remove userName from localStorage
+
+    // Optional: Show a logout confirmation
+    alert("You have been logged out.");
+
+    // Optionally refresh the page to reflect logout status
+    location.reload();
+}
+
+// On page load or after login, check if userId is stored and fetch cart
+document.addEventListener("DOMContentLoaded", function () {
+    const userId = localStorage.getItem("userId");
+    const userName = localStorage.getItem("userName"); // Get the stored username
+    const userLink = document.getElementById("user-link");
+    const logoutBtn = document.getElementById("logout-btn-navbar");
+    const logoutBtnResp = document.getElementById("logout-btn"); // For responsive
+    // console.log('Loaded userId from localStorage:', userId); // Log the stored userId
+
+    if (userId) {
+        fetchCartDataForUser(userId); // Fetch the cart data if userId exists
+    } else {
+        // console.log('No userId found in localStorage, clearing cart');
+        clearCartDisplay(); // Clear cart if no user is logged in
+    }
+
+    // Display user's name in navbar if logged in
+    if (userName && userLink) {
+        userLink.textContent = userName;
+        userLink.href = "#"; // Optionally disable the login link
+    }
+
+    // Attach logout event listener to the logout button
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", logout); // Call logout when button is clicked
+    }
+
+    if (logoutBtnResp) {
+        logoutBtnResp.addEventListener("click", logout); // Responsive view logout
+    }
+});
+
+// Search bar
+document.addEventListener("DOMContentLoaded", () => {
+    // Add event listener to search input
+    document.getElementById("searchInput").addEventListener("input", (event) => {
+        let searchTerm = event.target.value;
+        displayproducts(searchTerm); // Update displayed products based on search term
+    });
+
+    // Add event listener to search icon
+    document.getElementById("searchButton").addEventListener("click", () => {
+        let searchTerm = document.getElementById("searchInput").value;
+        displayproducts(searchTerm); // Update displayed products based on search term
+    });
+
+    // Display products on initial load without search term
+    displayproducts(); // Load all products when the page is loaded
+});
+
 
 // Carousel
 
@@ -275,19 +510,23 @@ function stopSlideInterval() {
 }
 
 function plusSlides(n) {
-    showSlides(slideIndex += n);
+    showSlides((slideIndex += n));
 }
 
 function currentSlide(n) {
-    showSlides(slideIndex = n);
+    showSlides((slideIndex = n));
 }
 
 function showSlides(n) {
     let i;
     let slides = document.getElementsByClassName("mySlides");
     let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
+    if (n > slides.length) {
+        slideIndex = 1;
+    }
+    if (n < 1) {
+        slideIndex = slides.length;
+    }
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
@@ -302,26 +541,26 @@ function showSlides(n) {
 window.onload = startSlideInterval;
 
 // Pause autoplay when the user interacts with the slideshow
-document.querySelectorAll('.prev, .next, .dot').forEach(function (element) {
-    element.addEventListener('click', stopSlideInterval);
+document.querySelectorAll(".prev, .next, .dot").forEach(function (element) {
+    element.addEventListener("click", stopSlideInterval);
 });
-
 
 // For CSV file
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxaj313DuVqK31lwwMgB401ogmYKFA7z9QnJ6UvjkhUbO-_86nhoehmO7ep5whhVRuxww/exec';
+const scriptURL =
+    "https://script.google.com/macros/s/AKfycbxaj313DuVqK31lwwMgB401ogmYKFA7z9QnJ6UvjkhUbO-_86nhoehmO7ep5whhVRuxww/exec";
 
 // Subscription Form Submission
-const subscriptionForm = document.forms['subscription-form'];
+const subscriptionForm = document.forms["subscription-form"];
 if (subscriptionForm) {
-    subscriptionForm.addEventListener('submit', e => {
+    subscriptionForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
         fetch(scriptURL, {
-            method: 'POST',
-            body: new FormData(subscriptionForm)
+            method: "POST",
+            body: new FormData(subscriptionForm),
         })
-            .then(response => {
+            .then((response) => {
                 if (response.ok) {
                     alert("Thank you for subscribing! You will receive updates soon.");
                     subscriptionForm.reset(); // Optionally reset the form after submission
@@ -329,181 +568,13 @@ if (subscriptionForm) {
                     alert("There was an issue with your subscription. Please try again.");
                 }
             })
-            .catch(error => {
-                console.error('Error!', error.message);
-                alert("There was an error submitting your subscription. Please try again later.");
+            .catch((error) => {
+                console.error("Error!", error.message);
+                alert(
+                    "There was an error submitting your subscription. Please try again later."
+                );
             });
     });
 }
 
 
-// Select the dropdown button and dropdown content
-const dropdownBtn = document.querySelector('.dropdown-btn');
-const dropdownContent = document.querySelector('.dropdown-content');
-
-// Add an event listener to toggle the visibility of the dropdown
-dropdownBtn.addEventListener('click', function () {
-    dropdownContent.classList.toggle('show');
-});
-
-// login name change 
-
-document.addEventListener('DOMContentLoaded', function () {
-    const userName = localStorage.getItem('userName'); // Get the stored username
-    const navbarUserLink = document.getElementById('user-link-navbar');
-    const dropdownUserLink = document.getElementById('user-link-dropdown');
-
-    if (userName) {
-        // Update both the navbar and dropdown with the username
-        if (navbarUserLink) navbarUserLink.textContent = userName;
-        if (dropdownUserLink) dropdownUserLink.textContent = userName;
-    }
-});
-
-function fetchCartDataForUser(userId) {
-    fetch(`https://fakestoreapi.com/carts/user/${userId}`)
-        .then(res => res.json())
-        .then(carts => {
-            const cartItemsContainer = document.getElementById('cart-items');
-            cartItemsContainer.innerHTML = ''; // Clear previous cart items
-
-            if (!carts || carts.length === 0) {
-                console.log('No cart data available for this user');
-                return; // Exit if there is no cart data
-            }
-
-            const cartItemsMap = new Map(); // Map to store productId and combined details
-            let totalPrice = 0;
-
-            // Loop through each cart and process products
-            carts.forEach(cart => {
-                cart.products.forEach(product => {
-                    const productId = product.productId;
-
-                    // Check if the product already exists in the cartItemsMap
-                    if (cartItemsMap.has(productId)) {
-                        // If product already exists, increase its quantity
-                        cartItemsMap.get(productId).quantity += product.quantity;
-                    } else {
-                        // Fetch product details and add it to the map
-                        fetch(`https://fakestoreapi.com/products/${productId}`)
-                            .then(res => res.json())
-                            .then(productDetails => {
-                                cartItemsMap.set(productId, {
-                                    id: productId,
-                                    image: productDetails.image,
-                                    title: productDetails.title,
-                                    price: parseFloat(productDetails.price),
-                                    quantity: product.quantity
-                                });
-
-                                // Update the UI and calculate totals
-                                updateCartUI(cartItemsMap, cartItemsContainer);
-                                calculateTotals(cartItemsMap);
-                            })
-                            .catch(err => console.log('Error fetching product details:', err));
-                    }
-                });
-            });
-        })
-        .catch(err => console.log('Error fetching cart data:', err));
-}
-
-// Function to update the cart UI
-function updateCartUI(cartItemsMap, cartItemsContainer) {
-    cartItemsContainer.innerHTML = ''; // Clear container before rendering
-
-    cartItemsMap.forEach(item => {
-        const cartItem = document.createElement('div');
-        cartItem.classList.add('cart-entry');
-
-        // Dynamically add product details including image, name, and quantity
-        cartItem.innerHTML = `
-            <img src="${item.image}" alt="${item.title}" class="cart-entry-image">
-            <div class="cart-entry-details">
-                <p class="cart-entry-title">${item.title}</p>
-                <p class="cart-entry-quantity">Quantity: ${item.quantity}</p>
-                <p class="cart-entry-price">Price: Rs ${item.price}</p>
-            </div>
-        `;
-        cartItemsContainer.appendChild(cartItem);
-    });
-}
-
-// Function to calculate and display total price and cart count
-function calculateTotals(cartItemsMap) {
-    let totalPrice = 0;
-    let uniqueItemCount = cartItemsMap.size; // Get the count of unique items
-
-    // Loop through map to calculate total price
-    cartItemsMap.forEach(item => {
-        const productTotalPrice = item.price * item.quantity;
-        totalPrice += productTotalPrice;
-    });
-
-    // Update the total price and unique item count in the UI
-    document.getElementById('total-price').textContent = totalPrice.toFixed(2);
-    document.getElementById('cart-count').textContent = uniqueItemCount; // Set cart count as the number of unique items
-
-    // Save cart data and total price to localStorage
-    localStorage.setItem('cart', JSON.stringify(Array.from(cartItemsMap.values())));
-    localStorage.setItem('totalPrice', totalPrice.toFixed(2));
-}
-
-
-// Function to clear the cart display
-function clearCartDisplay() {
-    const cartItemsContainer = document.getElementById('cart-items');
-    if (cartItemsContainer) {
-        cartItemsContainer.innerHTML = ''; // Clear the cart display
-    }
-}
-
-// Function to handle logout
-function logout() {
-    // Clear cart items from the page
-    clearCartDisplay();
-
-    // Remove any stored cart data and user details
-    localStorage.removeItem('cartData'); // If cart is stored in localStorage
-    localStorage.removeItem('userId');   // Remove userId from localStorage
-    localStorage.removeItem('userName'); // Remove userName from localStorage
-
-    // Optional: Show a logout confirmation
-    alert('You have been logged out.');
-
-    // Optionally refresh the page to reflect logout status
-    location.reload();
-}
-
-// On page load or after login, check if userId is stored and fetch cart
-document.addEventListener('DOMContentLoaded', function () {
-    const userId = localStorage.getItem('userId');
-    const userName = localStorage.getItem('userName'); // Get the stored username
-    const userLink = document.getElementById('user-link');
-    const logoutBtn = document.getElementById('logout-btn-navbar');
-    const logoutBtnResp = document.getElementById('logout-btn'); // For responsive
-    // console.log('Loaded userId from localStorage:', userId); // Log the stored userId
-
-    if (userId) {
-        fetchCartDataForUser(userId); // Fetch the cart data if userId exists
-    } else {
-        // console.log('No userId found in localStorage, clearing cart');
-        clearCartDisplay(); // Clear cart if no user is logged in
-    }
-
-    // Display user's name in navbar if logged in
-    if (userName && userLink) {
-        userLink.textContent = userName;
-        userLink.href = "#"; // Optionally disable the login link
-    }
-
-    // Attach logout event listener to the logout button
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', logout); // Call logout when button is clicked
-    }
-
-    if (logoutBtnResp) {
-        logoutBtnResp.addEventListener('click', logout); // Responsive view logout
-    }
-});

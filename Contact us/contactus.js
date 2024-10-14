@@ -60,3 +60,17 @@ document.querySelector('.dropdown-btn').addEventListener('click', function () {
   document.querySelector('.dropdown-content').classList.toggle('show');
 });
 
+
+// login name change
+
+document.addEventListener("DOMContentLoaded", function () {
+  const userName = localStorage.getItem("userName"); // Get the stored username
+  const navbarUserLink = document.getElementById("user-link-navbar");
+  const dropdownUserLink = document.getElementById("user-link-dropdown");
+
+  if (userName) {
+    // Update both the navbar and dropdown with the username
+    if (navbarUserLink) navbarUserLink.textContent = userName;
+    if (dropdownUserLink) dropdownUserLink.textContent = userName;
+  }
+});
