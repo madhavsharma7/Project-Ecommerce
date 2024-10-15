@@ -347,8 +347,6 @@ function updateCartUI(cartItemsMap, cartItemsContainer) {
                 </div>
             </div>
         `;
-
-
         cartItem.dataset.id = item.id;
         cartItem.dataset.price = item.price;
         cartItemsContainer.appendChild(cartItem);

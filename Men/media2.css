@@ -346,7 +346,7 @@
 
        .cart-item img {
            height: 10vh !important;
-           width: 20vw !important;
+           width: 15vw !important;
        }
 
        .quantity_increase button {
@@ -355,6 +355,33 @@
 
        #cart-total h3 {
            font-size: 4vw;
+       }
+
+       /* User cart */
+
+       .cart-entry-image {
+           height: 10vh;
+           width: 15vw;
+
+       }
+
+       .cart-entry-title {
+           font-size: 4vw;
+       }
+
+       .cart-entry-quantity {
+           font-size: 4vw;
+           margin-left: 2vw;
+           margin-right: 2vw;
+
+       }
+
+       .cart-entry-price {
+           font-size: 3.5vw;
+       }
+
+       .cart-entry-quantity-controls i {
+           font-size: 3vw;
        }
 
    }
