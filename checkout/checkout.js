@@ -123,8 +123,8 @@ function sendMail() {
     };
 
     // EmailJS Service and Template IDs (ensure they are correct)
-    const serviceID = "service_xudcv7o";
-    const templateID = "template_a1f5z1q";
+    const serviceID = "service_2n0ancc";
+    const templateID = "template_n3izgq1";
 
     // Input validation: Ensure that all fields are filled
     if (!params.name || !params.email) {
