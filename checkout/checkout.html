@@ -14,6 +14,16 @@
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Whisper&display=swap");
   </style>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init({
+        publicKey: "98Zd4sKl--8gCCkeq",
+      });
+    })();
+  </script>
 </head>
 
 <body>
@@ -91,6 +101,7 @@
             <input type="text" id="firstname" name="firstname" placeholder="First Name" required />
             <input type="text" id="lastname" name="lastname" placeholder="Last Name" required />
             <input type="text" id="phonenumber" name="phonenumber" placeholder="Phone Number" required />
+            <input type="email" id="email" name="email" placeholder="Enter your Email" required />
           </div>
           <!-- Address List -->
           <div class="address-list">

@@ -177,13 +177,13 @@ let removeFromCart = (id) => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
 
     updateLocalStorage();
-    renderCartItems();
+
 };
 
 
 // Initialize UI on page load
 document.addEventListener("DOMContentLoaded", () => {
-    renderCartItems();
+
     updateLocalStorage(); // This will also update the total price and count on initial load
 });
 

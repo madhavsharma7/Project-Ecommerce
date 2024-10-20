@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <span class="delete-address" id="delicon">
             <i class="fa fa-trash" aria-hidden="true"></i>
             </span>
-        
+
         `;
         addressList.appendChild(newAddress);
 
@@ -91,10 +91,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Validate that the first name, last name, and phone number fields are filled
-        if (!firstName || !lastName || !phoneNumber) {
+        if (!firstName || !lastName || !phoneNumber || !email) {
             alert('Please fill your details');
             return;
         }
+
+        sendMail();
 
         // Additional logic for placing the order can be added here
         alert('Order placed successfully!');
@@ -103,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.removeItem('cart');
 
         // Redirect to index.html after the alert is dismissed
-        window.location.href = '../index.html';
+        // window.location.href = '../index.html';
     });
 });
 
@@ -111,3 +113,47 @@ document.addEventListener("DOMContentLoaded", function () {
 document.querySelector('.dropdown-btn').addEventListener('click', function () {
     document.querySelector('.dropdown-content').classList.toggle('show');
 });
+
+
+function sendMail() {
+    // Gather form data
+    var params = {
+        name: document.getElementById("firstname").value,
+        email: document.getElementById("email").value,
+    };
+
+    // EmailJS Service and Template IDs (ensure they are correct)
+    const serviceID = "service_xudcv7o";
+    const templateID = "template_a1f5z1q";
+
+    // Input validation: Ensure that all fields are filled
+    if (!params.name || !params.email) {
+        alert("Please fill in all fields before submitting.");
+        return;
+    }
+
+    // Send email using EmailJS
+    emailjs.send(serviceID, templateID, params)
+        .then(res => {
+            // Clear form fields after successful email sending
+            document.getElementById("firstname").value = "";
+            document.getElementById("email").value = "";
+            // document.getElementById("phoneNumber").value = "";
+            // document.getElementById("message").value = "";
+
+            // Log the response and show success alert
+            console.log("Email sent successfully:", res);
+
+            alert("Your message was sent successfully!");
+            // Redirect to index.html after the alert is dismissed
+            window.location.href = '../index.html';
+
+        })
+        .catch(err => {
+            // Log the error for debugging
+            console.error("Failed to send email. Error details:", err);
+
+            // Display an error message to the user
+            alert("Failed to send message. Please try again.");
+        });
+}
