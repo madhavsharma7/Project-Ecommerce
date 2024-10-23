@@ -420,6 +420,7 @@ function clearCartDisplay() {
     }
 }
 
+// document.getElementById("logout-btn").addEventListener("click", logout);
 
 // Function to handle logout
 function logout() {
@@ -427,9 +428,11 @@ function logout() {
     clearCartDisplay();
 
     // Remove any stored cart data and user details
+    localStorage.removeItem("cart");
     localStorage.removeItem("cartData"); // If cart is stored in localStorage
     localStorage.removeItem("userId"); // Remove userId from localStorage
     localStorage.removeItem("userName"); // Remove userName from localStorage
+    localStorage.removeItem("totalPrice");
 
     // Optional: Show a logout confirmation
     alert("You have been logged out.");
