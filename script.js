@@ -432,7 +432,7 @@ function logout() {
     localStorage.removeItem("cartData"); // If cart is stored in localStorage
     localStorage.removeItem("userId"); // Remove userId from localStorage
     localStorage.removeItem("userName"); // Remove userName from localStorage
-    localStorage.removeItem("totalPrice");
+    localStorage.removeItem("totalPrice"); //removes totalprice from localstorage
 
     // Optional: Show a logout confirmation
     alert("You have been logged out.");
